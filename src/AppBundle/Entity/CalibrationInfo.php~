@@ -1,0 +1,98 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CalibrationInfo
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class CalibrationInfo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uncertaintyRequests", type="text", length=200)
+     */
+    private $uncertaintyRequests;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+
+    private $actualUncertainty;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $referenceNr;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $uut;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $deviation;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $adjustmentLimit;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $comment;
+
+//    private $date;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set uncertaintyRequests
+     *
+     * @param string $uncertaintyRequests
+     *
+     * @return CalibrationInfo
+     */
+    public function setUncertaintyRequests($uncertaintyRequests)
+    {
+        $this->uncertaintyRequests = $uncertaintyRequests;
+
+        return $this;
+    }
+
+    /**
+     * Get uncertaintyRequests
+     *
+     * @return string
+     */
+    public function getUncertaintyRequests()
+    {
+        return $this->uncertaintyRequests;
+    }
+}
+

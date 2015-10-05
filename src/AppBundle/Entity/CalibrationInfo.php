@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CalibrationInfo
+ *
  * @ORM\Table()
  * @ORM\Entity
  */
@@ -20,6 +21,45 @@ class CalibrationInfo
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uncertaintyRequests", type="text", length=200)
+     */
+    private $uncertaintyRequests;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+
+    private $actualUncertainty;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $referenceNr;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $uut;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $deviation;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $adjustmentLimit;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $comment;
+
+//    private $date;
 
     /**
      * Get id
@@ -30,5 +70,172 @@ class CalibrationInfo
     {
         return $this->id;
     }
-}
 
+    /**
+     * Set uncertaintyRequests
+     *
+     * @param string $uncertaintyRequests
+     *
+     * @return CalibrationInfo
+     */
+    public function setUncertaintyRequests($uncertaintyRequests)
+    {
+        $this->uncertaintyRequests = $uncertaintyRequests;
+
+        return $this;
+    }
+
+    /**
+     * Get uncertaintyRequests
+     *
+     * @return string
+     */
+    public function getUncertaintyRequests()
+    {
+        return $this->uncertaintyRequests;
+    }
+
+    /**
+     * Set actualUncertainty
+     *
+     * @param string $actualUncertainty
+     *
+     * @return CalibrationInfo
+     */
+    public function setActualUncertainty($actualUncertainty)
+    {
+        $this->actualUncertainty = $actualUncertainty;
+
+        return $this;
+    }
+
+    /**
+     * Get actualUncertainty
+     *
+     * @return string
+     */
+    public function getActualUncertainty()
+    {
+        return $this->actualUncertainty;
+    }
+
+    /**
+     * Set referenceNr
+     *
+     * @param string $referenceNr
+     *
+     * @return CalibrationInfo
+     */
+    public function setReferenceNr($referenceNr)
+    {
+        $this->referenceNr = $referenceNr;
+
+        return $this;
+    }
+
+    /**
+     * Get referenceNr
+     *
+     * @return string
+     */
+    public function getReferenceNr()
+    {
+        return $this->referenceNr;
+    }
+
+    /**
+     * Set uut
+     *
+     * @param string $uut
+     *
+     * @return CalibrationInfo
+     */
+    public function setUut($uut)
+    {
+        $this->uut = $uut;
+
+        return $this;
+    }
+
+    /**
+     * Get uut
+     *
+     * @return string
+     */
+    public function getUut()
+    {
+        return $this->uut;
+    }
+
+    /**
+     * Set deviation
+     *
+     * @param string $deviation
+     *
+     * @return CalibrationInfo
+     */
+    public function setDeviation($deviation)
+    {
+        $this->deviation = $deviation;
+
+        return $this;
+    }
+
+    /**
+     * Get deviation
+     *
+     * @return string
+     */
+    public function getDeviation()
+    {
+        return $this->deviation;
+    }
+
+    /**
+     * Set adjustmentLimit
+     *
+     * @param string $adjustmentLimit
+     *
+     * @return CalibrationInfo
+     */
+    public function setAdjustmentLimit($adjustmentLimit)
+    {
+        $this->adjustmentLimit = $adjustmentLimit;
+
+        return $this;
+    }
+
+    /**
+     * Get adjustmentLimit
+     *
+     * @return string
+     */
+    public function getAdjustmentLimit()
+    {
+        return $this->adjustmentLimit;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return CalibrationInfo
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+}
