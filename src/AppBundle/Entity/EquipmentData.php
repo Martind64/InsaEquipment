@@ -54,6 +54,16 @@ class EquipmentData
      */
     protected $level;
 
+//    /**
+//     * @ORM\Column(type"")
+//     */
+//    protected $date;
+//
+//    /**
+//     * @ORM\Column(type="string", length=100)
+//     */
+//    protected $owner;
+
     /**
      * @ORM\Column(type="string", length=100)
      */
