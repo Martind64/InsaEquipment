@@ -24,20 +24,21 @@ class CalibrationPoint
     /**
      * @var string
      *
-     * @ORM\Column(name="measurement", type="string", length=100)
+     * @ORM\Column(type="string", length=100)
      */
     private $measurement;
 
 
     /**
-     * @ORM\Column(name="unit", type="text", length=20)
+     * @ORM\Column(type="text", length=20)
      */
     private $unit;
 
     /**
-     * @ORM\Column(name="prefix", type="string", length=20)
+     * @ORM\Column(type="string", length=20)
      */
     private $prefix;
+
     /**
      * Get id
      *

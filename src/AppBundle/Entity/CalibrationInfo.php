@@ -25,7 +25,7 @@ class CalibrationInfo
     /**
      * @var string
      *
-     * @ORM\Column(name="uncertaintyRequests", type="text", length=200)
+     * @ORM\Column(type="text", length=200)
      */
     private $uncertaintyRequests;
 
