@@ -15,6 +15,29 @@ class EquipmentData
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $equipmentID;
+
+//    protected $model;
+//    protected $serialNr;
+//    protected $placement;
+//    protected $partner;
+//    protected $category;
+//    protected $level;
+//    protected $doneBy;
+//    protected $approvedBy;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

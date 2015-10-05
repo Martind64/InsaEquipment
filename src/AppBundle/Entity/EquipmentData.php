@@ -15,8 +15,19 @@ class EquipmentData
      */
     protected $id;
 
-    
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $equipmentID;
 
+//    protected $model;
+//    protected $serialNr;
+//    protected $placement;
+//    protected $partner;
+//    protected $category;
+//    protected $level;
+//    protected $doneBy;
+//    protected $approvedBy;
 
 
 
@@ -28,5 +39,29 @@ class EquipmentData
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set equipmentID
+     *
+     * @param string $equipmentID
+     *
+     * @return EquipmentData
+     */
+    public function setEquipmentID($equipmentID)
+    {
+        $this->equipmentID = $equipmentID;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentID
+     *
+     * @return string
+     */
+    public function getEquipmentID()
+    {
+        return $this->equipmentID;
     }
 }
