@@ -71,52 +71,5 @@ class CalibrationPoint
     {
         return $this->measurement;
     }
-
-    /**
-     * Set unit
-     *
-     * @param string $unit
-     *
-     * @return CalibrationPoint
-     */
-    public function setUnit($unit)
-    {
-        $this->unit = $unit;
-
-        return $this;
-    }
-
-    /**
-     * Get unit
-     *
-     * @return string
-     */
-    public function getUnit()
-    {
-        return $this->unit;
-    }
-
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return CalibrationPoint
-     */
-    public function setPrefix($prefix)
-    {
-        $this->prefix = $prefix;
-
-        return $this;
-    }
-
-    /**
-     * Get prefix
-     *
-     * @return string
-     */
-    public function getPrefix()
-    {
-        return $this->prefix;
-    }
 }
+
