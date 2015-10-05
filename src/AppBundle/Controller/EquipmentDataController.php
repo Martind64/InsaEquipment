@@ -20,7 +20,7 @@ class EquipmentDataController extends ControllerBase
     public function addEquipmentAction()
     {
         $equipmentData = new EquipmentData();
-        $equipmentData->setDescription('kalibrere vand instrumenter');
+        $equipmentData->setDescription('kalibrerer vand instrumenter');
         $equipmentData->setSerialNr('23153');
         $equipmentData->setCategory('decade Box');
         $equipmentData->setDoneBy('Leif Jensen');
@@ -52,8 +52,8 @@ class EquipmentDataController extends ControllerBase
         $em =  $this->getEM();
 
         $em->persist($equipmentData);
-        $em->persist($calibrationPoint);
         $em->persist($calibrationInfo);
+        $em->persist($calibrationPoint);
 
         $em->flush();
 
