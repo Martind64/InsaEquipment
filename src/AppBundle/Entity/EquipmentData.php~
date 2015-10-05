@@ -19,15 +19,50 @@ class EquipmentData
      * @ORM\Column(type="string", length=100)
      */
     protected $equipmentID;
+    /**
+     * @ORM\Column(type="text", length=200)
+     */
 
-//    protected $model;
-//    protected $serialNr;
-//    protected $placement;
-//    protected $partner;
-//    protected $category;
-//    protected $level;
-//    protected $doneBy;
-//    protected $approvedBy;
+    protected $description;
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+
+    protected $model;
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $serialNr;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $placement;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $partner;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $category;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $level;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $doneBy;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $approvedBy;
 
 
 
@@ -39,5 +74,29 @@ class EquipmentData
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set equipmentID
+     *
+     * @param string $equipmentID
+     *
+     * @return EquipmentData
+     */
+    public function setEquipmentID($equipmentID)
+    {
+        $this->equipmentID = $equipmentID;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentID
+     *
+     * @return string
+     */
+    public function getEquipmentID()
+    {
+        return $this->equipmentID;
     }
 }
