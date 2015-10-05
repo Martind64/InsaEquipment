@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CalibrationInfo
 {
+
     /**
      * @var integer
      *
@@ -58,6 +59,13 @@ class CalibrationInfo
      * @ORM\Column(type="string", length=100)
      */
     private $comment;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="EquipmentData", inversedBy="calibrationInfo")
+     * @ORM\JoinColumn(name="equipmentData_id", referencedColumnName="id")
+     */
+    protected $equipmentData;
+
 
 //    private $date;
 
@@ -237,5 +245,29 @@ class CalibrationInfo
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set equipmentData
+     *
+     * @param \AppBundle\Entity\EquipmentData $equipmentData
+     *
+     * @return CalibrationInfo
+     */
+    public function setEquipmentData(\AppBundle\Entity\EquipmentData $equipmentData = null)
+    {
+        $this->equipmentData = $equipmentData;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentData
+     *
+     * @return \AppBundle\Entity\EquipmentData
+     */
+    public function getEquipmentData()
+    {
+        return $this->equipmentData;
     }
 }

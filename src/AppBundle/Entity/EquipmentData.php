@@ -1,5 +1,6 @@
 <?php
 namespace AppBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -74,6 +75,15 @@ class EquipmentData
      */
     protected $approvedBy;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CalibrationInfo", mappedBy="equipmentData")
+     */
+    protected $calibrationInfo;
+
+    public function __construct()
+    {
+        $this->calibrationInfo = new ArrayCollection();
+    }
 
 
     /**
@@ -324,5 +334,39 @@ class EquipmentData
     public function getApprovedBy()
     {
         return $this->approvedBy;
+    }
+
+    /**
+     * Add calibrationInfo
+     *
+     * @param \AppBundle\Entity\CalibrationInfo $calibrationInfo
+     *
+     * @return EquipmentData
+     */
+    public function addCalibrationInfo(\AppBundle\Entity\CalibrationInfo $calibrationInfo)
+    {
+        $this->calibrationInfo[] = $calibrationInfo;
+
+        return $this;
+    }
+
+    /**
+     * Remove calibrationInfo
+     *
+     * @param \AppBundle\Entity\CalibrationInfo $calibrationInfo
+     */
+    public function removeCalibrationInfo(\AppBundle\Entity\CalibrationInfo $calibrationInfo)
+    {
+        $this->calibrationInfo->removeElement($calibrationInfo);
+    }
+
+    /**
+     * Get calibrationInfo
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCalibrationInfo()
+    {
+        return $this->calibrationInfo;
     }
 }
