@@ -66,6 +66,12 @@ class CalibrationInfo
      */
     protected $equipmentData;
 
+    /**
+     * @ORM\OneToOne(targetEntity="CalibrationPoint", inversedBy="calibrationInfo")
+     * @ORM\JoinColumn(name="calibrationPoint_id", referencedColumnName="id")
+     */
+    protected $CalibrationPoint;
+
 
 //    private $date;
 
@@ -269,5 +275,29 @@ class CalibrationInfo
     public function getEquipmentData()
     {
         return $this->equipmentData;
+    }
+
+    /**
+     * Set calibrationPoint
+     *
+     * @param \AppBundle\Entity\CalibrationPoint $calibrationPoint
+     *
+     * @return CalibrationInfo
+     */
+    public function setCalibrationPoint(\AppBundle\Entity\CalibrationPoint $calibrationPoint = null)
+    {
+        $this->CalibrationPoint = $calibrationPoint;
+
+        return $this;
+    }
+
+    /**
+     * Get calibrationPoint
+     *
+     * @return \AppBundle\Entity\CalibrationPoint
+     */
+    public function getCalibrationPoint()
+    {
+        return $this->CalibrationPoint;
     }
 }

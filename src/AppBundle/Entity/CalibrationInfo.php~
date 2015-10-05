@@ -25,7 +25,7 @@ class CalibrationInfo
     /**
      * @var string
      *
-     * @ORM\Column(name="uncertaintyRequests", type="text", length=200)
+     * @ORM\Column(type="text", length=200)
      */
     private $uncertaintyRequests;
 
@@ -65,6 +65,12 @@ class CalibrationInfo
      * @ORM\JoinColumn(name="equipmentData_id", referencedColumnName="id")
      */
     protected $equipmentData;
+
+    /**
+     * @ORM\OneToOne(targetEntity="CalibrationPoint", inversedBy="calibrationInfo")
+     * @ORM\JoinColumn(name="calibrationPoint_id", referencedColumnName="id")
+     */
+    protected $CalibrationPoint;
 
 
 //    private $date;
@@ -245,5 +251,29 @@ class CalibrationInfo
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set equipmentData
+     *
+     * @param \AppBundle\Entity\EquipmentData $equipmentData
+     *
+     * @return CalibrationInfo
+     */
+    public function setEquipmentData(\AppBundle\Entity\EquipmentData $equipmentData = null)
+    {
+        $this->equipmentData = $equipmentData;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentData
+     *
+     * @return \AppBundle\Entity\EquipmentData
+     */
+    public function getEquipmentData()
+    {
+        return $this->equipmentData;
     }
 }

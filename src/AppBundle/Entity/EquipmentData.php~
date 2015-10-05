@@ -86,7 +86,6 @@ class EquipmentData
     }
 
 
-
     /**
      * Get id
      *
@@ -335,5 +334,39 @@ class EquipmentData
     public function getApprovedBy()
     {
         return $this->approvedBy;
+    }
+
+    /**
+     * Add calibrationInfo
+     *
+     * @param \AppBundle\Entity\CalibrationInfo $calibrationInfo
+     *
+     * @return EquipmentData
+     */
+    public function addCalibrationInfo(\AppBundle\Entity\CalibrationInfo $calibrationInfo)
+    {
+        $this->calibrationInfo[] = $calibrationInfo;
+
+        return $this;
+    }
+
+    /**
+     * Remove calibrationInfo
+     *
+     * @param \AppBundle\Entity\CalibrationInfo $calibrationInfo
+     */
+    public function removeCalibrationInfo(\AppBundle\Entity\CalibrationInfo $calibrationInfo)
+    {
+        $this->calibrationInfo->removeElement($calibrationInfo);
+    }
+
+    /**
+     * Get calibrationInfo
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCalibrationInfo()
+    {
+        return $this->calibrationInfo;
     }
 }

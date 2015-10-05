@@ -24,25 +24,32 @@ class CalibrationPoint
     /**
      * @var string
      *
-     * @ORM\Column(name="measurement", type="string", length=100)
+     * @ORM\Column(type="string", length=100)
      */
     private $measurement;
 
 
     /**
-     * @ORM\Column(name="unit", type="text", length=20)
+     * @ORM\Column(type="text", length=20)
      */
     private $unit;
 
     /**
-     * @ORM\Column(name="prefix", type="string", length=20)
+     * @ORM\Column(type="string", length=20)
      */
     private $prefix;
+
+    /**
+     * @ORM\OneToOne(targetEntity="CalibrationInfo", mappedBy="calibrationPoint")
+     */
+    protected $CalibrationInfo;
+
     /**
      * Get id
      *
      * @return integer
      */
+
     public function getId()
     {
         return $this->id;
@@ -71,5 +78,52 @@ class CalibrationPoint
     {
         return $this->measurement;
     }
-}
 
+    /**
+     * Set unit
+     *
+     * @param string $unit
+     *
+     * @return CalibrationPoint
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
+     * Set prefix
+     *
+     * @param string $prefix
+     *
+     * @return CalibrationPoint
+     */
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * Get prefix
+     *
+     * @return string
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+}

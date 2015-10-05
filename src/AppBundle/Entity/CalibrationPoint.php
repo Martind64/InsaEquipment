@@ -40,10 +40,16 @@ class CalibrationPoint
     private $prefix;
 
     /**
+     * @ORM\OneToOne(targetEntity="CalibrationInfo", mappedBy="calibrationPoint")
+     */
+    protected $CalibrationInfo;
+
+    /**
      * Get id
      *
      * @return integer
      */
+
     public function getId()
     {
         return $this->id;
@@ -119,5 +125,29 @@ class CalibrationPoint
     public function getPrefix()
     {
         return $this->prefix;
+    }
+
+    /**
+     * Set calibrationInfo
+     *
+     * @param \AppBundle\Entity\CalibrationInfo $calibrationInfo
+     *
+     * @return CalibrationPoint
+     */
+    public function setCalibrationInfo(\AppBundle\Entity\CalibrationInfo $calibrationInfo = null)
+    {
+        $this->CalibrationInfo = $calibrationInfo;
+
+        return $this;
+    }
+
+    /**
+     * Get calibrationInfo
+     *
+     * @return \AppBundle\Entity\CalibrationInfo
+     */
+    public function getCalibrationInfo()
+    {
+        return $this->CalibrationInfo;
     }
 }
