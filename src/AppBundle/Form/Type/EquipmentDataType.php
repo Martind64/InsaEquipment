@@ -29,17 +29,3 @@ class EquipmentDataType extends AbstractType
     }
 }
 
-
-//->add('name', 'text', array('attr' => array('class' => 'form-control')))
-//->add('age', 'integer', array('attr' => array('class' => 'form-control')))
-//->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
-//protected $equipmentID;
-//protected $description;
-//protected $model;
-//protected $serialNr;
-//protected $placement;
-//protected $partner;
-//protected $category;
-//protected $level;
-//protected $doneBy;
-//protected $approvedBy;
