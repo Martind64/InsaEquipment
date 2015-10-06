@@ -17,10 +17,16 @@ class EquipmentDataController extends ControllerBase
      * @Route("/", name="AddRoute")
      */
 
-    public function addEquipmentAction()
+    public function addEquipmentAction(Request $request)
     {
+        $equipmentData = new EquipmentData();
+        $calibrationInfo = new CalibrationInfo();
+        $calibrationPoint = new CalibrationPoint();
 
+        $form = $this->createForm(new equipmentData(), $equipmentData);
+        $form->handleRequest($form);
 
+        return $this->render('EquipmentData.html.twig', array('form' => $form->createView()));
 
 
     }
