@@ -26,7 +26,7 @@ class EquipmentDataController extends ControllerBase
         $form = $this->createForm(new equipmentData(), $equipmentData);
         $form->handleRequest($form);
 
-        return $this->render('EquipmentData.html.twig', array('form' => $form->createView()));
+        return $this->render('equipmentData.html.twig', array('form' => $form->createView()));
 
 
     }
