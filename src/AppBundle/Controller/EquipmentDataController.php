@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\EquipmentData;
 use AppBundle\Form\Type\CalibrationInfoType;
+use AppBundle\Form\Type\CalibrationPointType;
 use AppBundle\Form\Type\EquipmentDataType;
 use AppBundle\Entity\CalibrationInfo;
 use AppBundle\Entity\CalibrationPoint;
@@ -23,6 +24,10 @@ class EquipmentDataController extends ControllerBase
     {
         $equipmentData = new EquipmentData();
         $calibrationInfo = new CalibrationInfo();
+        $calibrationPoint = new CalibrationPoint();
+
+        $calibrationPointForm = $this->createForm(new CalibrationPointType(), $calibrationPoint);
+        $calibrationPointForm->handleRequest($request);
 
         $calibrationInfoForm = $this->createForm(new CalibrationInfoType(), $calibrationInfo);
         $calibrationInfoForm->handleRequest($request);
@@ -37,7 +42,9 @@ class EquipmentDataController extends ControllerBase
 
         }
 
-        return $this->render('equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView(), 'calibrationInfoForm' => $calibrationInfoForm->createView()));
+        return $this->render('equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView(),
+            'calibrationInfoForm' => $calibrationInfoForm->createView(),
+            'calibrationPointForm' => $calibrationPointForm->createView()));
 
     }
 
