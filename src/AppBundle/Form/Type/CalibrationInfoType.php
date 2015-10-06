@@ -8,21 +8,18 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class CalibrationInfoType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('uncertaintyRequests', 'text', array('class' => 'form-control'))
-            ->add('actualUncertainty', 'text', array('class' => 'form-control'))
-            ->add('referenceNr', 'text', array('class' => 'form-control'))
-            ->add('uut', 'text', array('class' => 'form-control'))
-            ->add('deviation', 'text', array('class' => 'form-control'))
-            ->add('adjustmentLimit', 'text', array('class' => 'form-control'))
-            ->add('comment', 'text', array('class' => 'form-control'));
+            ->add('uncertaintyRequests', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('actualUncertainty', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('referenceNr', 'text', array('attr'=> array('class' => 'form-control')))
+            ->add('uut', 'text', array('attr'=> array('class' => 'form-control')))
+            ->add('deviation', 'text', array('attr' =>array('class' => 'form-control')))
+            ->add('adjustmentLimit', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('comment', 'text', array('attr' => array('class' => 'form-control')));
 
     }
-
-
     public function getName()
     {
         return 'calibrationInfo';

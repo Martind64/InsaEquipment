@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\EquipmentData;
+use AppBundle\Form\Type\CalibrationInfoType;
 use AppBundle\Form\Type\EquipmentDataType;
 use AppBundle\Entity\CalibrationInfo;
 use AppBundle\Entity\CalibrationPoint;
@@ -21,21 +22,22 @@ class EquipmentDataController extends ControllerBase
     public function addEquipmentAction(Request $request)
     {
         $equipmentData = new EquipmentData();
+        $calibrationInfo = new CalibrationInfo();
 
-        $form = $this->createForm(new EquipmentDataType(), $equipmentData);
-        $form->handleRequest($request);
+        $calibrationInfoForm = $this->createForm(new CalibrationInfoType(), $calibrationInfo);
+        $calibrationInfoForm->handleRequest($request);
+
+        $equipmentDataForm = $this->createForm(new EquipmentDataType(), $equipmentData);
+        $equipmentDataForm ->handleRequest($request);
 
 
-        if($form->isValid())
+        if($equipmentDataForm->isValid())
         {
             return new Response('the form was valid');
 
         }
 
-        return $this->render('equipmentData.html.twig', array('form' => $form->createView()));
-
-
-
+        return $this->render('equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView(), 'calibrationInfoForm' => $calibrationInfoForm->createView()));
 
     }
 
