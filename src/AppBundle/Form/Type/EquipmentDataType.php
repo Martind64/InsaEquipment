@@ -14,13 +14,13 @@ class EquipmentDataType extends AbstractType
             ->add('equipmentId', 'text', array('attr' => array('class' => 'form-control')))
             ->add('description', 'text', array('attr' => array('class' => 'form-control')))
             ->add('model', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('serialnr', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('serialNr', 'text', array('attr' => array('class' => 'form-control')))
             ->add('placement', 'text', array('attr' => array('class' => 'form-control')))
             ->add('partner', 'text', array('attr' => array('class' => 'form-control')))
             ->add('category', 'text', array('attr' => array('class' => 'form-control')))
             ->add('level', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('doneby', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('approvedby', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('doneBy', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('approvedBy', 'text', array('attr' => array('class' => 'form-control')))
             ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
     }
     public function getName()

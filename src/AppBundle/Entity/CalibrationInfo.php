@@ -38,7 +38,7 @@ class CalibrationInfo
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $referenceNr;
+    private $labMeasurement;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -132,30 +132,6 @@ class CalibrationInfo
     public function getActualUncertainty()
     {
         return $this->actualUncertainty;
-    }
-
-    /**
-     * Set referenceNr
-     *
-     * @param string $referenceNr
-     *
-     * @return CalibrationInfo
-     */
-    public function setReferenceNr($referenceNr)
-    {
-        $this->referenceNr = $referenceNr;
-
-        return $this;
-    }
-
-    /**
-     * Get referenceNr
-     *
-     * @return string
-     */
-    public function getReferenceNr()
-    {
-        return $this->referenceNr;
     }
 
     /**
@@ -302,5 +278,29 @@ class CalibrationInfo
     public function getCalibrationPoint()
     {
         return $this->CalibrationPoint;
+    }
+
+    /**
+     * Set labMeasurement
+     *
+     * @param string $labMeasurement
+     *
+     * @return CalibrationInfo
+     */
+    public function setLabMeasurement($labMeasurement)
+    {
+        $this->labMeasurement = $labMeasurement;
+
+        return $this;
+    }
+
+    /**
+     * Get labMeasurement
+     *
+     * @return string
+     */
+    public function getLabMeasurement()
+    {
+        return $this->labMeasurement;
     }
 }

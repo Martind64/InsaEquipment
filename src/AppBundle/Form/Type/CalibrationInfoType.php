@@ -13,7 +13,7 @@ class CalibrationInfoType extends AbstractType
         $builder
             ->add('uncertaintyRequests', 'text', array('attr' => array('class' => 'form-control')))
             ->add('actualUncertainty', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('referenceNr', 'text', array('attr'=> array('class' => 'form-control')))
+            ->add('labMeasurement', 'text', array('attr'=> array('class' => 'form-control')))
             ->add('uut', 'text', array('attr'=> array('class' => 'form-control')))
             ->add('deviation', 'text', array('attr' =>array('class' => 'form-control')))
             ->add('adjustmentLimit', 'text', array('attr' => array('class' => 'form-control')))
