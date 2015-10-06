@@ -32,6 +32,10 @@ class EquipmentDataController extends ControllerBase
         $equipmentData->setPartner('n/a');
         $equipmentData->setPlacement('Jylland');
 
+        $calibrationPoint = new CalibrationPoint();
+        $calibrationPoint->setMeasurement(50);
+        $calibrationPoint->setPrefix('Kilo');
+        $calibrationPoint->setUnit('AAc');
 
         $calibrationInfo = new CalibrationInfo();
         $calibrationInfo->setActualUncertainty(1);
@@ -42,12 +46,8 @@ class EquipmentDataController extends ControllerBase
         $calibrationInfo->setUncertaintyRequests('n/a');
         $calibrationInfo->setUut('n/a');
         $calibrationInfo->setEquipmentData($equipmentData);
+        $calibrationInfo->setCalibrationPoint($calibrationPoint);
 
-        $calibrationPoint = new CalibrationPoint();
-        $calibrationPoint->setMeasurement(50);
-        $calibrationPoint->setPrefix('Kilo');
-        $calibrationPoint->setUnit('AAc');
-        $calibrationPoint->setCalibrationInfo($calibrationInfo);
 
         $em =  $this->getEM();
 

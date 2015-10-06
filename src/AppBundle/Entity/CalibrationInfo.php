@@ -73,6 +73,7 @@ class CalibrationInfo
     protected $CalibrationPoint;
 
 
+
 //    private $date;
 
     /**
@@ -276,6 +277,8 @@ class CalibrationInfo
     {
         return $this->equipmentData;
     }
+
+
 
     /**
      * Set calibrationPoint

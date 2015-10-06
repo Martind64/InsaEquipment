@@ -40,11 +40,6 @@ class CalibrationPoint
     private $prefix;
 
     /**
-     * @ORM\OneToOne(targetEntity="CalibrationInfo", mappedBy="calibrationPoint")
-     */
-    protected $CalibrationInfo;
-
-    /**
      * Get id
      *
      * @return integer
@@ -126,4 +121,7 @@ class CalibrationPoint
     {
         return $this->prefix;
     }
+
+
+
 }
