@@ -38,7 +38,7 @@ class CalibrationInfo
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $labMeasurement;
+    private $labReference;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -280,27 +280,29 @@ class CalibrationInfo
         return $this->CalibrationPoint;
     }
 
+
+
     /**
-     * Set labMeasurement
+     * Set labReference
      *
-     * @param string $labMeasurement
+     * @param string $labReference
      *
      * @return CalibrationInfo
      */
-    public function setLabMeasurement($labMeasurement)
+    public function setLabReference($labReference)
     {
-        $this->labMeasurement = $labMeasurement;
+        $this->labReference = $labReference;
 
         return $this;
     }
 
     /**
-     * Get labMeasurement
+     * Get labReference
      *
      * @return string
      */
-    public function getLabMeasurement()
+    public function getLabReference()
     {
-        return $this->labMeasurement;
+        return $this->labReference;
     }
 }

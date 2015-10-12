@@ -64,6 +64,10 @@ class EquipmentData
 //     * @ORM\Column(type="string", length=100)
 //     */
 //    protected $owner;
+    /**
+     * @ORM\Column(type="text", length=100)
+     */
+    protected $status;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -368,5 +372,29 @@ class EquipmentData
     public function getCalibrationInfo()
     {
         return $this->calibrationInfo;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return EquipmentData
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

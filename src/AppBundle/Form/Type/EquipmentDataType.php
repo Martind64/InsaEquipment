@@ -21,6 +21,7 @@ class EquipmentDataType extends AbstractType
             ->add('level', 'text', array('attr' => array('class' => 'form-control')))
             ->add('doneBy', 'text', array('attr' => array('class' => 'form-control')))
             ->add('approvedBy', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('status', 'text', array('attr' => array('class' => 'form-control')))
             ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
     }
     public function getName()

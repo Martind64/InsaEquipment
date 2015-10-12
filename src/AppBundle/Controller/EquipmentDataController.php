@@ -20,7 +20,7 @@ class EquipmentDataController extends ControllerBase
      * @Route("/", name="AddRoute")
      */
 
-    public function addEquipmentAction(Request $request)
+    public function addAction(Request $request)
     {
         $equipmentData = new EquipmentData();
         $calibrationInfo = new CalibrationInfo();
@@ -38,13 +38,28 @@ class EquipmentDataController extends ControllerBase
 
         if($equipmentDataForm->isValid())
         {
-            return new Response('the form was valid');
-
+            return $this->forward('AppBundle:EquipmentData:addEquipment', array('equipment' => $equipmentData));
+//
         }
 
         return $this->render('equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView(),
             'calibrationInfoForm' => $calibrationInfoForm->createView(),
             'calibrationPointForm' => $calibrationPointForm->createView()));
+
+    }
+
+    /**
+     * @Route("/addRoute", name="addEquipmentAction")
+     */
+
+    public function addEquipmentAction($equipment)
+    {
+        $em = $this->getEM();
+
+        $em->persist($equipment);
+        $em->flush();
+
+        return new Response('Equipment was added');
 
     }
 

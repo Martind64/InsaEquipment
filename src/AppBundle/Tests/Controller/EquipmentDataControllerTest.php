@@ -35,7 +35,7 @@ class EquipmentDataControllerTest extends WebTestCase
         $calibrationInfo->setAdjustmentLimit(2);
         $calibrationInfo->setComment('ikke godt nok');
         $calibrationInfo->setDeviation(0.1);
-        $calibrationInfo->setLabMeasurement(123);
+        $calibrationInfo->setLabReference(123);
         $calibrationInfo->setUncertaintyRequests('n/a');
         $calibrationInfo->setUut('n/a');
         $calibrationInfo->setEquipmentData($equipmentData);
