@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="761253d8-2ca8-4f87-8678-f645c3b41686" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/CalibrationInfo.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/CalibrationInfo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/Type/CalibrationInfoType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/Type/CalibrationInfoType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/EquipmentData.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/EquipmentData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/EquipmentDataController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/EquipmentDataController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Tests/Controller/EquipmentDataControllerTest.php" afterPath="$PROJECT_DIR$/src/AppBundle/Tests/Controller/EquipmentDataControllerTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Form/Type/EquipmentDataType.php" afterPath="$PROJECT_DIR$/src/AppBundle/Form/Type/EquipmentDataType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="761253d8-2ca8-4f87-8678-f645c3b41686" name="Default" comment="" />
     <ignored path="InsaEquipment.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
