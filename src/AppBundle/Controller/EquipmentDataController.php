@@ -42,7 +42,7 @@ class EquipmentDataController extends ControllerBase
 //
         }
 
-        return $this->render('equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView(),
+        return $this->render('AppBundle::equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView(),
             'calibrationInfoForm' => $calibrationInfoForm->createView(),
             'calibrationPointForm' => $calibrationPointForm->createView()));
 
