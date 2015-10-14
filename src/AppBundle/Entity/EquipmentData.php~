@@ -64,7 +64,7 @@ class EquipmentData
     /**
      * @ORM\Column(type="text", length=100)
      */
-    protected $status;
+    protected $comment;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -76,10 +76,6 @@ class EquipmentData
      */
     private $createdDatetime;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $approvedBy;
 
     /**
      * @ORM\OneToMany(targetEntity="CalibrationInfo", mappedBy="equipmentData")
@@ -296,29 +292,6 @@ class EquipmentData
     }
 
 
-    /**
-     * Set approvedBy
-     *
-     * @param string $approvedBy
-     *
-     * @return EquipmentData
-     */
-    public function setApprovedBy($approvedBy)
-    {
-        $this->approvedBy = $approvedBy;
-
-        return $this;
-    }
-
-    /**
-     * Get approvedBy
-     *
-     * @return string
-     */
-    public function getApprovedBy()
-    {
-        return $this->approvedBy;
-    }
 
     /**
      * Add calibrationInfo
@@ -354,29 +327,7 @@ class EquipmentData
         return $this->calibrationInfo;
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return EquipmentData
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
 
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 
     /**
      * Set owner
@@ -448,5 +399,29 @@ class EquipmentData
     public function getCreatedDatetime()
     {
         return $this->createdDatetime;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return EquipmentData
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 }
