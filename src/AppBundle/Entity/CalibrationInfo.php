@@ -61,16 +61,34 @@ class CalibrationInfo
     private $comment;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=100)
+     */
+    private $measurement;
+
+
+    /**
+     * @ORM\Column(type="text", length=20)
+     */
+    private $unit;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $prefix;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+
+    /**
      * @ORM\ManyToOne(targetEntity="EquipmentData", inversedBy="calibrationInfo")
      * @ORM\JoinColumn(name="equipmentData_id", referencedColumnName="id")
      */
     protected $equipmentData;
-
-    /**
-     * @ORM\OneToOne(targetEntity="CalibrationPoint", inversedBy="calibrationInfo")
-     * @ORM\JoinColumn(name="calibrationPoint_id", referencedColumnName="id")
-     */
-    protected $CalibrationPoint;
 
 
 
@@ -256,31 +274,6 @@ class CalibrationInfo
 
 
 
-    /**
-     * Set calibrationPoint
-     *
-     * @param \AppBundle\Entity\CalibrationPoint $calibrationPoint
-     *
-     * @return CalibrationInfo
-     */
-    public function setCalibrationPoint(\AppBundle\Entity\CalibrationPoint $calibrationPoint = null)
-    {
-        $this->CalibrationPoint = $calibrationPoint;
-
-        return $this;
-    }
-
-    /**
-     * Get calibrationPoint
-     *
-     * @return \AppBundle\Entity\CalibrationPoint
-     */
-    public function getCalibrationPoint()
-    {
-        return $this->CalibrationPoint;
-    }
-
-
 
     /**
      * Set labReference
@@ -304,5 +297,81 @@ class CalibrationInfo
     public function getLabReference()
     {
         return $this->labReference;
+    }
+
+
+    /**
+     * Get measurement
+     *
+     * @return string
+     */
+    public function getMeasurement()
+    {
+        return $this->measurement;
+    }
+
+
+    /**
+     * Get unit
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+
+    /**
+     * Get prefix
+     *
+     * @return string
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+
+    /**
+     * Set measurement
+     *
+     * @param string $measurement
+     *
+     * @return CalibrationInfo
+     */
+    public function setMeasurement($measurement)
+    {
+        $this->measurement = $measurement;
+
+        return $this;
+    }
+
+    /**
+     * Set unit
+     *
+     * @param string $unit
+     *
+     * @return CalibrationInfo
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Set prefix
+     *
+     * @param string $prefix
+     *
+     * @return CalibrationInfo
+     */
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
+
+        return $this;
     }
 }
