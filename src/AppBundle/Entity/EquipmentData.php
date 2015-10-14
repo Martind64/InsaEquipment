@@ -87,7 +87,7 @@ class EquipmentData
     protected $calibrationInterval;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $nextCalibration;
 
@@ -460,29 +460,6 @@ class EquipmentData
         return $this->calibrationInterval;
     }
 
-    /**
-     * Set nextCalibration
-     *
-     * @param \DateTime $nextCalibration
-     *
-     * @return EquipmentData
-     */
-    public function setNextCalibration($nextCalibration)
-    {
-        $this->nextCalibration = $nextCalibration;
-
-        return $this;
-    }
-
-    /**
-     * Get nextCalibration
-     *
-     * @return \DateTime
-     */
-    public function getNextCalibration()
-    {
-        return $this->nextCalibration;
-    }
 
     /**
      * Set boxStorage
@@ -507,7 +484,6 @@ class EquipmentData
     {
         return $this->boxStorage;
     }
-
 
 
     /**
@@ -542,5 +518,29 @@ class EquipmentData
     public function getTypes()
     {
         return $this->Types;
+    }
+
+    /**
+     * Set nextCalibration
+     *
+     * @param \DateTime $nextCalibration
+     *
+     * @return EquipmentData
+     */
+    public function setNextCalibration($nextCalibration)
+    {
+        $this->nextCalibration = $nextCalibration;
+
+        return $this;
+    }
+
+    /**
+     * Get nextCalibration
+     *
+     * @return \DateTime
+     */
+    public function getNextCalibration()
+    {
+        return $this->nextCalibration;
     }
 }

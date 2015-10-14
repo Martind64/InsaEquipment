@@ -2,7 +2,7 @@
 namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
+use DateTime;
 
 /**
  * @ORM\Entity
@@ -87,7 +87,7 @@ class EquipmentData
     protected $calibrationInterval;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $nextCalibration;
 
@@ -460,29 +460,6 @@ class EquipmentData
         return $this->calibrationInterval;
     }
 
-    /**
-     * Set nextCalibration
-     *
-     * @param \DateTime $nextCalibration
-     *
-     * @return EquipmentData
-     */
-    public function setNextCalibration($nextCalibration)
-    {
-        $this->nextCalibration = $nextCalibration;
-
-        return $this;
-    }
-
-    /**
-     * Get nextCalibration
-     *
-     * @return \DateTime
-     */
-    public function getNextCalibration()
-    {
-        return $this->nextCalibration;
-    }
 
     /**
      * Set boxStorage
@@ -509,4 +486,37 @@ class EquipmentData
     }
 
 
+    /**
+     * Add type
+     *
+     * @param \AppBundle\Entity\type $type
+     *
+     * @return EquipmentData
+     */
+    public function addType(\AppBundle\Entity\type $type)
+    {
+        $this->Types[] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Remove type
+     *
+     * @param \AppBundle\Entity\type $type
+     */
+    public function removeType(\AppBundle\Entity\type $type)
+    {
+        $this->Types->removeElement($type);
+    }
+
+    /**
+     * Get types
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTypes()
+    {
+        return $this->Types;
+    }
 }
