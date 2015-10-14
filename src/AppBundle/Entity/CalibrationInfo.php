@@ -101,10 +101,10 @@ class CalibrationInfo
     private $approvedBy;
 
     /**
-     * @ORM\ManyToOne(targetEntity="EquipmentData", inversedBy="calibrationInfo")
-     * @ORM\JoinColumn(name="equipmentData_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Calibration", inversedBy="calibrationInfo")
+     * @ORM\JoinColumn(name="calibration_id", referencedColumnName="id")
      */
-    protected $equipmentData;
+    protected $calibration;
 
 
     /**
@@ -261,30 +261,6 @@ class CalibrationInfo
         return $this->comment;
     }
 
-    /**
-     * Set equipmentData
-     *
-     * @param \AppBundle\Entity\EquipmentData $equipmentData
-     *
-     * @return CalibrationInfo
-     */
-    public function setEquipmentData(\AppBundle\Entity\EquipmentData $equipmentData = null)
-    {
-        $this->equipmentData = $equipmentData;
-
-        return $this;
-    }
-
-    /**
-     * Get equipmentData
-     *
-     * @return \AppBundle\Entity\EquipmentData
-     */
-    public function getEquipmentData()
-    {
-        return $this->equipmentData;
-    }
-
 
 
 
@@ -311,8 +287,6 @@ class CalibrationInfo
     {
         return $this->labReference;
     }
-
-
 
 
     /**
@@ -459,5 +433,29 @@ class CalibrationInfo
     public function getApprovedBy()
     {
         return $this->approvedBy;
+    }
+
+    /**
+     * Set calibration
+     *
+     * @param \AppBundle\Entity\Calibration $calibration
+     *
+     * @return CalibrationInfo
+     */
+    public function setCalibration(\AppBundle\Entity\Calibration $calibration = null)
+    {
+        $this->calibration = $calibration;
+
+        return $this;
+    }
+
+    /**
+     * Get calibration
+     *
+     * @return \AppBundle\Entity\Calibration
+     */
+    public function getCalibration()
+    {
+        return $this->calibration;
     }
 }

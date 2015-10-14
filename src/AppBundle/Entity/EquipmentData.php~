@@ -516,4 +516,28 @@ class EquipmentData
     {
         return $this->nextCalibration;
     }
+
+    /**
+     * Set boxStorage
+     *
+     * @param boolean $boxStorage
+     *
+     * @return EquipmentData
+     */
+    public function setBoxStorage($boxStorage)
+    {
+        $this->boxStorage = $boxStorage;
+
+        return $this;
+    }
+
+    /**
+     * Get boxStorage
+     *
+     * @return boolean
+     */
+    public function getBoxStorage()
+    {
+        return $this->boxStorage;
+    }
 }

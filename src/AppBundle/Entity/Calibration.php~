@@ -1,0 +1,70 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Calibration
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class Calibration
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $calibrationDate;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="EquipmentData", inversedBy="calibrationInfo")
+     * @ORM\JoinColumn(name="equipmentData_id", referencedColumnName="id")
+     */
+    protected $EquipmentData;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set calibrationDate
+     *
+     * @param \DateTime $calibrationDate
+     *
+     * @return Calibration
+     */
+    public function setCalibrationDate($calibrationDate)
+    {
+        $this->calibrationDate = $calibrationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get calibrationDate
+     *
+     * @return \DateTime
+     */
+    public function getCalibrationDate()
+    {
+        return $this->calibrationDate;
+    }
+}
