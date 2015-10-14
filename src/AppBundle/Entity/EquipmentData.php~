@@ -76,6 +76,26 @@ class EquipmentData
      */
     private $createdDatetime;
 
+    /**
+     * ORM\Column(type="bool")
+     */
+    protected $boxStorage;
+
+    /**
+     * ORM\Column(type="string", length=20)
+     */
+    protected $isoStandard;
+
+    /**
+     * ORM\Column(type="datetime")
+     */
+    protected $nextCalibration;
+
+    /**
+     * ORM\Column(type="string", length=20)
+     */
+    protected $calibrationInterval;
+
 
     /**
      * @ORM\OneToMany(targetEntity="CalibrationInfo", mappedBy="equipmentData")
