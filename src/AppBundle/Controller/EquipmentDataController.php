@@ -30,49 +30,21 @@ class EquipmentDataController extends ControllerBase
 
         if($equipmentDataForm->isValid())
         {
-            return $this->forward('AppBundle:EquipmentData:flushEquipment', array('equipment' => $equipmentData));
-//
+            $this->flushEquipment($equipmentData);
         }
 
         return $this->render('AppBundle::equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView()));
 
     }
 
-    /**
-     * @Route("/addRoute", name="addEquipmentAction")
-     */
-
-    public function flushEquipmentAction($equipment)
+    public function flushEquipment($equipment)
     {
         $em = $this->getEM();
 
         $em->persist($equipment);
         $em->flush();
 
-        return new Response('Equipment was added');
-    }
-
-
-    /**
-     * @Route("/calibration" name="CalibrationRoute")
-     */
-
-    public function addCalibrationAction()
-    {
-        $calibrationInfo = new CalibrationInfo();
-        $calibrationPoint = new CalibrationPoint();
-
-
-    }
-
-
-
-    public function flushCalibrationAction($calibration)
-    {
-        $em = $this->getEM();
-
-        $em->persist($calibration);
-        $em->flush();
+        return new Response('Data was submitted');
     }
 
 
