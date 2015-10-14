@@ -65,7 +65,7 @@ class CalibrationInfo
      *
      * @ORM\Column(type="string", length=100)
      */
-    private $measurement;
+    private $measuredAt;
 
 
     /**
@@ -85,14 +85,27 @@ class CalibrationInfo
      */
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $calibrationInstitute;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+
+    private $approvedBy;
+
+    /**
      * @ORM\ManyToOne(targetEntity="EquipmentData", inversedBy="calibrationInfo")
      * @ORM\JoinColumn(name="equipmentData_id", referencedColumnName="id")
      */
     protected $equipmentData;
 
-
-
-//    private $date;
 
     /**
      * Get id
@@ -300,15 +313,6 @@ class CalibrationInfo
     }
 
 
-    /**
-     * Get measurement
-     *
-     * @return string
-     */
-    public function getMeasurement()
-    {
-        return $this->measurement;
-    }
 
 
     /**
@@ -332,20 +336,6 @@ class CalibrationInfo
         return $this->prefix;
     }
 
-
-    /**
-     * Set measurement
-     *
-     * @param string $measurement
-     *
-     * @return CalibrationInfo
-     */
-    public function setMeasurement($measurement)
-    {
-        $this->measurement = $measurement;
-
-        return $this;
-    }
 
     /**
      * Set unit
@@ -373,5 +363,101 @@ class CalibrationInfo
         $this->prefix = $prefix;
 
         return $this;
+    }
+
+    /**
+     * Set measuredAt
+     *
+     * @param string $measuredAt
+     *
+     * @return CalibrationInfo
+     */
+    public function setMeasuredAt($measuredAt)
+    {
+        $this->measuredAt = $measuredAt;
+
+        return $this;
+    }
+
+    /**
+     * Get measuredAt
+     *
+     * @return string
+     */
+    public function getMeasuredAt()
+    {
+        return $this->measuredAt;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return CalibrationInfo
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set calibrationInstitute
+     *
+     * @param string $calibrationInstitute
+     *
+     * @return CalibrationInfo
+     */
+    public function setCalibrationInstitute($calibrationInstitute)
+    {
+        $this->calibrationInstitute = $calibrationInstitute;
+
+        return $this;
+    }
+
+    /**
+     * Get calibrationInstitute
+     *
+     * @return string
+     */
+    public function getCalibrationInstitute()
+    {
+        return $this->calibrationInstitute;
+    }
+
+    /**
+     * Set approvedBy
+     *
+     * @param string $approvedBy
+     *
+     * @return CalibrationInfo
+     */
+    public function setApprovedBy($approvedBy)
+    {
+        $this->approvedBy = $approvedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get approvedBy
+     *
+     * @return string
+     */
+    public function getApprovedBy()
+    {
+        return $this->approvedBy;
     }
 }
