@@ -77,24 +77,25 @@ class EquipmentData
     private $createdDatetime;
 
     /**
-     * ORM\Column(type="bool")
-     */
-    protected $boxStorage;
-
-    /**
-     * ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20)
      */
     protected $isoStandard;
 
     /**
-     * ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $calibrationInterval;
+
+    /**
+     * @ORM\Column(type="datetime")
      */
     protected $nextCalibration;
 
     /**
-     * ORM\Column(type="string", length=20)
+     * @ORM\Column(type="boolean")
      */
-    protected $calibrationInterval;
+    protected $boxStorage;
+
 
 
     /**
@@ -348,7 +349,6 @@ class EquipmentData
     }
 
 
-
     /**
      * Set owner
      *
@@ -443,5 +443,77 @@ class EquipmentData
     public function getComment()
     {
         return $this->comment;
+    }
+
+    /**
+     * Set isoStandard
+     *
+     * @param string $isoStandard
+     *
+     * @return EquipmentData
+     */
+    public function setIsoStandard($isoStandard)
+    {
+        $this->isoStandard = $isoStandard;
+
+        return $this;
+    }
+
+    /**
+     * Get isoStandard
+     *
+     * @return string
+     */
+    public function getIsoStandard()
+    {
+        return $this->isoStandard;
+    }
+
+    /**
+     * Set calibrationInterval
+     *
+     * @param string $calibrationInterval
+     *
+     * @return EquipmentData
+     */
+    public function setCalibrationInterval($calibrationInterval)
+    {
+        $this->calibrationInterval = $calibrationInterval;
+
+        return $this;
+    }
+
+    /**
+     * Get calibrationInterval
+     *
+     * @return string
+     */
+    public function getCalibrationInterval()
+    {
+        return $this->calibrationInterval;
+    }
+
+    /**
+     * Set nextCalibration
+     *
+     * @param \DateTime $nextCalibration
+     *
+     * @return EquipmentData
+     */
+    public function setNextCalibration($nextCalibration)
+    {
+        $this->nextCalibration = $nextCalibration;
+
+        return $this;
+    }
+
+    /**
+     * Get nextCalibration
+     *
+     * @return \DateTime
+     */
+    public function getNextCalibration()
+    {
+        return $this->nextCalibration;
     }
 }
