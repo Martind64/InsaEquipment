@@ -6,8 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\Mapping as ORM;
 
 
-ControllerBase:
-
 
 class ControllerBase extends Controller
     {

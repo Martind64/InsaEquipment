@@ -97,7 +97,7 @@ class EquipmentData
     protected $boxStorage;
 
     /**
-     * @ORM\ManyToMany(targetEntity="equipmentType", inversedBy="equipmentData")
+     * @ORM\ManyToMany(targetEntity="EquipmentType", inversedBy="equipmentData")
      * @ORM\JoinTable(name="equipmentData_EquipmentTypes")
      **/
     protected $EquipmentTypes;

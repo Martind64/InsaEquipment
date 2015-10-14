@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Calibration;
 use AppBundle\Entity\EquipmentData;
 use AppBundle\Form\Type\CalibrationInfoType;
 use AppBundle\Form\Type\CalibrationPointType;
@@ -17,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 class EquipmentDataController extends ControllerBase
 {
     /**
-     * @Route("/", name="AddRoute")
+     * @Route("/", name="addEquipmentData")
      */
 
     public function addEquipmentAction(Request $request)
@@ -30,18 +31,32 @@ class EquipmentDataController extends ControllerBase
 
         if($equipmentDataForm->isValid())
         {
-            $this->flushEquipmentAction($equipmentData);
+            $this->flushAction($equipmentData);
         }
 
         return $this->render('AppBundle::equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView()));
 
     }
 
+    /**
+     * @Route("/addCalibrationInfo", name="addCalibrationInfo")
+     */
 
-    public function addCalibrationInfo()
+    public function addCalibrationInfo(Request $request)
     {
         $calibrationInfo = new CalibrationInfo();
+        $calibration = new Calibration();
 
+        $calibrationInfoForm = $this->createForm(new CalibrationInfoType(), $calibrationInfo);
+        $calibrationInfoForm->handleRequest($request);
+
+        if($calibrationInfoForm->isValid())
+        {
+
+            $this->flushAction($calibrationInfo);
+        }
+
+        return $this->render('AppBundle::addCalibrationInfo.html.twig', array('calibrationInfoForm' => $calibrationInfoForm->createView()));
 
     }
 
@@ -49,7 +64,7 @@ class EquipmentDataController extends ControllerBase
      * @Route("/flushData", name="flushData")
      */
 
-    public function flushEquipmentAction($data)
+    public function flushAction($data)
     {
         $em = $this->getEM();
 

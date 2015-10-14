@@ -24,9 +24,12 @@ class EquipmentDataType extends AbstractType
             ->add('calibrationInterval', 'text', array('attr' => array('class' => 'form-control')))
             ->add('calibrationInstitute', 'text', array('attr' => array('class' => 'form-control')))
             ->add('owner', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('boxStorage', 'checkbox',
-                array('label' => 'yes'),
-                array('attr' => array('class' => 'checkbox')))
+            ->add('boxStorage', 'choice', [
+                'choices' => ['no', 'yes'],
+                'multiple' => false,
+                'expanded' => true,
+                'label' => 'Box Storage',
+            ])
             ->add('comment', 'textarea', array('attr' => array('class' => 'form-control')))
             ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
     }

@@ -22,7 +22,9 @@ class CalibrationInfoType extends AbstractType
             ->add('adjustmentLimit', 'text', array('attr' => array('class' => 'form-control')))
             ->add('calibrationInstitute', 'text', array('attr' => array('class' => 'form-control')))
             ->add('approvedBy', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('comment', 'text', array('attr' => array('class' => 'form-control')));
+            ->add('comment', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
+
 
     }
     public function getName()

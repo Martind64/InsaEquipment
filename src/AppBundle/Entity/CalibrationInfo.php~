@@ -84,10 +84,7 @@ class CalibrationInfo
      * @return integer
      */
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date;
+
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -363,29 +360,6 @@ class CalibrationInfo
         return $this->measuredAt;
     }
 
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return CalibrationInfo
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
 
     /**
      * Set calibrationInstitute
