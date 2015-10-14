@@ -56,12 +56,6 @@ class EquipmentData
     protected $level;
 
     /**
-     * @ORM\Column(type"datetime")
-     */
-    protected $setCreatedDate;
-
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     protected $owner;
