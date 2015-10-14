@@ -2,6 +2,7 @@
 namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity
@@ -71,6 +72,11 @@ class EquipmentData
     protected $calibrationInstitute;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdDatetime;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
     protected $approvedBy;
@@ -83,6 +89,7 @@ class EquipmentData
     public function __construct()
     {
         $this->calibrationInfo = new ArrayCollection();
+        $this->createdDatetime = new DateTime('now');
     }
 
 
@@ -417,5 +424,29 @@ class EquipmentData
     public function getCalibrationInstitute()
     {
         return $this->calibrationInstitute;
+    }
+
+    /**
+     * Set createdDatetime
+     *
+     * @param \DateTime $createdDatetime
+     *
+     * @return EquipmentData
+     */
+    public function setCreatedDatetime($createdDatetime)
+    {
+        $this->createdDatetime = $createdDatetime;
+
+        return $this;
+    }
+
+    /**
+     * Get createdDatetime
+     *
+     * @return \DateTime
+     */
+    public function getCreatedDatetime()
+    {
+        return $this->createdDatetime;
     }
 }
