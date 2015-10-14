@@ -67,4 +67,28 @@ class Calibration
     {
         return $this->calibrationDate;
     }
+
+    /**
+     * Set equipmentData
+     *
+     * @param \AppBundle\Entity\EquipmentData $equipmentData
+     *
+     * @return Calibration
+     */
+    public function setEquipmentData(\AppBundle\Entity\EquipmentData $equipmentData = null)
+    {
+        $this->EquipmentData = $equipmentData;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentData
+     *
+     * @return \AppBundle\Entity\EquipmentData
+     */
+    public function getEquipmentData()
+    {
+        return $this->EquipmentData;
+    }
 }

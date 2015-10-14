@@ -96,17 +96,18 @@ class EquipmentData
      */
     protected $boxStorage;
 
-
-
     /**
-     * @ORM\OneToMany(targetEntity="CalibrationInfo", mappedBy="equipmentData")
-     */
-    protected $calibrationInfo;
+     * @ORM\ManyToMany(targetEntity="type", inversedBy="equipmentData")
+     * @ORM\JoinTable(name="equipment_types")
+     **/
+    protected $Types;
+
+
 
     public function __construct()
     {
-        $this->calibrationInfo = new ArrayCollection();
         $this->createdDatetime = new DateTime('now');
+        $this->Types = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -314,40 +315,6 @@ class EquipmentData
 
 
 
-    /**
-     * Add calibrationInfo
-     *
-     * @param \AppBundle\Entity\CalibrationInfo $calibrationInfo
-     *
-     * @return EquipmentData
-     */
-    public function addCalibrationInfo(\AppBundle\Entity\CalibrationInfo $calibrationInfo)
-    {
-        $this->calibrationInfo[] = $calibrationInfo;
-
-        return $this;
-    }
-
-    /**
-     * Remove calibrationInfo
-     *
-     * @param \AppBundle\Entity\CalibrationInfo $calibrationInfo
-     */
-    public function removeCalibrationInfo(\AppBundle\Entity\CalibrationInfo $calibrationInfo)
-    {
-        $this->calibrationInfo->removeElement($calibrationInfo);
-    }
-
-    /**
-     * Get calibrationInfo
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCalibrationInfo()
-    {
-        return $this->calibrationInfo;
-    }
-
 
     /**
      * Set owner
@@ -539,5 +506,41 @@ class EquipmentData
     public function getBoxStorage()
     {
         return $this->boxStorage;
+    }
+
+
+
+    /**
+     * Add type
+     *
+     * @param \AppBundle\Entity\type $type
+     *
+     * @return EquipmentData
+     */
+    public function addType(\AppBundle\Entity\type $type)
+    {
+        $this->Types[] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Remove type
+     *
+     * @param \AppBundle\Entity\type $type
+     */
+    public function removeType(\AppBundle\Entity\type $type)
+    {
+        $this->Types->removeElement($type);
+    }
+
+    /**
+     * Get types
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTypes()
+    {
+        return $this->Types;
     }
 }
