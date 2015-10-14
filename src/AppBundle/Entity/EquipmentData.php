@@ -2,8 +2,6 @@
 namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Date;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity
@@ -57,7 +55,10 @@ class EquipmentData
      */
     protected $level;
 
-
+    /**
+     * @ORM\Column(type"datetime")
+     */
+    protected $setCreatedDate;
 
 
     /**
