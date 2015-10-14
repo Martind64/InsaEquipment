@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="type")
+ * @ORM\Table(name="equipmentType")
  */
-class Type
+class EquipmentType
 {
     /**
      * @ORM\Column(type="integer")
@@ -23,7 +23,7 @@ class Type
     protected $type;
 
     /**
-     * @ORM\ManyToMany(targetEntity="EquipmentData", mappedBy="types")
+     * @ORM\ManyToMany(targetEntity="EquipmentData", mappedBy="equipmentTypes")
      **/
     protected $equipmentData;
 

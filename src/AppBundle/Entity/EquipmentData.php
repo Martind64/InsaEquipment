@@ -97,10 +97,10 @@ class EquipmentData
     protected $boxStorage;
 
     /**
-     * @ORM\ManyToMany(targetEntity="type", inversedBy="equipmentData")
-     * @ORM\JoinTable(name="equipment_types")
+     * @ORM\ManyToMany(targetEntity="equipmentType", inversedBy="equipmentData")
+     * @ORM\JoinTable(name="equipmentData_EquipmentTypes")
      **/
-    protected $Types;
+    protected $EquipmentTypes;
 
 
 
@@ -542,5 +542,39 @@ class EquipmentData
     public function getNextCalibration()
     {
         return $this->nextCalibration;
+    }
+
+    /**
+     * Add equipmentType
+     *
+     * @param \AppBundle\Entity\equipmentType $equipmentType
+     *
+     * @return EquipmentData
+     */
+    public function addEquipmentType(\AppBundle\Entity\equipmentType $equipmentType)
+    {
+        $this->EquipmentTypes[] = $equipmentType;
+
+        return $this;
+    }
+
+    /**
+     * Remove equipmentType
+     *
+     * @param \AppBundle\Entity\equipmentType $equipmentType
+     */
+    public function removeEquipmentType(\AppBundle\Entity\equipmentType $equipmentType)
+    {
+        $this->EquipmentTypes->removeElement($equipmentType);
+    }
+
+    /**
+     * Get equipmentTypes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEquipmentTypes()
+    {
+        return $this->EquipmentTypes;
     }
 }
