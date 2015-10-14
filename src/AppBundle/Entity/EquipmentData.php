@@ -2,6 +2,8 @@
 namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity
@@ -55,15 +57,14 @@ class EquipmentData
      */
     protected $level;
 
-//    /**
-//     * @ORM\Column(type"")
-//     */
-//    protected $date;
-//
-//    /**
-//     * @ORM\Column(type="string", length=100)
-//     */
-//    protected $owner;
+
+
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $owner;
+
     /**
      * @ORM\Column(type="text", length=100)
      */
@@ -72,7 +73,7 @@ class EquipmentData
     /**
      * @ORM\Column(type="string", length=100)
      */
-    protected $doneBy;
+    protected $calibrationInstitute;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -292,29 +293,6 @@ class EquipmentData
         return $this->level;
     }
 
-    /**
-     * Set doneBy
-     *
-     * @param string $doneBy
-     *
-     * @return EquipmentData
-     */
-    public function setDoneBy($doneBy)
-    {
-        $this->doneBy = $doneBy;
-
-        return $this;
-    }
-
-    /**
-     * Get doneBy
-     *
-     * @return string
-     */
-    public function getDoneBy()
-    {
-        return $this->doneBy;
-    }
 
     /**
      * Set approvedBy
@@ -396,5 +374,53 @@ class EquipmentData
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set owner
+     *
+     * @param string $owner
+     *
+     * @return EquipmentData
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Get owner
+     *
+     * @return string
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * Set calibrationInstitute
+     *
+     * @param string $calibrationInstitute
+     *
+     * @return EquipmentData
+     */
+    public function setCalibrationInstitute($calibrationInstitute)
+    {
+        $this->calibrationInstitute = $calibrationInstitute;
+
+        return $this;
+    }
+
+    /**
+     * Get calibrationInstitute
+     *
+     * @return string
+     */
+    public function getCalibrationInstitute()
+    {
+        return $this->calibrationInstitute;
     }
 }

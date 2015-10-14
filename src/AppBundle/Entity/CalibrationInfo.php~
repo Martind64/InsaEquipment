@@ -107,8 +107,6 @@ class CalibrationInfo
     protected $equipmentData;
 
 
-
-
     /**
      * Get id
      *
@@ -389,5 +387,77 @@ class CalibrationInfo
     public function getMeasuredAt()
     {
         return $this->measuredAt;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return CalibrationInfo
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set calibrationInstitute
+     *
+     * @param string $calibrationInstitute
+     *
+     * @return CalibrationInfo
+     */
+    public function setCalibrationInstitute($calibrationInstitute)
+    {
+        $this->calibrationInstitute = $calibrationInstitute;
+
+        return $this;
+    }
+
+    /**
+     * Get calibrationInstitute
+     *
+     * @return string
+     */
+    public function getCalibrationInstitute()
+    {
+        return $this->calibrationInstitute;
+    }
+
+    /**
+     * Set approvedBy
+     *
+     * @param string $approvedBy
+     *
+     * @return CalibrationInfo
+     */
+    public function setApprovedBy($approvedBy)
+    {
+        $this->approvedBy = $approvedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get approvedBy
+     *
+     * @return string
+     */
+    public function getApprovedBy()
+    {
+        return $this->approvedBy;
     }
 }

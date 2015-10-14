@@ -55,15 +55,13 @@ class EquipmentData
      */
     protected $level;
 
-//    /**
-//     * @ORM\Column(type"")
-//     */
-//    protected $date;
-//
-//    /**
-//     * @ORM\Column(type="string", length=100)
-//     */
-//    protected $owner;
+
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $owner;
+
     /**
      * @ORM\Column(type="text", length=100)
      */
@@ -72,7 +70,7 @@ class EquipmentData
     /**
      * @ORM\Column(type="string", length=100)
      */
-    protected $doneBy;
+    protected $calibrationInstitute;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -292,29 +290,6 @@ class EquipmentData
         return $this->level;
     }
 
-    /**
-     * Set doneBy
-     *
-     * @param string $doneBy
-     *
-     * @return EquipmentData
-     */
-    public function setDoneBy($doneBy)
-    {
-        $this->doneBy = $doneBy;
-
-        return $this;
-    }
-
-    /**
-     * Get doneBy
-     *
-     * @return string
-     */
-    public function getDoneBy()
-    {
-        return $this->doneBy;
-    }
 
     /**
      * Set approvedBy
