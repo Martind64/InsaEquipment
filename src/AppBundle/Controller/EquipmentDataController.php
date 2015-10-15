@@ -114,11 +114,29 @@ class EquipmentDataController extends ControllerBase
 
     }
 
+
+
+    /**
+     * @Route("overview", name="overview")
+     */
+
+    public function getEquipmentAction()
+    {
+        $equipmentData = $this->getEM()->getRepository('AppBundle:EquipmentData')
+            ->findall();
+
+        return $this->render('AppBundle::overview.html.twig', ['equipmentData' => $equipmentData]);
+
+    }
+
+
+
+
     /**
      * @Route("/homepage", name="homepage")
      */
 
-    public function bootAction()
+    public function homePageAction()
     {
         return $this->render('AppBundle::Base.html.twig');
     }

@@ -1,0 +1,49 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">All Equipment</div>
+                </div>
+
+                <table class="table">
+                    <th>
+                        <tr>
+                            <th>comments</th>
+                        </tr>
+                    </th>
+                    {% for e in equipmentData %}
+                        <tr>
+                            <td>{{ e.equipmentID }}</td>
+                            <td>{{ e.description }}</td>
+                            <td>{{ e.model }}</td>
+                            <td>{{ e.serialNr }}</td>
+                            <td>{{ e.placement }}</td>
+                            <td>{{ e.partner }}</td>
+                            <td>{{ e.category }}</td>
+                            <td>{{ e.level }}</td>
+                            <td>{{ e.owner }}</td>
+                            <td>{{ e.comment }}</td>
+                            <td>{{ e.calibrationInstitute }}</td>
+                            <td>{{ e.isoStandard }}</td>
+                            <td>{{ e.calibrationInterval }}</td>
+                            <td>{{ e.boxStorage }}</td><
+                        </tr>
+                    {% endfor %}
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

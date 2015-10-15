@@ -78,59 +78,23 @@
     </div><!-- Container End -->
 </div><!-- Navbar end -->
 
-<!-- Container begin -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2">
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                        <a href="#equipmentCollapse" data-toggle="collapse" data-parent="accordion" class="">
-                            Equipment
-                        </a>
-                        </h4>
-                    </div>
-                    <div class="panel-collapse collapse" id="equipmentCollapse">
-                        <div class="panel-body">
-                            <div class="panel-title">
-                            <a href="#createCollapse" data-toggle="collapse" data-parent="accordion">Create</a>
-                        </div>
-                        </div>
-                        <div class="panel-collapse collapse" id="createCollapse">
-                            <div class="panel-body">
-                                <a href="createEquipmentData">Equipment Data</a>
-                            </div>
-                            <div class="panel-body">
-                                <a href="createCalibration">Calibration</a>
-                            </div>
+        <div class="col-lg-2">
+            <div class="nav navbar">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"> <a href="#equipmentCollapse" data-toggle="collapse" >Equipment</a></li>
+                <ul class="nav collapse" id="equipmentCollapse">
+                    <li> <a href="createEquipmentData" >Create</a> </li>
+                </ul>
+                <li><a href="#">Overview</a> </li>
 
-                            <div class="panel-body">
-                                <a href="createEquipmentType">Equipment Type</a>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="panel-title">
-                                <a href="#updateCollapse" data-toggle="collapse" data-parent="accordion">Update</a>
-                            </div>
-                        </div>
-                        <div class="panel-collapse collapse" id="updateCollapse">
-                            <div class="panel-body">
-                                <a href="#">Equipment Data</a>
-                            </div>
-                            <div class="panel-body">
-                                <a href="#">Calibration</a>
-                            </div>
-                            <div class="panel-body">
-                                <a href="#">Equipment Type</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- Panel End -->
+            </ul>
         </div>
-    </div><!-- Row End -->
-</div><!-- Container End -->
+        </div>
+    </div>
+
+</div>
 
 
 
