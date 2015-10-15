@@ -6,10 +6,9 @@ use AppBundle\Entity\Calibration;
 use AppBundle\Entity\EquipmentData;
 use AppBundle\Entity\EquipmentType;
 use AppBundle\Form\Type\CalibrationInfoType;
-use AppBundle\Form\Type\CalibrationPointType;
+use AppBundle\Form\Type\CalibrationType;
 use AppBundle\Form\Type\EquipmentDataType;
 use AppBundle\Entity\CalibrationInfo;
-use AppBundle\Entity\CalibrationPoint;
 use AppBundle\Form\Type\EquipmentTypeType;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -83,6 +82,26 @@ class EquipmentDataController extends ControllerBase
     }
 
     /**
+     * @Route("/addCalibration", name="addCalibration")
+     */
+
+    public function addCalibrationAction(Request $request)
+    {
+        $calibration = new Calibration();
+
+        $calibrationForm = $this->createForm(new CalibrationType(), $calibration);
+        $calibrationForm->handleRequest($request);
+
+        if($calibrationForm->isValid())
+        {
+            $this->flushAction($calibration);
+        }
+
+        return $this->render('AppBundle::addCalibration.html.twig', ['calibrationForm' => $calibrationForm->createView() ]);
+
+    }
+
+    /**
      * @Route("/flushData", name="flushData")
      */
 
@@ -94,6 +113,8 @@ class EquipmentDataController extends ControllerBase
         $em->flush();
 
     }
+
+
 
 
 

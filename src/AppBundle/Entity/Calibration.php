@@ -22,7 +22,7 @@ class Calibration
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $calibrationDate;
 

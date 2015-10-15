@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                {{ form_start(calibrationForm) }}
+                {{ form_widget(calibrationForm) }}
+                {{ form_end(calibrationForm) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
