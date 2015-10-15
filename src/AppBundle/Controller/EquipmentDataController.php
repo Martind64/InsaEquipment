@@ -115,7 +115,7 @@ class EquipmentDataController extends ControllerBase
     }
 
     /**
-     * @Route("/base")
+     * @Route("/homepage", name="homepage")
      */
 
     public function bootAction()
