@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                {{ form_start(equipmentTypeForm) }}
+                {{ form_widget(equipmentTypeForm) }}
+                {{ form_end(equipmentTypeForm) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

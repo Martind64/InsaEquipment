@@ -4,11 +4,13 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Calibration;
 use AppBundle\Entity\EquipmentData;
+use AppBundle\Entity\EquipmentType;
 use AppBundle\Form\Type\CalibrationInfoType;
 use AppBundle\Form\Type\CalibrationPointType;
 use AppBundle\Form\Type\EquipmentDataType;
 use AppBundle\Entity\CalibrationInfo;
 use AppBundle\Entity\CalibrationPoint;
+use AppBundle\Form\Type\EquipmentTypeType;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -58,6 +60,26 @@ class EquipmentDataController extends ControllerBase
 
         return $this->render('AppBundle::addCalibrationInfo.html.twig', array('calibrationInfoForm' => $calibrationInfoForm->createView()));
 
+    }
+
+
+    /**
+     * @Route("/addEquipmentType", name="addEquipmentType")
+     */
+
+    public function addEquipmentTypeAction(Request $request)
+    {
+        $equipmentType = new EquipmentType();
+
+        $equipmentTypeForm = $this->createForm(new EquipmentTypeType(), $equipmentType);
+        $equipmentTypeForm->handleRequest($request);
+
+        if($equipmentTypeForm->isValid())
+        {
+            $this->flushAction($equipmentType);
+        }
+
+        return $this->render('AppBundle::addType.html.twig', ['equipmentTypeForm' => $equipmentTypeForm->createView()]);
     }
 
     /**
