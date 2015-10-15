@@ -120,7 +120,7 @@ class EquipmentDataController extends ControllerBase
 
     public function bootAction()
     {
-        return $this->render('AppBundle::newBase.html.twig');
+        return $this->render('src:AppBundle:Resources:Base.html.twig');
     }
 
 

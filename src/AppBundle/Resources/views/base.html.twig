@@ -7,11 +7,39 @@
     <!-- GoogleJs -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <meta charset="UTF-8" />
+
     <title>{% block title %}Welcomasdfe!{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
+
+<div class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Insatech Equipment</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="example">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Profile</a> </li>
+            </ul>
+            <form action="" class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="search equipment">
+                </div>
+            </form>
+
+
+        </div>
+    </div><!-- Container End -->
+</div><!-- Navbar end -->
+
 {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
 
