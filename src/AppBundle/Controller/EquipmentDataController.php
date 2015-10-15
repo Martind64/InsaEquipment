@@ -114,6 +114,15 @@ class EquipmentDataController extends ControllerBase
 
     }
 
+    /**
+     * @Route("/base")
+     */
+
+    public function bootAction()
+    {
+        return $this->render('AppBundle::newBase.html.twig');
+    }
+
 
 
 
