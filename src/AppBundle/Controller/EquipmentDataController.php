@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 class EquipmentDataController extends ControllerBase
 {
     /**
-     * @Route("/", name="addEquipmentData")
+     * @Route("/createEquipmentData", name="addEquipmentData")
      */
 
     public function addEquipmentAction(Request $request)
@@ -40,7 +40,7 @@ class EquipmentDataController extends ControllerBase
     }
 
     /**
-     * @Route("/addCalibrationInfo", name="addCalibrationInfo")
+     * @Route("/createCalibrationInfo", name="addCalibrationInfo")
      */
 
     public function addCalibrationInfo(Request $request)
@@ -63,7 +63,7 @@ class EquipmentDataController extends ControllerBase
 
 
     /**
-     * @Route("/addEquipmentType", name="addEquipmentType")
+     * @Route("/createEquipmentType", name="addEquipmentType")
      */
 
     public function addEquipmentTypeAction(Request $request)
@@ -82,7 +82,7 @@ class EquipmentDataController extends ControllerBase
     }
 
     /**
-     * @Route("/addCalibration", name="addCalibration")
+     * @Route("/createCalibration", name="addCalibration")
      */
 
     public function addCalibrationAction(Request $request)
@@ -120,7 +120,7 @@ class EquipmentDataController extends ControllerBase
 
     public function bootAction()
     {
-        return $this->render('src:AppBundle:Resources:Base.html.twig');
+        return $this->render('AppBundle::Base.html.twig');
     }
 
 

@@ -97,6 +97,11 @@ class EquipmentData
     protected $boxStorage;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $status;
+
+    /**
      * @ORM\ManyToMany(targetEntity="EquipmentType", inversedBy="equipmentData")
      * @ORM\JoinTable(name="equipmentData_equipmentTypes")
      **/
@@ -576,5 +581,29 @@ class EquipmentData
     public function getEquipmentTypes()
     {
         return $this->EquipmentTypes;
+    }
+
+    /**
+     * Set status
+     *
+     * @param boolean $status
+     *
+     * @return EquipmentData
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return boolean
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

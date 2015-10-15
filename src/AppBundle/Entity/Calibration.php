@@ -26,6 +26,11 @@ class Calibration
      */
     protected $calibrationDate;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $status;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="EquipmentData", inversedBy="calibrationInfo")
@@ -90,5 +95,29 @@ class Calibration
     public function getEquipmentData()
     {
         return $this->EquipmentData;
+    }
+
+    /**
+     * Set status
+     *
+     * @param boolean $status
+     *
+     * @return Calibration
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return boolean
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

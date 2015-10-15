@@ -12,7 +12,14 @@ class CalibrationType extends AbstractType
     {
         $builder
             ->add('calibrationDate', 'date', ['attr' => ['class' => 'form-control']])
+            ->add('status', 'choice', [
+                'choices' => ['inactive', 'active'],
+                'multiple' => false,
+                'expanded' => true,
+                'label' => 'status'
+            ])
             ->add('save', 'submit', ['attr' => ['class' => 'btn btn-lg btn-primary']]);
+
 
 
 

@@ -28,7 +28,13 @@ class EquipmentDataType extends AbstractType
                 'choices' => ['no', 'yes'],
                 'multiple' => false,
                 'expanded' => true,
-                'label' => 'Box Storage',
+                'label' => 'box storage',
+            ])
+            ->add('status', 'choice', [
+                'choices' => ['inactive', 'active'],
+                'multiple' => false,
+                'expanded' => true,
+                'label' => 'status'
             ])
             ->add('comment', 'textarea', array('attr' => array('class' => 'form-control')))
             ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
