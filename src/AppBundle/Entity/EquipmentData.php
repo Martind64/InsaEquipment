@@ -6,7 +6,7 @@ use DateTime;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="equipmentData")
+ * @ORM\Table(name="equipment_data")
  */
 class EquipmentData
 {
@@ -98,7 +98,7 @@ class EquipmentData
 
     /**
      * @ORM\ManyToMany(targetEntity="EquipmentType", inversedBy="equipmentData")
-     * @ORM\JoinTable(name="equipmentData_EquipmentTypes")
+     * @ORM\JoinTable(name="equipmentData_equipmentTypes")
      **/
     protected $EquipmentTypes;
 

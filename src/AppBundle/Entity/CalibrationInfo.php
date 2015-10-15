@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CalibrationInfo
  *
- * @ORM\Table()
+ * @ORM\Table(name="calibration_info")
  * @ORM\Entity
  */
 class CalibrationInfo
