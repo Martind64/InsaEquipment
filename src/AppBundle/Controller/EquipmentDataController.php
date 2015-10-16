@@ -147,7 +147,7 @@ class EquipmentDataController extends ControllerBase
     }
 
     /**
-     * @Route("/{id}/equipment", name="ShowEquipment")
+     * @Route("/equipment/{id}", name="ShowEquipment")
      */
 
     public function showIndividualEquipment($id)

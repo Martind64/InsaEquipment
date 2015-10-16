@@ -3,17 +3,18 @@
 
 {% block body %}
 
+<head>
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/showEquipment.css') }}">
+</head>
     <!-- Wrapper -->
-<div class="container-fluid">
+<div class="container-fluid" id="wrapper">
 
     <div class="container-fluid">
         <div class="row">
-
             <!-- Flexible Content -->
             <!-- Sidebar Begin -->
             <div class="col-lg-2">
-                <div id="navigation-sidebar">
-                    <div class="nav navbar">
+                    <div class="nav navbar" id="navigation-sidebar">
                         <ul class="nav nav-pills nav-stacked">
                             <li class="active"><a href="overview">Overview</a> </li>
                             <ul class="nav" id="viewCollapse">
@@ -35,15 +36,32 @@
                                 <hr>
                             </ul>
                         </ul>
-                    </div>
                 </div>
             </div><!-- Sidebar End -->
             <!-- Flexible Content END -->
-            <div class="col-lg-4">
-                {{ equipment.id }}
 
+            <div class="container" id="main-content-wrapper">
+                    <div class="col-lg-5">
+                        <p><b>Id:</b> {{ equipment.id }}</p>
+                        <p><b>serial nr.:</b> {{ equipment.serialNr }}</p>
+                        <p><b>category:</b> {{ equipment.category }}</p>
+                        <p><b>description:</b> {{ equipment.description }}</p>
+                        <p><b>level:</b> {{ equipment.level }}</p>
+                    </div>
+                    <div class="col-lg-5">
+                        <p><b>partner:</b> {{ equipment.partner }}</p>
+                        <p><b>placement:</b> {{ equipment.placement }}</p>
+                        <p><b>calibration interval:</b> {{ equipment.calibrationInterval }}</p>
+                        <p>{#{{ equipment.nextCalibration }}#}</p><!-- need to know how to display date -->
+                        <p><b>owner:</b> {{ equipment.owner }}</p>
+                        <p><b>comment:</b> {{  equipment.comment }}</p>
+
+
+
+                    </div>
 
             </div>
+
 
         </div>
 
