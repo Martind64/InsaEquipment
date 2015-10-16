@@ -117,7 +117,7 @@ class EquipmentDataController extends ControllerBase
 
 
     /**
-     * @Route("overview", name="overview")
+     * @Route("/overview", name="overview")
      */
 
     public function getEquipmentAction()
@@ -138,7 +138,7 @@ class EquipmentDataController extends ControllerBase
 
     public function homePageAction()
     {
-        return $this->render('AppBundle::Base.html.twig');
+        return $this->render('AppBundle::homepage.html.twig');
     }
 
 
