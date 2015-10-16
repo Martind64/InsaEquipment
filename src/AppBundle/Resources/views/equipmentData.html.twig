@@ -3,16 +3,11 @@
 
 
 {% block body %}
-    {% block stylesheets %}
-        <style>
-            .container{
-                position: relative;
-                bottom: 100px;
-            }
-        </style>
 
-    {% endblock %}
-<div class="container">
+<!-- Wrapper begin -->
+<div class="container" id="main-content-wrapper">
+
+    <div class="container">
     <div class="row">
         <div class="col-lg-4">
             {{ form_start(equipmentDataForm) }}
@@ -20,6 +15,10 @@
             {{ form_end(equipmentDataForm) }}
         </div>
     </div>
-</div>
+    </div>
+
+
+</div><!-- Wrapper End -->
+
 
 {% endblock %}

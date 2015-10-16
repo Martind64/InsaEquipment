@@ -9,93 +9,107 @@
     <meta charset="UTF-8" />
 
     <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/sidebar.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/mainContent.css') }}">
+    {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-
-<style>
-
-    /*@media (min-width: 768px) {*/
-    /*.sidebar {*/
-        /*position: fixed;*/
-        /*top: 51px;*/
-        /*bottom: 0;*/
-        /*left: 0;*/
-        /*z-index: 1000;*/
-        /*display: block;*/
-        /*padding: 20px;*/
-        /*overflow-x: hidden;*/
-        /*overflow-y: auto; /!* Scrollable contents if viewport is shorter than content. *!/*/
-        /*background-color: #f5f5f5;*/
-        /*border-right: 1px solid #eee;*/
-    /*}*/
-    /*}*/
-    /*/!* Sidebar navigation *!/*/
-    /*.nav-sidebar {*/
-        /*margin-right: -21px; /!* 20px padding + 1px border *!/*/
-        /*margin-bottom: 20px;*/
-        /*margin-left: -20px;*/
-    /*}*/
-    /*.nav-sidebar > li > a {*/
-        /*padding-right: 20px;*/
-        /*padding-left: 20px;*/
-    /*}*/
-    /*.nav-sidebar > .active > a,*/
-    /*.nav-sidebar > .active > a:hover,*/
-    /*.nav-sidebar > .active > a:focus {*/
-        /*color: #fff;*/
-        /*background-color: #428bca;*/
-    /*}*/
-
-    .nav-stacked{
-        background-color: #f5f5f5;;
-    }
-
-</style>
 <body>
 
-<div class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="homepage" class="navbar-brand">Insatech Equipment</a>
-        </div>
 
-        <div class="collapse navbar-collapse" id="example">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Profile</a> </li>
-            </ul>
-            <form action="" class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="search equipment">
-                </div>
-            </form>
-        </div>
-    </div><!-- Container End -->
-</div><!-- Navbar end -->
+<!-- Wrapper Begin -->
+<div id="wrapper">
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-2">
-            <div class="nav navbar">
-            <ul class="nav nav-pills nav-stacked">
-                <li class="active"> <a href="#equipmentCollapse" data-toggle="collapse" >Equipment</a></li>
-                <ul class="nav collapse" id="equipmentCollapse">
-                    <li> <a href="createEquipmentData" >Create</a> </li>
+    <!-- NAVIGATION TOP BAR -->
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav-bar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="homepage" class="navbar-brand">Insatech Equipment</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="top-nav-bar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Profile</a> </li>
                 </ul>
-                <li><a href="#">Overview</a> </li>
+                <form action="" class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="search equipment">
+                    </div>
+                </form>
+            </div>
+        </div><!-- Container End -->
+    </div><!-- Navbar end -->
 
-            </ul>
+    <!-- NAVIGATION SIDE BAR -->
+    <div class="container-fluid" id="navigation-sidebar">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="nav navbar">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="#viewCollapse">Overview</a> </li>
+                        <ul class="nav" id="viewCollapse">
+                            <li><a href="#">Equipment</a> </li>
+                            <li><a href="#">Calibrations</a> </li>
+                            <li><a href="#">Types</a> </li>
+                            <hr>
+                        </ul>
+                        <li class="active"> <a href="#">Equipment</a></li>
+                        <ul class="nav" id="equipmentCollapse">
+                            <li> <a href="createEquipmentData" >Create</a> </li>
+                            <li> <a href="createEquipmentData" >Update</a> </li>
+                            <hr>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
         </div>
-        </div>
+
     </div>
 
-</div>
 
+
+    {#<!-- Sidebar -->#}
+    {#<div id="sidebar-wrapper">#}
+        {#<ul class="sidebar-nav">#}
+            {#<li><a href="#">Equipment1</a> </li>#}
+            {#<li><a href="#">Equipment2</a> </li>#}
+            {#<li><a href="#">Equipment3</a> </li>#}
+        {#</ul>#}
+    {#</div>#}
+
+    {#<!-- Page content -->#}
+    {#<div id="page-content-wrapper">#}
+        {#<div class="container-fluid">#}
+            {#<div class="row">#}
+                {#<div class="col-lg-12">#}
+                    {#<a href="#" class="btn btn-success" id="menu-toggle">Toggle Menu</a>#}
+                    {#<h1>Sidebar Layouts are cool</h1>#}
+                    {#<p>I love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pie#}
+                        {#I love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pie#}
+                        {#I love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pie#}
+                        {#I love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pie</p>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+
+    {#<!-- Menu toggle script -->#}
+    {#<script>#}
+        {#$("#menu-toggle").click(function(e)#}
+        {#{#}
+            {#e.preventDefault();#}
+            {#$("#wrapper").toggleClass("menuDisplayed")#}
+        {#})#}
+    {#</script>#}
+
+
+</div> <!-- Wrapper End -->
 
 
 {% block body %}{% endblock %}
