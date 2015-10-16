@@ -88,17 +88,24 @@ class EquipmentDataController extends ControllerBase
     public function addCalibrationAction(Request $request)
     {
         $calibration = new Calibration();
+        $calibrationInfo = new CalibrationInfo();
+
+        $calibrationInfoForm = $this->createForm(new CalibrationInfoType(), $calibrationInfo);
+        $calibrationInfoForm->handleRequest($request);
 
         $calibrationForm = $this->createForm(new CalibrationType(), $calibration);
         $calibrationForm->handleRequest($request);
 
+        $calibrationInfo->setCalibration($calibration);
+
         if($calibrationForm->isValid())
         {
+            $this->flushAction($calibrationInfo);
             $this->flushAction($calibration);
         }
 
-        return $this->render('AppBundle::addCalibration.html.twig', ['calibrationForm' => $calibrationForm->createView() ]);
-
+        return $this->render('AppBundle::addCalibration.html.twig', ['calibrationForm' => $calibrationForm->createView(),
+                                                                    'calibrationInfoForm' => $calibrationInfoForm->createView()]);
     }
 
     /**
@@ -130,8 +137,6 @@ class EquipmentDataController extends ControllerBase
     }
 
 
-
-
     /**
      * @Route("/homepage", name="homepage")
      */
@@ -141,8 +146,25 @@ class EquipmentDataController extends ControllerBase
         return $this->render('AppBundle::homepage.html.twig');
     }
 
+    /**
+     * @Route("/{id}/equipment", name="ShowEquipment")
+     */
 
+    public function showIndividualEquipment($id)
+    {
+        $em = $this->getEM()->getRepository('AppBundle:EquipmentData');
 
+        $equipment = $em->find($id);
+        if(!$equipment)
+        {
+            throw $this->createNotFoundException('There is no equipment with that id');
+        }
+
+//        return new Response($equipment->getEquipmentId());
+
+        return $this->render('AppBundle::showEquipment.html.twig', array('equipment' => $equipment));
+
+    }
 
 
 }

@@ -1,12 +1,12 @@
-{% extends 'AppBundle::base.html.twig'%}
+{% extends 'AppBundle::base.html.twig' %}
 
 
 {% block body %}
 
-<!-- Wrapper begin -->
-<div class="container-fluid" id="main-content-wrapper">
-
+    <!-- Wrapper -->
 <div class="container-fluid">
+
+    <div class="container-fluid">
         <div class="row">
 
             <!-- Flexible Content -->
@@ -39,20 +39,19 @@
                 </div>
             </div><!-- Sidebar End -->
             <!-- Flexible Content END -->
+            <div class="col-lg-4">
+                {{ equipment.id }}
 
-            <div class="col-lg-3">
-                {{ form_start(calibrationInfoForm) }}
-                {{ form_widget(calibrationInfoForm) }}
-                {{ form_end(calibrationInfoForm) }}
+
             </div>
 
-                <div class="col-lg-3">
-                    {{ form_start(calibrationForm) }}
-                    {{ form_widget(calibrationForm) }}
-                    {{ form_end(calibrationForm) }}
-                </div>
-            </div>
         </div>
-</div> <!-- Wrapper End -->
+
+
+    </div>
+
+
+</div>
+
 
 {% endblock %}
