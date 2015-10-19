@@ -108,9 +108,6 @@ class EquipmentDataController extends ControllerBase
                                                                     'calibrationInfoForm' => $calibrationInfoForm->createView()]);
     }
 
-    /**
-     * @Route("/flushData", name="flushData")
-     */
 
     public function flushAction($data)
     {
