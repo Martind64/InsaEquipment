@@ -491,39 +491,6 @@ class EquipmentData
     }
 
 
-    /**
-     * Add type
-     *
-     * @param \AppBundle\Entity\type $type
-     *
-     * @return EquipmentData
-     */
-    public function addType(\AppBundle\Entity\type $type)
-    {
-        $this->Types[] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Remove type
-     *
-     * @param \AppBundle\Entity\type $type
-     */
-    public function removeType(\AppBundle\Entity\type $type)
-    {
-        $this->Types->removeElement($type);
-    }
-
-    /**
-     * Get types
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTypes()
-    {
-        return $this->Types;
-    }
 
     /**
      * Set nextCalibration

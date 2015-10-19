@@ -40,28 +40,33 @@
             </div><!-- Sidebar End -->
             <!-- Flexible Content END -->
 
-            <div class="container" id="main-content-wrapper">
-                    <div class="col-lg-5">
+            <div class="container-fluid" id="main-content-wrapper">
+                <p><i>created: {{ equipment.createdDatetime|date("d-m-y  H:i:s") }} - status: {{ equipment.status?'active':'inactive' }}</i></p>
+                <hr>
+                    <div class="col-lg-3">
                         <p><b>Id:</b> {{ equipment.id }}</p>
                         <p><b>iso standard:</b> {{ equipment.isoStandard }}</p>
                         <p><b>serial nr.:</b> {{ equipment.serialNr }}</p>
                         <p><b>category:</b> {{ equipment.category }}</p>
                         <p><b>description:</b> {{ equipment.description }}</p>
                         <p><b>level:</b> {{ equipment.level }}</p>
+                        <p><b>box storage. </b> {{ equipment.boxStorage?'yes':'no' }} </p>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-2">
                         <p><b>partner:</b> {{ equipment.partner }}</p>
                         <p><b>placement:</b> {{ equipment.placement }}</p>
                         <p><b>calibration interval:</b> {{ equipment.calibrationInterval }}</p>
-                        <p>{#{{ equipment.nextCalibration }}#}</p><!-- need to know how to display date -->
+                        <p><b>calibration institute</b> {{ equipment.calibrationInstitute }}</p>
+                        <p><b>next calibration:</b> {{ equipment.nextCalibration|date('d-m-y') }}</p>
                         <p><b>owner:</b> {{ equipment.owner }}</p>
                         <p><b>comment:</b> {{  equipment.comment }}</p>
-
-
-
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-primary btn-lg" type="button">edit</button>
                     </div>
 
-            </div>
+
+            </div><!-- Wrapper Emd -->
 
 
         </div>

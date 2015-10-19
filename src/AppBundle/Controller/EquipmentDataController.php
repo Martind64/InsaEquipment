@@ -163,5 +163,18 @@ class EquipmentDataController extends ControllerBase
 
     }
 
+    /**
+     * @Route("/test", name="testPage")
+     */
+
+    public function testViews()
+    {
+        $em = $this->getEM()->getRepository('AppBundle:EquipmentData');
+        $equipment = $em->findAll();
+
+
+        return $this->render('AppBundle::testView.html.twig', ['equipment' => $equipment]);
+    }
+
 
 }

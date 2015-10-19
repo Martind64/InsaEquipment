@@ -1,12 +1,10 @@
 {% extends 'AppBundle::base.html.twig' %}
 
-
 {% block body %}
 
-    <!-- Wrapper begin -->
-<div class="container-fluid" id="main-content-wrapper">
 
-    <div class="container-fluid">
+    <div class="contaienr-fluid" id="main-content-wrapper">
+
         <div class="row">
 
             <!-- Flexible Content -->
@@ -40,31 +38,42 @@
             </div><!-- Sidebar End -->
             <!-- Flexible Content END -->
 
-
-            <div class="col-lg-10">
-                <table class="table">
-                    <tc><h1>Equipment</h1></tc>
-                    <th>
-                        <tr>
-                            <th>Iso Standard</th>
-                            <th>Equipment ID</th>
-                            <th>Model</th>
-                            <th>Serial Nr.</th>
-                        </tr>
-                    </th>
-                    {% for e in equipmentData %}
-                        <tr>
-                            <td>{{ e.isoStandard }}</td>
-                            <td>{{ e.equipmentID }}</td>
-                            <td>{{ e.model }}</td>
-                            <td>{{ e.serialNr }}</td>
-                        </tr>
+            <div class="col-md-4">
+                <select>
+                    {% for e in equipment %}
+                        <option value="id">{{ e.equipmentID }}</option>
                     {% endfor %}
-                </table>
+                </select>
             </div>
+            <div class="col-md-4">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Equipment
+                    <span class="caret"></span> </button>
+                    <ul class="dropdown-menu">
+                        {% for e in equipment %}
+                            <li>{{ e.equipmentID }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+
+                </div>
+
+
+            </div>
+
+
         </div>
+
     </div>
-</div> <!-- Wrapper End-->
+
+    {#{% block javascripts %}#}
+        {#jQuery(document).ready(function($) {#}
+        {#$(".clickable-row").click(function() {#}
+        {#window.document.location = $(this).data("href");#}
+        {#});#}
+    {#{% endblock %}#}
 
 
 {% endblock %}
