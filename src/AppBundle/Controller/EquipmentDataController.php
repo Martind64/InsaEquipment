@@ -143,7 +143,7 @@ class EquipmentDataController extends ControllerBase
             $em->flush($equipment);
         }
 
-        return $this->render('AppBundle::updateEquipment.html.twig', ['equipmentDataForm' =>  $equipmentDataForm->createView()]);
+        return $this->render('AppBundle::updateEquipment.html.twig', ['equipmentDataForm' =>  $equipmentDataForm->createView(), 'equipment' => $equipment]);
     }
 
 
