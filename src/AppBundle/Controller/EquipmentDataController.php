@@ -84,7 +84,9 @@ class EquipmentDataController extends ControllerBase
     /**
      * @Route("/createCalibration", name="addCalibration")
      */
-
+            //THIS ACTION IS NOT DONE
+            //NEED TO VALIDATE BOTH FORMS
+            //THIS ACTION IS NOT DONE
     public function addCalibrationAction(Request $request)
     {
         $calibration = new Calibration();
@@ -116,6 +118,32 @@ class EquipmentDataController extends ControllerBase
         $em->persist($data);
         $em->flush();
 
+    }
+
+    /**
+     * @Route("/updateEquipment/{id}", name="updateEquipment")
+     */
+
+    public function updateEquipmentAction(Request $request, $id)
+    {
+
+        $em = $this->getEM();
+        $equipment = $em->getRepository('AppBundle:EquipmentData')->find($id);
+
+        $equipmentDataForm = $this->createForm(new EquipmentDataType(), $equipment);
+        $equipmentDataForm->handleRequest($request);
+
+
+        if(!$id)
+        {
+            throw $this->createNotFountException('There is no product with that id');
+        }
+        if($equipmentDataForm->isValid())
+        {
+            $em->flush($equipment);
+        }
+
+        return $this->render('AppBundle::updateEquipment.html.twig', ['equipmentDataForm' =>  $equipmentDataForm->createView()]);
     }
 
 
@@ -162,6 +190,9 @@ class EquipmentDataController extends ControllerBase
         return $this->render('AppBundle::showEquipment.html.twig', array('equipment' => $equipment));
 
     }
+
+
+
 
     /**
      * @Route("/test", name="testPage")
