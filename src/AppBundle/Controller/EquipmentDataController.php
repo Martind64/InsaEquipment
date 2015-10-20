@@ -2,13 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Calibration;
 use AppBundle\Entity\EquipmentData;
 use AppBundle\Entity\EquipmentType;
-use AppBundle\Form\Type\CalibrationInfoType;
-use AppBundle\Form\Type\CalibrationType;
 use AppBundle\Form\Type\EquipmentDataType;
-use AppBundle\Entity\CalibrationInfo;
 use AppBundle\Form\Type\EquipmentTypeType;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -39,27 +35,7 @@ class EquipmentDataController extends ControllerBase
 
     }
 
-    /**
-     * @Route("/createCalibrationInfo", name="addCalibrationInfo")
-     */
 
-    public function addCalibrationInfo(Request $request)
-    {
-        $calibrationInfo = new CalibrationInfo();
-        $calibration = new Calibration();
-
-        $calibrationInfoForm = $this->createForm(new CalibrationInfoType(), $calibrationInfo);
-        $calibrationInfoForm->handleRequest($request);
-
-        if($calibrationInfoForm->isValid())
-        {
-
-            $this->flushAction($calibrationInfo);
-        }
-
-        return $this->render('AppBundle::addCalibrationInfo.html.twig', array('calibrationInfoForm' => $calibrationInfoForm->createView()));
-
-    }
 
 
     /**
@@ -81,34 +57,7 @@ class EquipmentDataController extends ControllerBase
         return $this->render('AppBundle::addType.html.twig', ['equipmentTypeForm' => $equipmentTypeForm->createView()]);
     }
 
-    /**
-     * @Route("/createCalibration", name="addCalibration")
-     */
-            //THIS ACTION IS NOT DONE
-            //NEED TO VALIDATE BOTH FORMS
-            //THIS ACTION IS NOT DONE
-    public function addCalibrationAction(Request $request)
-    {
-        $calibration = new Calibration();
-        $calibrationInfo = new CalibrationInfo();
 
-        $calibrationInfoForm = $this->createForm(new CalibrationInfoType(), $calibrationInfo);
-        $calibrationInfoForm->handleRequest($request);
-
-        $calibrationForm = $this->createForm(new CalibrationType(), $calibration);
-        $calibrationForm->handleRequest($request);
-
-        $calibrationInfo->setCalibration($calibration);
-
-        if($calibrationForm->isValid())
-        {
-            $this->flushAction($calibrationInfo);
-            $this->flushAction($calibration);
-        }
-
-        return $this->render('AppBundle::addCalibration.html.twig', ['calibrationForm' => $calibrationForm->createView(),
-                                                                    'calibrationInfoForm' => $calibrationInfoForm->createView()]);
-    }
 
 
     public function flushAction($data)

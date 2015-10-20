@@ -1,14 +1,10 @@
 {% extends 'AppBundle::base.html.twig' %}
 
-
 {% block body %}
 
-    <!-- Wrapper begin -->
-<div class="container-fluid" id="main-content-wrapper">
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="wrapper">
         <div class="row">
-
             <!-- Flexible Content -->
             <!-- Sidebar Begin -->
             <div class="col-lg-2">
@@ -40,31 +36,19 @@
             </div><!-- Sidebar End -->
             <!-- Flexible Content END -->
 
+            <table class="table table-hover">
 
-            <div class="col-lg-10">
-                <table class="table table-hover">
-                    <tc><h1>Equipment</h1></tc>
-                    <th>
-                        <tr>
-                            <th>Iso Standard</th>
-                            <th>Equipment ID</th>
-                            <th>Model</th>
-                            <th>Serial Nr.</th>
-                        </tr>
-                    </th>
-                    {% for e in equipmentData %}
-                        <tr onclick="document.location = 'http://localhost:8000/equipment/{{ e.ID }}'">
-                            <td>{{ e.isoStandard }}</td>
-                            <td>{{ e.equipmentID }}</td>
-                            <td>{{ e.model }}</td>
-                            <td>{{ e.serialNr }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
+                {% for t in types %}
+                    <tr>
+                        <td>t.type</td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+
         </div>
     </div>
-</div> <!-- Wrapper End-->
+
 
 
 {% endblock %}
