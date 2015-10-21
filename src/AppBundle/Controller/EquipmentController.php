@@ -47,19 +47,22 @@ class EquipmentController extends ControllerBase
      * @Template()
      */
 
-    public function addClassificationAction(Request $request)
+    public function createClassificationAction(Request $request)
     {
         $Classification = new Classification();
 
-        $ClassificationForm = $this->createForm(new ClassificationType(), $Classification);
-        $ClassificationForm->handleRequest($request);
+        $Form = $this->createForm(new ClassificationType(), $Classification);
+        $Form->handleRequest($request);
 
-        if($ClassificationForm->isValid())
+        if($Form->isValid())
         {
             $this->flushAction($Classification);
         }
 
-        return $this->render('AppBundle::addType.html.twig', ['classificationTypeForm' => $ClassificationForm->createView()]);
+        return [
+            'Form' => $Form->createView()
+        ];
+
     }
 
 
