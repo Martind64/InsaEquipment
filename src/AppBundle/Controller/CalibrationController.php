@@ -4,8 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Calibration;
 use AppBundle\Form\Type\CalibrationInfoType;
-use AppBundle\Form\Type\CalibrationType;
-use AppBundle\Entity\CalibrationInfo;
+use AppBundle\Entity\Info;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

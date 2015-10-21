@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Classification;
 use AppBundle\Form\Type\EquipmentType;
+use AppBundle\Form\Type\ClassificationType;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -43,22 +44,22 @@ class EquipmentController extends ControllerBase
 
 
     /**
-     * @Route("/createEquipmentType", name="addEquipmentType")
+     * @Route("/createClassification", name="addClassification")
      */
 
     public function addEquipmentTypeAction(Request $request)
     {
-        $equipmentType = new EquipmentType();
+        $Classification = new Classification();
 
-        $equipmentTypeForm = $this->createForm(new EquipmentTypeType(), $equipmentType);
-        $equipmentTypeForm->handleRequest($request);
+        $ClassificationForm = $this->createForm(new ClassificationType(), $Classification);
+        $ClassificationForm->handleRequest($request);
 
-        if($equipmentTypeForm->isValid())
+        if($ClassificationForm->isValid())
         {
-            $this->flushAction($equipmentType);
+            $this->flushAction($Classification);
         }
 
-        return $this->render('AppBundle::addType.html.twig', ['equipmentTypeForm' => $equipmentTypeForm->createView()]);
+        return $this->render('AppBundle::addType.html.twig', ['classificationTypeForm' => $ClassificationForm->createView()]);
     }
 
 

@@ -2,6 +2,7 @@
 
 
 namespace AppBundle\Form\Type;
+use AppBundle\Entity\Classification;
 use AppBundle\Entity\Equipment;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
@@ -40,15 +41,24 @@ class EquipmentType extends AbstractType
                 'expanded' => true,
                 'label' => 'status'
             ])
-//            ->add('type', 'entity', [
-//                'class' => EquipmentType::class,
-//                'property' => 'type',
-//                'empty_value' => 'select type',
-//                'query_builder' => function(EntityRepository $er){
-//                    return $er->createQueryBuilder('c')
-//                    ->orderBy('c.type', 'ASC');
-//                }
-//            ])
+            ->add('asddas', 'entity', [
+                'class' => Classification::class,
+                'property' => 'stuff',
+                'empty_value' => 'select type',
+                'query_builder' => function(EntityRepository $er){
+                    return $er->createQueryBuilder('c')
+                    ->orderBy('c.stuff', 'ASC');
+                }
+            ])
+            ->add('equipmentID', 'entity', [
+                'class' => Equipment::class,
+                'property' => 'equipmentID',
+                'empty_value' => 'select id',
+                'query_builder' => function(EntityRepository $er){
+                    return $er->createQueryBuilder('c')
+                    ->orderBy('c.equipmentID', 'ASC');
+                }
+            ])
             ->add('comment', 'textarea', array('attr' => array('class' => 'form-control')))
             ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
     }

@@ -108,7 +108,6 @@ class Equipment
     protected $types;
 
 
-
     public function __construct()
     {
         $this->createdDatetime = new DateTime('now');

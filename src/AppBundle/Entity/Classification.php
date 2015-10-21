@@ -27,6 +27,7 @@ class Classification
      **/
     protected $equipment;
 
+
     public function __construct()
     {
         $this->equipment = new \Doctrine\Common\Collections\ArrayCollection();
