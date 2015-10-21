@@ -3,10 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Calibration;
-use AppBundle\Form\Type\CalibrationInfoType;
+use AppBundle\Form\Type\InfoType;
 use AppBundle\Entity\Info;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,23 +15,26 @@ use Symfony\Component\HttpFoundation\Request;
 class CalibrationController extends ControllerBase
 {
     /**
-     * @Route("/createCalibrationInfo", name="addCalibrationInfo")
+     * @Route("/createInfo", name="addInfo")
+     * @Template()
      */
 
-    public function addCalibrationInfo(Request $request)
+    public function addInfoAction(Request $request)
     {
-        $calibrationInfo = new CalibrationInfo();
+        $info = new Info();
 
-        $calibrationInfoForm = $this->createForm(new CalibrationInfoType(), $calibrationInfo);
-        $calibrationInfoForm->handleRequest($request);
+        $infoForm = $this->createForm(new InfoType(), $info);
+        $infoForm->handleRequest($request);
 
-        if($calibrationInfoForm->isValid())
+        if($infoForm->isValid())
         {
-            $this->flushAction($calibrationInfo);
+            $this->flushAction($info);
         }
 
-        return $this->render('AppBundle::addCalibrationInfo.html.twig', array('calibrationInfoForm' => $calibrationInfoForm->createView()));
 
+        return [
+            'infoForm' => $infoForm->createView()
+        ];
     }
     /**
      * @Route("/createCalibration", name="addCalibration")

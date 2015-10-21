@@ -41,15 +41,15 @@ class EquipmentType extends AbstractType
                 'expanded' => true,
                 'label' => 'status'
             ])
-            ->add('asddas', 'entity', [
-                'class' => Classification::class,
-                'property' => 'stuff',
-                'empty_value' => 'select type',
-                'query_builder' => function(EntityRepository $er){
-                    return $er->createQueryBuilder('c')
-                    ->orderBy('c.stuff', 'ASC');
-                }
-            ])
+//            ->add('asddas', 'entity', [
+//                'class' => Classification::class,
+//                'property' => 'stuff',
+//                'empty_value' => 'select type',
+//                'query_builder' => function(EntityRepository $er){
+//                    return $er->createQueryBuilder('c')
+//                    ->orderBy('c.stuff', 'ASC');
+//                }
+//            ])
             ->add('equipmentID', 'entity', [
                 'class' => Equipment::class,
                 'property' => 'equipmentID',

@@ -1,11 +1,10 @@
 {% extends 'AppBundle::base.html.twig'%}
 
-
-
 {% block body %}
 
     <!-- Wrapper begin -->
     <div class="container-fluid" id="main-content-wrapper">
+
         <div class="container-fluid">
             <div class="row">
 
@@ -41,17 +40,13 @@
                 <!-- Flexible Content END -->
 
 
-
-                <div class="col-lg-4">
-                    {{ form_start(equipmentDataForm) }}
-                    {{ form_widget(equipmentDataForm) }}
-                    {{ form_end(equipmentDataForm) }}
+                <div class="col-md-4">
+                    {{ form_start(infoForm) }}
+                    {{ form_widget(infoForm) }}
+                    {{ form_end(infoForm) }}
                 </div>
             </div>
         </div>
-
-
     </div><!-- Wrapper End -->
-
 
 {% endblock %}

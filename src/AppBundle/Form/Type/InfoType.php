@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 
-class CalibrationInfoType extends AbstractType
+class InfoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -29,6 +29,6 @@ class CalibrationInfoType extends AbstractType
     }
     public function getName()
     {
-        return 'calibrationInfo';
+        return 'info';
     }
 }
