@@ -112,19 +112,20 @@ class EquipmentController extends ControllerBase
      * @Template()
      */
 
-    public function getEquipmentAction()
+    public function showAllEquipmentAction()
     {
-        $equipmentData = $this->getEM()->getRepository('AppBundle:EquipmentData')
+        $equipment = $this->getEM()->getRepository('AppBundle:Equipment')
             ->findall();
 
-        return $this->render('AppBundle::overview.html.twig', ['equipmentData' => $equipmentData]);
 
+        return[
+            'equipment' => $equipment
+        ];
     }
 
 
     /**
      * @Route("/homepage", name="homepage")
-     * @Template()
      */
 
     public function homePageAction()
@@ -137,9 +138,9 @@ class EquipmentController extends ControllerBase
      * @Template()
      */
 
-    public function showIndividualEquipment($id)
+    public function showEquipmentAction($id)
     {
-        $em = $this->getEM()->getRepository('AppBundle:EquipmentData');
+        $em = $this->getEM()->getRepository('AppBundle:Equipment');
 
         $equipment = $em->find($id);
         if(!$equipment)
@@ -147,9 +148,10 @@ class EquipmentController extends ControllerBase
             throw $this->createNotFoundException('There is no equipment with that id');
         }
 
-//        return new Response($equipment->getEquipmentId());
 
-        return $this->render('AppBundle::showEquipment.html.twig', array('equipment' => $equipment));
+        return [
+            'equipment' => $equipment
+        ];
 
     }
 
