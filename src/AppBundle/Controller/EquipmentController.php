@@ -33,7 +33,6 @@ class EquipmentController extends ControllerBase
             $this->flushAction($equipment);
         }
 
-//        return $this->render('AppBundle::equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView()));
         return [
             'equipmentForm' => $equipmentForm->createView()
         ];
@@ -44,11 +43,11 @@ class EquipmentController extends ControllerBase
 
 
     /**
-     * @Route("/createClassification", name="addClassification")
+     * @Route("/createType", name="addClassification")
      * @Template()
      */
 
-    public function addEquipmentTypeAction(Request $request)
+    public function addClassificationAction(Request $request)
     {
         $Classification = new Classification();
 
@@ -156,11 +155,8 @@ class EquipmentController extends ControllerBase
     }
 
 
-
-
     /**
      * @Route("/test", name="testPage")
-     * @Template()
      */
 
     public function testViews()
