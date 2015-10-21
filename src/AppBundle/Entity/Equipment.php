@@ -535,16 +535,17 @@ class Equipment
         return $this->status;
     }
 
+
     /**
      * Add type
      *
-     * @param \AppBundle\Entity\classification $type
+     * @param \AppBundle\Entity\Classification $type
      *
      * @return Equipment
      */
-    public function addType(\AppBundle\Entity\classification $type)
+    public function addType(\AppBundle\Entity\Classification $type)
     {
-        $this->Types[] = $type;
+        $this->types[] = $type;
 
         return $this;
     }
@@ -552,11 +553,11 @@ class Equipment
     /**
      * Remove type
      *
-     * @param \AppBundle\Entity\classification $type
+     * @param \AppBundle\Entity\Classification $type
      */
-    public function removeType(\AppBundle\Entity\classification $type)
+    public function removeType(\AppBundle\Entity\Classification $type)
     {
-        $this->Types->removeElement($type);
+        $this->types->removeElement($type);
     }
 
     /**
@@ -566,6 +567,6 @@ class Equipment
      */
     public function getTypes()
     {
-        return $this->Types;
+        return $this->types;
     }
 }
