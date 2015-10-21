@@ -45,6 +45,7 @@ class EquipmentController extends ControllerBase
 
     /**
      * @Route("/createClassification", name="addClassification")
+     * @Template()
      */
 
     public function addEquipmentTypeAction(Request $request)
@@ -76,34 +77,39 @@ class EquipmentController extends ControllerBase
 
     /**
      * @Route("/updateEquipment/{id}", name="updateEquipment")
+     * @Template()
      */
 
     public function updateEquipmentAction(Request $request, $id)
     {
 
         $em = $this->getEM();
-        $equipment = $em->getRepository('AppBundle:EquipmentData')->find($id);
+        $equipment = $em->getRepository('AppBundle:Equipment')->find($id);
 
-        $equipmentDataForm = $this->createForm(new EquipmentDataType(), $equipment);
-        $equipmentDataForm->handleRequest($request);
+        $Form = $this->createForm(new EquipmentType(), $equipment);
+        $Form->handleRequest($request);
 
 
         if(!$id)
         {
             throw $this->createNotFountException('There is no product with that id');
         }
-        if($equipmentDataForm->isValid())
+        if($Form->isValid())
         {
             $em->flush($equipment);
         }
 
-        return $this->render('AppBundle::updateEquipment.html.twig', ['equipmentDataForm' =>  $equipmentDataForm->createView(), 'equipment' => $equipment]);
+        return[
+            'Form' => $Form->createView(),
+            'equipment' => $equipment
+        ];
     }
 
 
 
     /**
      * @Route("/overview", name="overview")
+     * @Template()
      */
 
     public function getEquipmentAction()
@@ -118,6 +124,7 @@ class EquipmentController extends ControllerBase
 
     /**
      * @Route("/homepage", name="homepage")
+     * @Template()
      */
 
     public function homePageAction()
@@ -127,6 +134,7 @@ class EquipmentController extends ControllerBase
 
     /**
      * @Route("/equipment/{id}", name="ShowEquipment")
+     * @Template()
      */
 
     public function showIndividualEquipment($id)
@@ -150,6 +158,7 @@ class EquipmentController extends ControllerBase
 
     /**
      * @Route("/test", name="testPage")
+     * @Template()
      */
 
     public function testViews()

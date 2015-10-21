@@ -38,6 +38,7 @@ class CalibrationController extends ControllerBase
     }
     /**
      * @Route("/createCalibration", name="addCalibration")
+     * @Template()
      */
     //THIS ACTION IS NOT DONE
     //NEED TO VALIDATE BOTH FORMS
