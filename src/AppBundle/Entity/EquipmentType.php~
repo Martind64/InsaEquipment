@@ -18,7 +18,7 @@ class EquipmentType
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="text", length=20)
      */
     protected $type;
 

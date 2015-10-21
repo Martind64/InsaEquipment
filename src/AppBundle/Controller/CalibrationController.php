@@ -21,14 +21,12 @@ class CalibrationController extends ControllerBase
     public function addCalibrationInfo(Request $request)
     {
         $calibrationInfo = new CalibrationInfo();
-        $calibration = new Calibration();
 
         $calibrationInfoForm = $this->createForm(new CalibrationInfoType(), $calibrationInfo);
         $calibrationInfoForm->handleRequest($request);
 
         if($calibrationInfoForm->isValid())
         {
-
             $this->flushAction($calibrationInfo);
         }
 
@@ -52,15 +50,23 @@ class CalibrationController extends ControllerBase
         $calibrationForm = $this->createForm(new CalibrationType(), $calibration);
         $calibrationForm->handleRequest($request);
 
-        $calibrationInfo->setCalibration($calibration);
 
-        if($calibrationForm->isValid())
+        if($calibrationInfoForm->isValid())
         {
             $this->flushAction($calibrationInfo);
-            $this->flushAction($calibration);
         }
 
         return $this->render('AppBundle::addCalibration.html.twig', ['calibrationForm' => $calibrationForm->createView(),
             'calibrationInfoForm' => $calibrationInfoForm->createView()]);
+    }
+
+
+    public function flushAction($data)
+    {
+        $em = $this->getEM();
+
+        $em->persist($data);
+        $em->flush();
+
     }
 }

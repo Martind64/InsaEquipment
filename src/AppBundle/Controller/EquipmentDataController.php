@@ -10,12 +10,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
 class EquipmentDataController extends ControllerBase
 {
     /**
      * @Route("/createEquipmentData", name="addEquipmentData")
+     * @Template()
      */
 
     public function addEquipmentAction(Request $request)
@@ -23,7 +25,7 @@ class EquipmentDataController extends ControllerBase
         $equipmentData = new EquipmentData();
 
         $equipmentDataForm = $this->createForm(new EquipmentDataType(), $equipmentData);
-        $equipmentDataForm ->handleRequest($request);
+        $equipmentDataForm->handleRequest($request);
 
 
         if($equipmentDataForm->isValid())
@@ -31,7 +33,10 @@ class EquipmentDataController extends ControllerBase
             $this->flushAction($equipmentData);
         }
 
-        return $this->render('AppBundle::equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView()));
+//        return $this->render('AppBundle::equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView()));
+        return [
+            'equipmentDataForm' => $equipmentDataForm->createView()
+        ];
 
     }
 

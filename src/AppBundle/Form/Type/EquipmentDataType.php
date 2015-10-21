@@ -2,8 +2,12 @@
 
 
 namespace AppBundle\Form\Type;
+use AppBundle\Entity\EquipmentData;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
 class EquipmentDataType extends AbstractType
@@ -36,9 +40,26 @@ class EquipmentDataType extends AbstractType
                 'expanded' => true,
                 'label' => 'status'
             ])
+//            ->add('type', 'entity', [
+//                'class' => EquipmentType::class,
+//                'property' => 'type',
+//                'empty_value' => 'select type',
+//                'query_builder' => function(EntityRepository $er){
+//                    return $er->createQueryBuilder('c')
+//                    ->orderBy('c.type', 'ASC');
+//                }
+//            ])
             ->add('comment', 'textarea', array('attr' => array('class' => 'form-control')))
             ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
     }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => EquipmentData::class,
+        ]);
+    }
+
     public function getName()
     {
         return 'equipmentData';
