@@ -2,7 +2,7 @@
 
 
 namespace AppBundle\Form\Type;
-use AppBundle\Entity\EquipmentData;
+use AppBundle\Entity\Equipment;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class EquipmentDataType extends AbstractType
+class EquipmentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -62,7 +62,7 @@ class EquipmentDataType extends AbstractType
 
     public function getName()
     {
-        return 'equipmentData';
+        return 'equipment';
     }
 }
 

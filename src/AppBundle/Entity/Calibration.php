@@ -33,8 +33,8 @@ class Calibration
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="EquipmentData", inversedBy="calibrationInfo")
-     * @ORM\JoinColumn(name="equipmentData_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Info")
+     * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")
      */
     protected $EquipmentData;
 
@@ -74,30 +74,6 @@ class Calibration
     }
 
     /**
-     * Set equipmentData
-     *
-     * @param \AppBundle\Entity\EquipmentData $equipmentData
-     *
-     * @return Calibration
-     */
-    public function setEquipmentData(\AppBundle\Entity\EquipmentData $equipmentData = null)
-    {
-        $this->EquipmentData = $equipmentData;
-
-        return $this;
-    }
-
-    /**
-     * Get equipmentData
-     *
-     * @return \AppBundle\Entity\EquipmentData
-     */
-    public function getEquipmentData()
-    {
-        return $this->EquipmentData;
-    }
-
-    /**
      * Set status
      *
      * @param boolean $status
@@ -119,5 +95,29 @@ class Calibration
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set equipmentData
+     *
+     * @param \AppBundle\Entity\Equipment $equipmentData
+     *
+     * @return Calibration
+     */
+    public function setEquipmentData(\AppBundle\Entity\Equipment $equipmentData = null)
+    {
+        $this->EquipmentData = $equipmentData;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentData
+     *
+     * @return \AppBundle\Entity\Equipment
+     */
+    public function getEquipmentData()
+    {
+        return $this->EquipmentData;
     }
 }

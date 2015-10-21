@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CalibrationInfo
+ * Info
  *
- * @ORM\Table(name="calibration_info")
+ * @ORM\Table(name="info")
  * @ORM\Entity
  */
-class CalibrationInfo
+class Info
 {
 
     /**
@@ -98,10 +98,11 @@ class CalibrationInfo
     private $approvedBy;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Calibration", inversedBy="calibrationInfo")
+     * @ORM\ManyToOne(targetEntity="Calibration", inversedBy="Info")
      * @ORM\JoinColumn(name="calibration_id", referencedColumnName="id")
      */
     protected $calibration;
+
 
 
     /**
@@ -119,7 +120,7 @@ class CalibrationInfo
      *
      * @param string $uncertaintyRequests
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setUncertaintyRequests($uncertaintyRequests)
     {
@@ -143,7 +144,7 @@ class CalibrationInfo
      *
      * @param string $actualUncertainty
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setActualUncertainty($actualUncertainty)
     {
@@ -163,11 +164,35 @@ class CalibrationInfo
     }
 
     /**
+     * Set labReference
+     *
+     * @param string $labReference
+     *
+     * @return Info
+     */
+    public function setLabReference($labReference)
+    {
+        $this->labReference = $labReference;
+
+        return $this;
+    }
+
+    /**
+     * Get labReference
+     *
+     * @return string
+     */
+    public function getLabReference()
+    {
+        return $this->labReference;
+    }
+
+    /**
      * Set uut
      *
      * @param string $uut
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setUut($uut)
     {
@@ -191,7 +216,7 @@ class CalibrationInfo
      *
      * @param string $deviation
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setDeviation($deviation)
     {
@@ -215,7 +240,7 @@ class CalibrationInfo
      *
      * @param string $adjustmentLimit
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setAdjustmentLimit($adjustmentLimit)
     {
@@ -239,7 +264,7 @@ class CalibrationInfo
      *
      * @param string $comment
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setComment($comment)
     {
@@ -258,90 +283,12 @@ class CalibrationInfo
         return $this->comment;
     }
 
-
-
-
-    /**
-     * Set labReference
-     *
-     * @param string $labReference
-     *
-     * @return CalibrationInfo
-     */
-    public function setLabReference($labReference)
-    {
-        $this->labReference = $labReference;
-
-        return $this;
-    }
-
-    /**
-     * Get labReference
-     *
-     * @return string
-     */
-    public function getLabReference()
-    {
-        return $this->labReference;
-    }
-
-
-    /**
-     * Get unit
-     *
-     * @return string
-     */
-    public function getUnit()
-    {
-        return $this->unit;
-    }
-
-
-    /**
-     * Get prefix
-     *
-     * @return string
-     */
-    public function getPrefix()
-    {
-        return $this->prefix;
-    }
-
-
-    /**
-     * Set unit
-     *
-     * @param string $unit
-     *
-     * @return CalibrationInfo
-     */
-    public function setUnit($unit)
-    {
-        $this->unit = $unit;
-
-        return $this;
-    }
-
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return CalibrationInfo
-     */
-    public function setPrefix($prefix)
-    {
-        $this->prefix = $prefix;
-
-        return $this;
-    }
-
     /**
      * Set measuredAt
      *
      * @param string $measuredAt
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setMeasuredAt($measuredAt)
     {
@@ -360,13 +307,60 @@ class CalibrationInfo
         return $this->measuredAt;
     }
 
+    /**
+     * Set unit
+     *
+     * @param string $unit
+     *
+     * @return Info
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return string
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
+     * Set prefix
+     *
+     * @param string $prefix
+     *
+     * @return Info
+     */
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * Get prefix
+     *
+     * @return string
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
 
     /**
      * Set calibrationInstitute
      *
      * @param string $calibrationInstitute
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setCalibrationInstitute($calibrationInstitute)
     {
@@ -390,7 +384,7 @@ class CalibrationInfo
      *
      * @param string $approvedBy
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setApprovedBy($approvedBy)
     {
@@ -414,7 +408,7 @@ class CalibrationInfo
      *
      * @param \AppBundle\Entity\Calibration $calibration
      *
-     * @return CalibrationInfo
+     * @return Info
      */
     public function setCalibration(\AppBundle\Entity\Calibration $calibration = null)
     {

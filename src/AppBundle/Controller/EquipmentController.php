@@ -2,10 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\EquipmentData;
-use AppBundle\Entity\EquipmentType;
-use AppBundle\Form\Type\EquipmentDataType;
-use AppBundle\Form\Type\EquipmentTypeType;
+use AppBundle\Entity\Equipment;
+use AppBundle\Entity\Classification;
+use AppBundle\Form\Type\EquipmentType;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,29 +12,29 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
-class EquipmentDataController extends ControllerBase
+class EquipmentController extends ControllerBase
 {
     /**
-     * @Route("/createEquipmentData", name="addEquipmentData")
+     * @Route("/createEquipment", name="addEquipmentData")
      * @Template()
      */
 
     public function addEquipmentAction(Request $request)
     {
-        $equipmentData = new EquipmentData();
+        $equipment = new Equipment();
 
-        $equipmentDataForm = $this->createForm(new EquipmentDataType(), $equipmentData);
-        $equipmentDataForm->handleRequest($request);
+        $equipmentForm = $this->createForm(new EquipmentType(), $equipment);
+        $equipmentForm->handleRequest($request);
 
 
-        if($equipmentDataForm->isValid())
+        if($equipmentForm->isValid())
         {
-            $this->flushAction($equipmentData);
+            $this->flushAction($equipment);
         }
 
 //        return $this->render('AppBundle::equipmentData.html.twig', array('equipmentDataForm' => $equipmentDataForm->createView()));
         return [
-            'equipmentDataForm' => $equipmentDataForm->createView()
+            'equipmentForm' => $equipmentForm->createView()
         ];
 
     }

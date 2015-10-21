@@ -6,9 +6,9 @@ use DateTime;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="equipment_data")
+ * @ORM\Table(name="equipment")
  */
-class EquipmentData
+class Equipment
 {
     /**
      * @ORM\Column(type="integer")
@@ -102,18 +102,20 @@ class EquipmentData
     protected $status;
 
     /**
-     * @ORM\ManyToMany(targetEntity="EquipmentType", inversedBy="equipmentData")
-     * @ORM\JoinTable(name="equipmentData_equipmentTypes")
+     * @ORM\ManyToMany(targetEntity="classification", inversedBy="equipment")
+     * @ORM\JoinTable(name="equipment_classification")
      **/
-    protected $EquipmentTypes;
+    protected $Types;
 
 
 
     public function __construct()
     {
         $this->createdDatetime = new DateTime('now');
-        $this->EquipmentTypes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->Types = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+
 
 
     /**
@@ -131,7 +133,7 @@ class EquipmentData
      *
      * @param string $equipmentID
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setEquipmentID($equipmentID)
     {
@@ -155,7 +157,7 @@ class EquipmentData
      *
      * @param string $description
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setDescription($description)
     {
@@ -179,7 +181,7 @@ class EquipmentData
      *
      * @param string $model
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setModel($model)
     {
@@ -203,7 +205,7 @@ class EquipmentData
      *
      * @param string $serialNr
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setSerialNr($serialNr)
     {
@@ -227,7 +229,7 @@ class EquipmentData
      *
      * @param string $placement
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setPlacement($placement)
     {
@@ -251,7 +253,7 @@ class EquipmentData
      *
      * @param string $partner
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setPartner($partner)
     {
@@ -275,7 +277,7 @@ class EquipmentData
      *
      * @param string $category
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setCategory($category)
     {
@@ -299,7 +301,7 @@ class EquipmentData
      *
      * @param string $level
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setLevel($level)
     {
@@ -318,15 +320,12 @@ class EquipmentData
         return $this->level;
     }
 
-
-
-
     /**
      * Set owner
      *
      * @param string $owner
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setOwner($owner)
     {
@@ -346,11 +345,35 @@ class EquipmentData
     }
 
     /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return Equipment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
      * Set calibrationInstitute
      *
      * @param string $calibrationInstitute
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setCalibrationInstitute($calibrationInstitute)
     {
@@ -374,7 +397,7 @@ class EquipmentData
      *
      * @param \DateTime $createdDatetime
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setCreatedDatetime($createdDatetime)
     {
@@ -394,35 +417,11 @@ class EquipmentData
     }
 
     /**
-     * Set comment
-     *
-     * @param string $comment
-     *
-     * @return EquipmentData
-     */
-    public function setComment($comment)
-    {
-        $this->comment = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Get comment
-     *
-     * @return string
-     */
-    public function getComment()
-    {
-        return $this->comment;
-    }
-
-    /**
      * Set isoStandard
      *
      * @param string $isoStandard
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setIsoStandard($isoStandard)
     {
@@ -446,7 +445,7 @@ class EquipmentData
      *
      * @param string $calibrationInterval
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setCalibrationInterval($calibrationInterval)
     {
@@ -465,39 +464,12 @@ class EquipmentData
         return $this->calibrationInterval;
     }
 
-
-    /**
-     * Set boxStorage
-     *
-     * @param boolean $boxStorage
-     *
-     * @return EquipmentData
-     */
-    public function setBoxStorage($boxStorage)
-    {
-        $this->boxStorage = $boxStorage;
-
-        return $this;
-    }
-
-    /**
-     * Get boxStorage
-     *
-     * @return boolean
-     */
-    public function getBoxStorage()
-    {
-        return $this->boxStorage;
-    }
-
-
-
     /**
      * Set nextCalibration
      *
      * @param \DateTime $nextCalibration
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setNextCalibration($nextCalibration)
     {
@@ -517,37 +489,27 @@ class EquipmentData
     }
 
     /**
-     * Add equipmentType
+     * Set boxStorage
      *
-     * @param \AppBundle\Entity\equipmentType $equipmentType
+     * @param boolean $boxStorage
      *
-     * @return EquipmentData
+     * @return Equipment
      */
-    public function addEquipmentType(\AppBundle\Entity\equipmentType $equipmentType)
+    public function setBoxStorage($boxStorage)
     {
-        $this->EquipmentTypes[] = $equipmentType;
+        $this->boxStorage = $boxStorage;
 
         return $this;
     }
 
     /**
-     * Remove equipmentType
+     * Get boxStorage
      *
-     * @param \AppBundle\Entity\equipmentType $equipmentType
+     * @return boolean
      */
-    public function removeEquipmentType(\AppBundle\Entity\equipmentType $equipmentType)
+    public function getBoxStorage()
     {
-        $this->EquipmentTypes->removeElement($equipmentType);
-    }
-
-    /**
-     * Get equipmentTypes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEquipmentTypes()
-    {
-        return $this->EquipmentTypes;
+        return $this->boxStorage;
     }
 
     /**
@@ -555,7 +517,7 @@ class EquipmentData
      *
      * @param boolean $status
      *
-     * @return EquipmentData
+     * @return Equipment
      */
     public function setStatus($status)
     {
@@ -572,5 +534,39 @@ class EquipmentData
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Add type
+     *
+     * @param \AppBundle\Entity\classification $type
+     *
+     * @return Equipment
+     */
+    public function addType(\AppBundle\Entity\classification $type)
+    {
+        $this->Types[] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Remove type
+     *
+     * @param \AppBundle\Entity\classification $type
+     */
+    public function removeType(\AppBundle\Entity\classification $type)
+    {
+        $this->Types->removeElement($type);
+    }
+
+    /**
+     * Get types
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTypes()
+    {
+        return $this->Types;
     }
 }

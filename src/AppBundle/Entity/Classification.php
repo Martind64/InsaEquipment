@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="equipment_type")
+ * @ORM\Table(name="classification")
  */
-class EquipmentType
+class Classification
 {
     /**
      * @ORM\Column(type="integer")
@@ -23,14 +23,15 @@ class EquipmentType
     protected $type;
 
     /**
-     * @ORM\ManyToMany(targetEntity="EquipmentData", mappedBy="equipmentTypes")
+     * @ORM\ManyToMany(targetEntity="Equipment", mappedBy="types")
      **/
-    protected $equipmentData;
+    protected $equipment;
 
     public function __construct()
     {
-        $this->equipmentData = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->equipment = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
 
     /**
@@ -48,7 +49,7 @@ class EquipmentType
      *
      * @param string $type
      *
-     * @return Type
+     * @return Classification
      */
     public function setType($type)
     {
@@ -68,36 +69,36 @@ class EquipmentType
     }
 
     /**
-     * Add equipmentDatum
+     * Add equipment
      *
-     * @param \AppBundle\Entity\EquipmentData $equipmentDatum
+     * @param \AppBundle\Entity\Equipment $equipment
      *
-     * @return Type
+     * @return Classification
      */
-    public function addEquipmentDatum(\AppBundle\Entity\EquipmentData $equipmentDatum)
+    public function addEquipment(\AppBundle\Entity\Equipment $equipment)
     {
-        $this->equipmentData[] = $equipmentDatum;
+        $this->equipment[] = $equipment;
 
         return $this;
     }
 
     /**
-     * Remove equipmentDatum
+     * Remove equipment
      *
-     * @param \AppBundle\Entity\EquipmentData $equipmentDatum
+     * @param \AppBundle\Entity\Equipment $equipment
      */
-    public function removeEquipmentDatum(\AppBundle\Entity\EquipmentData $equipmentDatum)
+    public function removeEquipment(\AppBundle\Entity\Equipment $equipment)
     {
-        $this->equipmentData->removeElement($equipmentDatum);
+        $this->equipment->removeElement($equipment);
     }
 
     /**
-     * Get equipmentData
+     * Get equipment
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getEquipmentData()
+    public function getEquipment()
     {
-        return $this->equipmentData;
+        return $this->equipment;
     }
 }
