@@ -33,16 +33,6 @@ class InfoType extends AbstractType
                         ->orderBy('c.id', 'ASC');
                 }
             ])
-            ->add('equipment', 'entity', [
-                'class' => Equipment::class,
-                'property' => 'equipmentID',
-                'empty_value' => 'select equipment',
-                'query_builder' => function(EntityRepository $er)
-                {
-                    return $er->createQueryBuilder('c')
-                        ->orderBy('c.equipmentID', 'ASC');
-                }
-            ])
             ->add('measuredAt', 'text', array('attr' => array('class' => 'form-control')))
             ->add('uncertaintyRequests', 'text', array('attr' => array('class' => 'form-control')))
             ->add('actualUncertainty', 'text', array('attr' => array('class' => 'form-control')))
