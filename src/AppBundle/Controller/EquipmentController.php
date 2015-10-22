@@ -39,6 +39,36 @@ class EquipmentController extends ControllerBase
 
     }
 
+    /**
+     * @Route("/updateEquipment/{id}", name="updateEquipment")
+     * @Template()
+     */
+
+    public function updateEquipmentAction(Request $request, $id)
+    {
+
+        $em = $this->getEM();
+        $equipment = $em->getRepository('AppBundle:Equipment')->find($id);
+
+        $Form = $this->createForm(new EquipmentType(), $equipment);
+        $Form->handleRequest($request);
+
+
+        if(!$id)
+        {
+            throw $this->createNotFountException('There is no product with that id');
+        }
+        if($Form->isValid())
+        {
+            $em->flush($equipment);
+        }
+
+        return[
+            'Form' => $Form->createView(),
+            'equipment' => $equipment
+        ];
+    }
+
 
 
 
@@ -76,37 +106,6 @@ class EquipmentController extends ControllerBase
         $em->flush();
 
     }
-
-    /**
-     * @Route("/updateEquipment/{id}", name="updateEquipment")
-     * @Template()
-     */
-
-    public function updateEquipmentAction(Request $request, $id)
-    {
-
-        $em = $this->getEM();
-        $equipment = $em->getRepository('AppBundle:Equipment')->find($id);
-
-        $Form = $this->createForm(new EquipmentType(), $equipment);
-        $Form->handleRequest($request);
-
-
-        if(!$id)
-        {
-            throw $this->createNotFountException('There is no product with that id');
-        }
-        if($Form->isValid())
-        {
-            $em->flush($equipment);
-        }
-
-        return[
-            'Form' => $Form->createView(),
-            'equipment' => $equipment
-        ];
-    }
-
 
 
     /**

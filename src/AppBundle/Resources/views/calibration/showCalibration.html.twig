@@ -47,19 +47,43 @@
             </div><!-- Sidebar End -->
             <!-- Flexible Content END -->
 
+            <div class="col-lg-10">
+
 
             <table class="table">
-
-                {% for c in calibration %}
+                <th>
                     <tr>
-                        <td></td>
+                        <th>Unit</th>
+                        <th>Prefix</th>
+                        <th>uncertainty Requests</th>
+                        <th>Measured At</th>
+                        <th>Actual Uncertainty</th>
+                        <th>Lab Reference</th>
+                        <th>uut</th>
+                        <th>deviation</th>
+                        <th>Adjustment Limit</th>
+                        <th>comment</th>
+                    </tr>
+                </th>
+                {% for c in info %}
+                    <tr>
+                        <td>unit</td>
+                        <td>prefix</td>
+                        <td>{{ c.uncertaintyRequests }} </td>
+                        <td>{{ c.measuredAt}} </td>
+                        <td>{{ c.actualUncertainty }} </td>
+                        <td>{{ c.labReference }} </td>
+                        <td>{{ c.uut }} </td>
+                        <td>{{ c.deviation }} </td>
+                        <td>{{ c.adjustmentLimit }} </td>
+                        <td>{{ c.comment }} </td>
                     </tr>
                 {% endfor %}
 
 
             </table>
 
-
+            </div>
 
         </div>
     </div> <!-- Wrapper End-->
