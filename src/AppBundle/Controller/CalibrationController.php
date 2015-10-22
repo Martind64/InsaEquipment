@@ -30,7 +30,7 @@ class CalibrationController extends ControllerBase
         if($Form->isValid())
         {
             $this->flushAction($calibration);
-            return $this->render('createInfo/'.$calibration->getId());
+            return $this->redirectToRoute('addInfo', ['id' => $calibration->getId()]);
         }
 
         return[
@@ -44,15 +44,23 @@ class CalibrationController extends ControllerBase
 
     public function addInfoAction(Request $request, $id)
     {
-
+        $em = $this->getEM();
+        $calibration = $em->getRepository('AppBundle:Calibration')->find($id);
 
         $info = new Info();
-
         $infoForm = $this->createForm(new InfoType(), $info);
         $infoForm->handleRequest($request);
 
+
+
+        if(!$id)
+        {
+            throw $this->createNotFoundException('No calibration with that id exists');
+        }
+
         if($infoForm->isValid())
         {
+            $info->setCalibration($calibration);
             $this->flushAction($info);
         }
 
