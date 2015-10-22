@@ -16,16 +16,37 @@ use Symfony\Component\HttpFoundation\Request;
 class CalibrationController extends ControllerBase
 {
     /**
-     * @Route("/createCalibration", name="addInfo")
+     * @Route("/createCalibration", name="createCalibration")
      * @Template()
      */
 
-    public function addInfoAction(Request $request)
+    public function createCalibrationAction(Request $request)
     {
-        $info = new Info();
         $calibration = new Calibration();
-        $calibrationForm = $this->createForm(new CalibrationType(), $calibration);
-        $calibrationForm->handleRequest($request);
+
+        $Form = $this->createForm(new CalibrationType(), $calibration);
+        $Form->handleRequest($request);
+
+        if($Form->isValid())
+        {
+            $this->flushAction($calibration);
+            return $this->render('createInfo/'.$calibration->getId());
+        }
+
+        return[
+            'Form' => $Form->createView()
+        ];
+    }
+    /**
+     * @Route("/createInfo/{id}", name="addInfo")
+     * @Template()
+     */
+
+    public function addInfoAction(Request $request, $id)
+    {
+
+
+        $info = new Info();
 
         $infoForm = $this->createForm(new InfoType(), $info);
         $infoForm->handleRequest($request);
@@ -38,10 +59,22 @@ class CalibrationController extends ControllerBase
 
         return [
             'infoForm' => $infoForm->createView(),
-            'calibrationForm' => $calibrationForm->createView()
         ];
     }
-//    /**
+
+
+
+
+    public function flushAction($data)
+    {
+        $em = $this->getEM();
+
+        $em->persist($data);
+        $em->flush();
+
+    }
+
+    //    /**
 //     * @Route("/createCalibration", name="addCalibration")
 //     * @Template()
 //     */
@@ -69,13 +102,4 @@ class CalibrationController extends ControllerBase
 //            'calibrationInfoForm' => $calibrationInfoForm->createView()]);
 //    }
 
-
-    public function flushAction($data)
-    {
-        $em = $this->getEM();
-
-        $em->persist($data);
-        $em->flush();
-
-    }
 }

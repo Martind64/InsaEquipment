@@ -48,7 +48,7 @@ class Calibration
      * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Info")
      * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")
      */
-    protected $EquipmentData;
+    protected $Equipment;
 
 
     /**
@@ -109,27 +109,52 @@ class Calibration
         return $this->status;
     }
 
+
     /**
-     * Set equipmentData
+     * Set calibrationInstitute
      *
-     * @param \AppBundle\Entity\Equipment $equipmentData
+     * @param string $calibrationInstitute
      *
      * @return Calibration
      */
-    public function setEquipmentData(\AppBundle\Entity\Equipment $equipmentData = null)
+    public function setCalibrationInstitute($calibrationInstitute)
     {
-        $this->EquipmentData = $equipmentData;
+        $this->calibrationInstitute = $calibrationInstitute;
 
         return $this;
     }
 
     /**
-     * Get equipmentData
+     * Get calibrationInstitute
      *
-     * @return \AppBundle\Entity\Equipment
+     * @return string
      */
-    public function getEquipmentData()
+    public function getCalibrationInstitute()
     {
-        return $this->EquipmentData;
+        return $this->calibrationInstitute;
+    }
+
+    /**
+     * Set approvedBy
+     *
+     * @param string $approvedBy
+     *
+     * @return Calibration
+     */
+    public function setApprovedBy($approvedBy)
+    {
+        $this->approvedBy = $approvedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get approvedBy
+     *
+     * @return string
+     */
+    public function getApprovedBy()
+    {
+        return $this->approvedBy;
     }
 }
