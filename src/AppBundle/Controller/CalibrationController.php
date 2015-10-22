@@ -70,6 +70,26 @@ class CalibrationController extends ControllerBase
         ];
     }
 
+    /**
+     * @Route("/calibration/{id}", name="showCalibration")
+     * @Template()
+     */
+    public function showCalibrationAction($id)
+    {
+        $em = $this->getEM()->getRepository('AppBundle:Calibration');
+        $calibration = $em->findByEquipment($id);
+
+
+
+
+        return [
+            'calibration' => $calibration
+        ];
+
+    }
+
+
+
 
 
 

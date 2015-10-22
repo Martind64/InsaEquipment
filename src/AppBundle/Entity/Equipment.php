@@ -114,9 +114,6 @@ class Equipment
         $this->types = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
-
-
     /**
      * Get id
      *

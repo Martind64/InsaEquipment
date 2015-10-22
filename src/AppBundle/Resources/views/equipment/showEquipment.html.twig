@@ -44,7 +44,7 @@
                 <p><i>created: {{ equipment.createdDatetime|date("d-m-y  H:i:s") }} - status: {{ equipment.status?'active':'inactive' }}</i></p>
                 <hr>
                     <div class="col-lg-3">
-                        <p><b>Id:</b> {{ equipment.id }}</p>
+                        <p><b>Id:</b> {{ equipment.equipmentID }}</p>
                         <p><b>iso standard:</b> {{ equipment.isoStandard }}</p>
                         <p><b>serial nr.:</b> {{ equipment.serialNr }}</p>
                         <p><b>category:</b> {{ equipment.category }}</p>
@@ -70,10 +70,21 @@
     <div class="container" id="calibrations">
 
         <table class="table table-hover">
-
+            <tc><h3>Calibrations</h3></tc>
+            <th>
             <tr>
-                <td>hej</td>
+                <th>date</th>
+                <th>institute</th>
+                <th>status</th>
             </tr>
+                </th>
+            {% for c in calibration %}
+            <tr onclick="document.location = 'http://localhost:8000/calibration/{{ c.ID }}'">
+                <td>{{ c.calibrationDate|date('d-m-y') }}</td>
+                <td>{{ c.calibrationInstitute }}</td>
+                <td>{{ c.status?'active':'inactive' }}</td>
+            </tr>
+            {% endfor %}
 
 
         </table>

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Calibration
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\CalibrationRepository")
  */
 class Calibration
 {
@@ -48,7 +48,7 @@ class Calibration
      * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Info")
      * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")
      */
-    protected $Equipment;
+    protected $equipment;
 
 
     /**
@@ -156,5 +156,30 @@ class Calibration
     public function getApprovedBy()
     {
         return $this->approvedBy;
+    }
+
+
+    /**
+     * Set equipment
+     *
+     * @param \AppBundle\Entity\Equipment $equipment
+     *
+     * @return Calibration
+     */
+    public function setEquipment(\AppBundle\Entity\Equipment $equipment = null)
+    {
+        $this->equipment = $equipment;
+
+        return $this;
+    }
+
+    /**
+     * Get equipment
+     *
+     * @return \AppBundle\Entity\Equipment
+     */
+    public function getEquipment()
+    {
+        return $this->equipment;
     }
 }
