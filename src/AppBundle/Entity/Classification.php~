@@ -23,9 +23,10 @@ class Classification
     protected $type;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Equipment", mappedBy="classification")
+     * @ORM\ManyToMany(targetEntity="Equipment", mappedBy="types")
      **/
     protected $equipment;
+
 
     public function __construct()
     {

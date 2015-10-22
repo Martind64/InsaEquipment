@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Calibration;
 use AppBundle\Form\Type\InfoType;
+use AppBundle\Form\Type\CalibrationType;
 use AppBundle\Entity\Info;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -22,6 +23,9 @@ class CalibrationController extends ControllerBase
     public function addInfoAction(Request $request)
     {
         $info = new Info();
+        $calibration = new Calibration();
+        $calibrationForm = $this->createForm(new CalibrationType(), $calibration);
+        $calibrationForm->handleRequest($request);
 
         $infoForm = $this->createForm(new InfoType(), $info);
         $infoForm->handleRequest($request);
@@ -33,7 +37,8 @@ class CalibrationController extends ControllerBase
 
 
         return [
-            'infoForm' => $infoForm->createView()
+            'infoForm' => $infoForm->createView(),
+            'calibrationForm' => $calibrationForm->createView()
         ];
     }
 //    /**

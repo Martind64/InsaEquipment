@@ -87,17 +87,6 @@ class Info
 
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $calibrationInstitute;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-
-    private $approvedBy;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Calibration", inversedBy="Info")
      * @ORM\JoinColumn(name="calibration_id", referencedColumnName="id")
      */
@@ -355,53 +344,6 @@ class Info
         return $this->prefix;
     }
 
-    /**
-     * Set calibrationInstitute
-     *
-     * @param string $calibrationInstitute
-     *
-     * @return Info
-     */
-    public function setCalibrationInstitute($calibrationInstitute)
-    {
-        $this->calibrationInstitute = $calibrationInstitute;
-
-        return $this;
-    }
-
-    /**
-     * Get calibrationInstitute
-     *
-     * @return string
-     */
-    public function getCalibrationInstitute()
-    {
-        return $this->calibrationInstitute;
-    }
-
-    /**
-     * Set approvedBy
-     *
-     * @param string $approvedBy
-     *
-     * @return Info
-     */
-    public function setApprovedBy($approvedBy)
-    {
-        $this->approvedBy = $approvedBy;
-
-        return $this;
-    }
-
-    /**
-     * Get approvedBy
-     *
-     * @return string
-     */
-    public function getApprovedBy()
-    {
-        return $this->approvedBy;
-    }
 
     /**
      * Set calibration

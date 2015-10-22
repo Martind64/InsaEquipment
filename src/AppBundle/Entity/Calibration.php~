@@ -31,6 +31,18 @@ class Calibration
      */
     protected $status;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $calibrationInstitute;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+
+    private $approvedBy;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Info")
@@ -38,4 +50,86 @@ class Calibration
      */
     protected $EquipmentData;
 
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set calibrationDate
+     *
+     * @param \DateTime $calibrationDate
+     *
+     * @return Calibration
+     */
+    public function setCalibrationDate($calibrationDate)
+    {
+        $this->calibrationDate = $calibrationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get calibrationDate
+     *
+     * @return \DateTime
+     */
+    public function getCalibrationDate()
+    {
+        return $this->calibrationDate;
+    }
+
+    /**
+     * Set status
+     *
+     * @param boolean $status
+     *
+     * @return Calibration
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return boolean
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set equipmentData
+     *
+     * @param \AppBundle\Entity\Equipment $equipmentData
+     *
+     * @return Calibration
+     */
+    public function setEquipmentData(\AppBundle\Entity\Equipment $equipmentData = null)
+    {
+        $this->EquipmentData = $equipmentData;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentData
+     *
+     * @return \AppBundle\Entity\Equipment
+     */
+    public function getEquipmentData()
+    {
+        return $this->EquipmentData;
+    }
 }
