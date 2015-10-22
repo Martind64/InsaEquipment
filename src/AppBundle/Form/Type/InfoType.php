@@ -4,6 +4,7 @@
 namespace AppBundle\Form\Type;
 use AppBundle\Entity\Prefix;
 use AppBundle\Entity\Unit;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -15,22 +16,22 @@ class InfoType extends AbstractType
         $builder
             ->add('unit', 'entity', [
                 'class' => Unit::class,
-                'property' => 'id',
+                'property' => 'unit',
                 'empty_value' => 'select unit',
                 'query_builder' => function(EntityRepository $er)
                 {
                     return $er->createQueryBuilder('c')
-                        ->orderBy('c.id', 'ASC');
+                        ->orderBy('c.unit', 'ASC');
                 }
             ])
             ->add('prefix', 'entity', [
                 'class' => prefix::class,
-                'property' => 'id',
+                'property' => 'prefix',
                 'empty_value' => 'select prefix',
                 'query_builder' => function(EntityRepository $er)
                 {
                     return $er->createQueryBuilder('c')
-                        ->orderBy('c.id', 'ASC');
+                        ->orderBy('c.prefix', 'ASC');
                 }
             ])
             ->add('measuredAt', 'text', array('attr' => array('class' => 'form-control')))
