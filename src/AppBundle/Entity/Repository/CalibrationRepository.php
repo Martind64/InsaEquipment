@@ -14,6 +14,8 @@ class CalibrationRepository extends \Doctrine\ORM\EntityRepository
 
     public function findById($id)
     {
+        $query = $this->getEntityManager()
+            ->createQuery('');
 
     }
 
