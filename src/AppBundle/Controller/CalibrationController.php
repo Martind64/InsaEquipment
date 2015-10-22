@@ -3,9 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Calibration;
+use AppBundle\Entity\Prefix;
+use AppBundle\Entity\Unit;
 use AppBundle\Form\Type\InfoType;
 use AppBundle\Form\Type\CalibrationType;
 use AppBundle\Entity\Info;
+use AppBundle\Form\Type\PrefixType;
+use AppBundle\Form\Type\UnitType;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -79,15 +83,57 @@ class CalibrationController extends ControllerBase
         $em = $this->getEM()->getRepository('AppBundle:Calibration');
         $calibration = $em->findByEquipment($id);
 
-
-
-
         return [
             'calibration' => $calibration
         ];
 
     }
 
+    /**
+     * @Route("/createUnit", name="createUnit")
+     * @Template
+     */
+    public function createUnitAction(Request $request)
+    {
+        $unit = new Unit();
+
+        $form = $this->createForm(new UnitType(), $unit);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $this->flushAction($unit);
+        }
+
+        return [
+            'Form' => $form->createView()
+        ];
+
+    }
+
+    /**
+     * @Route("createPrefix", name="createPrefix")
+     * @Template()
+     */
+
+    public function createPrefixAction(Request $request)
+    {
+        $prefix = new Prefix();
+
+        $form = $this->createForm(new PrefixType(), $prefix);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $this->flushAction($prefix);
+        }
+
+
+        return [
+            'Form' => $form->createView()
+        ];
+
+    }
 
 
 

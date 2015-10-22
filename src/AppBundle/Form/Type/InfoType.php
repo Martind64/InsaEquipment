@@ -2,6 +2,8 @@
 
 
 namespace AppBundle\Form\Type;
+use AppBundle\Entity\Prefix;
+use AppBundle\Entity\Unit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -11,8 +13,36 @@ class InfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('unit', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('prefix', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('unit', 'entity', [
+                'class' => Unit::class,
+                'property' => 'id',
+                'empty_value' => 'select unit',
+                'query_builder' => function(EntityRepository $er)
+                {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.id', 'ASC');
+                }
+            ])
+            ->add('prefix', 'entity', [
+                'class' => prefix::class,
+                'property' => 'id',
+                'empty_value' => 'select prefix',
+                'query_builder' => function(EntityRepository $er)
+                {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.id', 'ASC');
+                }
+            ])
+            ->add('equipment', 'entity', [
+                'class' => Equipment::class,
+                'property' => 'equipmentID',
+                'empty_value' => 'select equipment',
+                'query_builder' => function(EntityRepository $er)
+                {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.equipmentID', 'ASC');
+                }
+            ])
             ->add('measuredAt', 'text', array('attr' => array('class' => 'form-control')))
             ->add('uncertaintyRequests', 'text', array('attr' => array('class' => 'form-control')))
             ->add('actualUncertainty', 'text', array('attr' => array('class' => 'form-control')))
