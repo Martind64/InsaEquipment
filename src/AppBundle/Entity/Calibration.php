@@ -43,7 +43,6 @@ class Calibration
     private $approvedBy;
 
 
-
     /**
      * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Info")
      * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")

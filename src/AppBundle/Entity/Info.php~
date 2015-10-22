@@ -69,20 +69,18 @@ class Info
 
 
     /**
-     * @ORM\Column(type="text", length=20)
+     * @ORM\ManyToOne(targetEntity="Unit", inversedBy="Info")
+     * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
      */
-    private $unit;
+    protected $unit;
+
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\ManyToOne(targetEntity="Prefix", inversedBy="Info")
+     * @ORM\JoinColumn(name="prefix_id", referencedColumnName="id")
      */
-    private $prefix;
+    protected $prefix;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
 
 
     /**
@@ -295,54 +293,6 @@ class Info
         return $this->measuredAt;
     }
 
-    /**
-     * Set unit
-     *
-     * @param string $unit
-     *
-     * @return Info
-     */
-    public function setUnit($unit)
-    {
-        $this->unit = $unit;
-
-        return $this;
-    }
-
-    /**
-     * Get unit
-     *
-     * @return string
-     */
-    public function getUnit()
-    {
-        return $this->unit;
-    }
-
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return Info
-     */
-    public function setPrefix($prefix)
-    {
-        $this->prefix = $prefix;
-
-        return $this;
-    }
-
-    /**
-     * Get prefix
-     *
-     * @return string
-     */
-    public function getPrefix()
-    {
-        return $this->prefix;
-    }
-
 
     /**
      * Set calibration
@@ -366,5 +316,53 @@ class Info
     public function getCalibration()
     {
         return $this->calibration;
+    }
+
+    /**
+     * Set unit
+     *
+     * @param \AppBundle\Entity\Unit $unit
+     *
+     * @return Info
+     */
+    public function setUnit(\AppBundle\Entity\Unit $unit = null)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return \AppBundle\Entity\Unit
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
+     * Set prefix
+     *
+     * @param \AppBundle\Entity\Prefix $prefix
+     *
+     * @return Info
+     */
+    public function setPrefix(\AppBundle\Entity\Prefix $prefix = null)
+    {
+        $this->prefix = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * Get prefix
+     *
+     * @return \AppBundle\Entity\Prefix
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
     }
 }

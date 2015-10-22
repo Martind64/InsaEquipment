@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="unit")
+ * @ORM\Table(name="prefix")
  */
-class Unit
+class Prefix
 {
     /**
      * @ORM\Column(type="integer")
@@ -20,7 +20,8 @@ class Unit
     /**
      * @ORM\Column(type="text", length=100)
      */
-    protected $unit;
+    protected $prefix;
+    
 
 
 
@@ -35,26 +36,26 @@ class Unit
     }
 
     /**
-     * Set unit
+     * Set prefix
      *
-     * @param string $unit
+     * @param string $prefix
      *
-     * @return Unit
+     * @return Prefix
      */
-    public function setUnit($unit)
+    public function setPrefix($prefix)
     {
-        $this->unit = $unit;
+        $this->prefix = $prefix;
 
         return $this;
     }
 
     /**
-     * Get unit
+     * Get prefix
      *
      * @return string
      */
-    public function getUnit()
+    public function getPrefix()
     {
-        return $this->unit;
+        return $this->prefix;
     }
 }
