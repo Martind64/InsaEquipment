@@ -165,13 +165,13 @@ class EquipmentController extends ControllerBase
 
 
     /**
-     * @Route("/test", name="testPage")
+     * @Route("/test/{id}", name="testPage")
      */
 
-    public function testViews()
+    public function testViews($id)
     {
         $em = $this->getEM()->getRepository('AppBundle:Calibration');
-        $calibration = $em->gd();
+        $calibration = $em->findCalibrationJoinedWithInfoUnitPrefix($id);
 
 
 

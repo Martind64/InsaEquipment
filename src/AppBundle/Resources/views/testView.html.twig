@@ -66,10 +66,21 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-2">
-                    <table>
+                <div class="col-lg-5">
+                    <table class="table">
+                        <th>
+                            <tr>
+                                <th>id</th>
+                                <th>measured at</th>
+                            </tr>
+                        </th>
                         {% for i in id %}
-                            {{ i.id }}
+                        <tr>
+                            <td>{{ i.id }}</td>
+                            <td>{{ i.measuredAt }}</td>
+                            <td>{{ i.prefix.prefix }}</td>
+                        </tr>
+
                         {% endfor %}
                     </table>
 

@@ -42,9 +42,14 @@ class Calibration
 
     private $approvedBy;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Info", mappedBy="calibration")
+     */
+    private $info;
+
 
     /**
-     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Info")
+     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Calibration")
      * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")
      */
     protected $equipment;
@@ -180,5 +185,46 @@ class Calibration
     public function getEquipment()
     {
         return $this->equipment;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->info = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add info
+     *
+     * @param \AppBundle\Entity\Info $info
+     *
+     * @return Calibration
+     */
+    public function addInfo(\AppBundle\Entity\Info $info)
+    {
+        $this->info[] = $info;
+
+        return $this;
+    }
+
+    /**
+     * Remove info
+     *
+     * @param \AppBundle\Entity\Info $info
+     */
+    public function removeInfo(\AppBundle\Entity\Info $info)
+    {
+        $this->info->removeElement($info);
+    }
+
+    /**
+     * Get info
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInfo()
+    {
+        return $this->info;
     }
 }

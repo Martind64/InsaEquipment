@@ -42,10 +42,14 @@ class Calibration
 
     private $approvedBy;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Info", mappedBy="calibration")
+     */
+    private $info;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Info")
+     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Calibration")
      * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")
      */
     protected $equipment;

@@ -80,21 +80,10 @@ class CalibrationController extends ControllerBase
      */
     public function showCalibrationAction($id)
     {
-//        $em = $this->getEM()->getRepository('AppBundle:Calibration');
-//        $calibration = $em->findByEquipment($id);
-
-//        $emUnit = $this->getEM()->getRepository('AppBundle:Unit');
-//        $unit = $emUnit->findByUnit();
-//
-//        $emPrefix = $this->getEM()->getRepository('AppBundle:Prefix');
-//        $prefix = $emUnit->findByPrefix();
-
-
-        $em = $this->getEM()->getRepository('AppBundle:Info');
-        $info = $em->findByCalibration($id);
+        $em = $this->getEM()->getRepository('AppBundle:Calibration');
+        $info = $em->findCalibration($id);
 
         return [
-//            'calibration' => $calibration,
             'info'=> $info
         ];
 
@@ -145,9 +134,6 @@ class CalibrationController extends ControllerBase
         ];
 
     }
-
-
-
 
 
     public function flushAction($data)

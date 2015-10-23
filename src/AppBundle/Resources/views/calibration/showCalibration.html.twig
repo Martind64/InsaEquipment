@@ -55,8 +55,8 @@
                     <tr>
                         <th>Unit</th>
                         <th>Prefix</th>
-                        <th>uncertainty Requests</th>
                         <th>Measured At</th>
+                        <th>uncertainty Requests</th>
                         <th>Actual Uncertainty</th>
                         <th>Lab Reference</th>
                         <th>uut</th>
@@ -65,12 +65,12 @@
                         <th>comment</th>
                     </tr>
                 </th>
-                {% for i in info   %}
+                {% for i in info %}
                     <tr>
-                        <td>unit</td>
-                        <td>prefix</td>
-                        <td>{{ i.uncertaintyRequests }} </td>
+                        <td>{{ i.unit.unit }}</td>
+                        <td>{{ i.prefix.prefix }}</td>
                         <td>{{ i.measuredAt}} </td>
+                        <td>{{ i.uncertaintyRequests }} </td>
                         <td>{{ i.actualUncertainty }} </td>
                         <td>{{ i.labReference }} </td>
                         <td>{{ i.uut }} </td>
