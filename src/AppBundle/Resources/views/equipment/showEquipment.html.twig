@@ -76,28 +76,23 @@
                     </div>
 
         <div class="col-lg-10">
-
-        <table class="table table-hover">
-            <tc><h3>Calibrations</h3></tc>
-            <th>
-                <tr>
-                    <th>date</th>
-                    <th>institute</th>
-                    <th>status</th>
-                </tr>
-            </th>
-            {% for c in calibration %}
-                <tr onclick="document.location = 'http://localhost:8000/calibration/{{ c.ID }}'">
-                    <td>{{ c.calibrationDate|date('d-m-y') }}</td>
-                    <td>{{ c.calibrationInstitute }}</td>
-                    <td>{{ c.status?'active':'inactive' }}</td>
-                </tr>
-            {% endfor %}
-
-
-        </table>
-
-
+            <table class="table table-hover">
+                <tc><h3>Calibrations</h3></tc>
+                <th>
+                    <tr>
+                        <th>date</th>
+                        <th>institute</th>
+                        <th>status</th>
+                    </tr>
+                </th>
+                {% for c in calibration %}
+                    <tr onclick="document.location = 'http://localhost:8000/calibration/{{ c.ID }}'">
+                        <td>{{ c.calibrationDate|date('d-m-y') }}</td>
+                        <td>{{ c.calibrationInstitute }}</td>
+                        <td>{{ c.status?'active':'inactive' }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
     </div>
 
 </div><!-- Wrapper End -->
