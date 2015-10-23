@@ -65,18 +65,18 @@
                         <th>comment</th>
                     </tr>
                 </th>
-                {% for c in info %}
+                {% for i in info   %}
                     <tr>
                         <td>unit</td>
                         <td>prefix</td>
-                        <td>{{ c.uncertaintyRequests }} </td>
-                        <td>{{ c.measuredAt}} </td>
-                        <td>{{ c.actualUncertainty }} </td>
-                        <td>{{ c.labReference }} </td>
-                        <td>{{ c.uut }} </td>
-                        <td>{{ c.deviation }} </td>
-                        <td>{{ c.adjustmentLimit }} </td>
-                        <td>{{ c.comment }} </td>
+                        <td>{{ i.uncertaintyRequests }} </td>
+                        <td>{{ i.measuredAt}} </td>
+                        <td>{{ i.actualUncertainty }} </td>
+                        <td>{{ i.labReference }} </td>
+                        <td>{{ i.uut }} </td>
+                        <td>{{ i.deviation }} </td>
+                        <td>{{ i.adjustmentLimit }} </td>
+                        <td>{{ i.comment }} </td>
                     </tr>
                 {% endfor %}
 

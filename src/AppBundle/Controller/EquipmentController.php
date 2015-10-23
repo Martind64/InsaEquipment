@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Classification;
+use AppBundle\Entity\Repository\CalibrationRepository;
 use AppBundle\Form\Type\EquipmentType;
 use AppBundle\Form\Type\ClassificationType;
 use Symfony\Component\HttpFoundation\Response;
@@ -169,11 +170,12 @@ class EquipmentController extends ControllerBase
 
     public function testViews()
     {
-        $em = $this->getEM()->getRepository('AppBundle:EquipmentData');
-        $equipment = $em->findAll();
+        $em = $this->getEM()->getRepository('AppBundle:Calibration');
+        $calibration = $em->gd();
 
 
-        return $this->render('AppBundle::testView.html.twig', ['equipment' => $equipment]);
+
+        return $this->render('AppBundle::testView.html.twig', ['id' => $calibration]);
     }
 
 

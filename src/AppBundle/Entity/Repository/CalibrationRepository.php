@@ -12,10 +12,12 @@ class CalibrationRepository extends \Doctrine\ORM\EntityRepository
 {
 
 
-    public function findById($id)
+    public function gd()
     {
-        $query = $this->getEntityManager()
-            ->createQuery('');
+        $query = $this->getEntityManager()->createQuery('SELECT c FROM AppBundle:Calibration c WHERE c.id < 5')
+        ->getResult();
+
+        return $query;
 
     }
 

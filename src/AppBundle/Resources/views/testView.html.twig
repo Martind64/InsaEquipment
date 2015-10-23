@@ -50,9 +50,9 @@
 
             <div class="col-md-4">
                 <select>
-                    {% for e in equipment %}
-                        <option value="id">{{ e.equipmentID }}</option>
-                    {% endfor %}
+                    {#{% for e in equipment %}#}
+                        {#<option value="id">{{ e.equipmentID }}</option>#}
+                    {#{% endfor %}#}
                 </select>
             </div>
             <div class="col-md-4">
@@ -60,13 +60,18 @@
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Equipment
                     <span class="caret"></span> </button>
                     <ul class="dropdown-menu">
-                        {% for e in equipment %}
-                            <a href="#"><li>{{ e.equipmentID }}</li></a>
-                        {% endfor %}
+                        {#{% for e in equipment %}#}
+                            {#<a href="#"><li>{{ e.equipmentID }}</li></a>#}
+                        {#{% endfor %}#}
                     </ul>
                 </div>
 
                 <div class="col-lg-2">
+                    <table>
+                        {% for i in id %}
+                            {{ i.id }}
+                        {% endfor %}
+                    </table>
 
                 </div>
 

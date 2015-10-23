@@ -52,18 +52,18 @@
                         <tc><h1>Equipment</h1></tc>
                         <th>
                             <tr>
-                                <th>Iso Standard</th>
                                 <th>Equipment ID</th>
-                                <th>Model</th>
                                 <th>Serial Nr.</th>
+                                <th>Model</th>
+                                <th>Iso Standard</th>
                             </tr>
                         </th>
                         {% for e in equipment %}
                             <tr onclick="document.location = 'http://localhost:8000/equipment/{{ e.ID }}'">
-                                <td>{{ e.isoStandard }}</td>
                                 <td>{{ e.equipmentID }}</td>
-                                <td>{{ e.model }}</td>
                                 <td>{{ e.serialNr }}</td>
+                                <td>{{ e.model }}</td>
+                                <td>{{ e.isoStandard }}</td>
                             </tr>
                         {% endfor %}
                     </table>

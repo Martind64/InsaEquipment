@@ -90,8 +90,8 @@ class CalibrationController extends ControllerBase
 //        $prefix = $emUnit->findByPrefix();
 
 
-        $emcal = $this->getEM()->getRepository('AppBundle:Info');
-        $info = $emcal->findByCalibration($id);
+        $em = $this->getEM()->getRepository('AppBundle:Info');
+        $info = $em->findByCalibration($id);
 
         return [
 //            'calibration' => $calibration,
