@@ -92,6 +92,7 @@ class CalibrationController extends ControllerBase
         if($form->isValid())
         {
             $this->flushAction($info);
+            return $this->redirectToRoute('showCalibration', ['id' => $info->getCalibration()->getId()]);
         }
 
         return [
