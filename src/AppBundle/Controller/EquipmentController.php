@@ -25,17 +25,21 @@ class EquipmentController extends ControllerBase
     {
         $equipment = new Equipment();
 
-        $equipmentForm = $this->createForm(new EquipmentType(), $equipment);
-        $equipmentForm->handleRequest($request);
+        $form = $this->createForm(new EquipmentType(), $equipment);
+        $form->handleRequest($request);
 
 
-        if($equipmentForm->isValid())
+        if($form->isValid())
         {
             $this->flushAction($equipment);
+            unset($equipment);
+            unset($equipmentForm);
+            $equipment = new Equipment();
+            $form = $this->createForm(new EquipmentType(), $equipment);
         }
 
         return [
-            'equipmentForm' => $equipmentForm->createView()
+            'Form' => $form->createView()
         ];
 
     }
@@ -57,11 +61,12 @@ class EquipmentController extends ControllerBase
 
         if(!$id)
         {
-            throw $this->createNotFountException('There is no product with that id');
+            throw $this->createNotFountException('There is no equipment with that id');
         }
         if($Form->isValid())
         {
             $em->flush($equipment);
+            return $this->redirectToRoute('showEquipment', ['id' => $equipment->getId()]);
         }
 
         return[

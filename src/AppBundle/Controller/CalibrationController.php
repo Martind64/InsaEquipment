@@ -54,22 +54,26 @@ class CalibrationController extends ControllerBase
         $calibration = $em->getRepository('AppBundle:Calibration')->find($id);
 
         $info = new Info();
-        $infoForm = $this->createForm(new InfoType(), $info);
-        $infoForm->handleRequest($request);
+        $form = $this->createForm(new InfoType(), $info);
+        $form->handleRequest($request);
 
         if(!$id)
         {
             throw $this->createNotFoundException('No calibration with that id exists');
         }
 
-        if($infoForm->isValid())
+        if($form->isValid())
         {
             $info->setCalibration($calibration);
             $this->flushAction($info);
+            unset($info);
+            unset($infoForm);
+            $info = new Info();
+            $form = $this->createForm(new InfoType(), $info);
         }
 
         return [
-            'infoForm' => $infoForm->createView(),
+            'Form' => $form->createView(),
         ];
     }
 
@@ -108,6 +112,10 @@ class CalibrationController extends ControllerBase
         $form = $this->createForm(new CalibrationType(), $calibration);
         $form->handleRequest($request);
 
+        if(!$id)
+        {
+            throw $this->createNotFountException('There is no Calibration with that id');
+        }
         if($form->isValid())
         {
             $this->flushAction($calibration);
