@@ -74,6 +74,7 @@ class CalibrationController extends ControllerBase
 
         return [
             'Form' => $form->createView(),
+            'calibration' => $calibration
         ];
     }
 

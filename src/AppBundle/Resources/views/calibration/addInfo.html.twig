@@ -53,6 +53,8 @@
                     {{ form_start(Form) }}
                     {{ form_widget(Form) }}
                     {{ form_end(Form) }}
+                    <a href="{{ path('showCalibration', {'id': calibration.id}) }}"><button type="button" class="btn btn-lg btn-primary">Show calibration</button>
+                    </a>
                 </div>
 
             </div>

@@ -49,6 +49,7 @@
                 <p><i>calibrated at: {{ calibration.calibrationDate|date('d-m-y') }} - status: {{ calibration.status?'active':'inactive' }}</i></p>
                 <hr>
             <div class="col-lg-10">
+                <p><b>equipment: </b>{{ calibration.equipment.equipmentId }}</p>
                 <p><b>calibration institute: </b> {{ calibration.calibrationInstitute }}</p>
                 <p><b>approved by: </b>{{ calibration.approvedBy }}</p>
 
