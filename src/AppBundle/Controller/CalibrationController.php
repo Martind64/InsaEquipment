@@ -41,6 +41,8 @@ class CalibrationController extends ControllerBase
             'Form' => $Form->createView()
         ];
     }
+
+
     /**
      * @Route("/createInfo/{id}", name="addInfo")
      * @Template()
@@ -55,8 +57,6 @@ class CalibrationController extends ControllerBase
         $infoForm = $this->createForm(new InfoType(), $info);
         $infoForm->handleRequest($request);
 
-
-
         if(!$id)
         {
             throw $this->createNotFoundException('No calibration with that id exists');
@@ -68,11 +68,11 @@ class CalibrationController extends ControllerBase
             $this->flushAction($info);
         }
 
-
         return [
             'infoForm' => $infoForm->createView(),
         ];
     }
+
 
     /**
      * @Route("/calibration/{id}", name="showCalibration")
@@ -81,10 +81,12 @@ class CalibrationController extends ControllerBase
     public function showCalibrationAction($id)
     {
         $em = $this->getEM()->getRepository('AppBundle:Calibration');
-        $info = $em->findCalibration($id);
+        $info = $em->findCalibrationInfo($id);
+        $calibration = $em->find($id);
 
         return [
-            'info'=> $info
+            'info'=> $info,
+            'calibration' => $calibration
         ];
 
     }
@@ -136,6 +138,7 @@ class CalibrationController extends ControllerBase
     }
 
 
+
     public function flushAction($data)
     {
         $em = $this->getEM();
@@ -144,33 +147,5 @@ class CalibrationController extends ControllerBase
         $em->flush();
 
     }
-
-    //    /**
-//     * @Route("/createCalibration", name="addCalibration")
-//     * @Template()
-//     */
-//    //THIS ACTION IS NOT DONE
-//    //NEED TO VALIDATE BOTH FORMS
-//    //THIS ACTION IS NOT DONE
-//    public function addCalibrationAction(Request $request)
-//    {
-//        $calibration = new Calibration();
-//        $calibrationInfo = new CalibrationInfo();
-//
-//        $calibrationInfoForm = $this->createForm(new CalibrationInfoType(), $calibrationInfo);
-//        $calibrationInfoForm->handleRequest($request);
-//
-//        $calibrationForm = $this->createForm(new CalibrationType(), $calibration);
-//        $calibrationForm->handleRequest($request);
-//
-//
-//        if($calibrationInfoForm->isValid())
-//        {
-//            $this->flushAction($calibrationInfo);
-//        }
-//
-//        return $this->render('AppBundle::addCalibration.html.twig', ['calibrationForm' => $calibrationForm->createView(),
-//            'calibrationInfoForm' => $calibrationInfoForm->createView()]);
-//    }
 
 }

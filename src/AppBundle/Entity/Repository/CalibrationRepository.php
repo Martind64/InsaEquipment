@@ -12,7 +12,7 @@ class CalibrationRepository extends \Doctrine\ORM\EntityRepository
 {
 
 
-    public function findCalibration($id)
+    public function findCalibrationInfo($id)
     {
 
         $query = $this->getEntityManager()
@@ -25,6 +25,7 @@ class CalibrationRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
 
     }
+
 
 
 

@@ -46,13 +46,17 @@
                 </div>
             </div><!-- Sidebar End -->
             <!-- Flexible Content END -->
-                <p><i>calibrated at: - status: (id?) +Institut + Approved By </i></p>
+                <p><i>calibrated at: {{ calibration.calibrationDate|date('d-m-y') }} - status: {{ calibration.status?'active':'inactive' }}</i></p>
                 <hr>
             <div class="col-lg-10">
+                <p><b>calibration institute: </b> {{ calibration.calibrationInstitute }}</p>
+                <p><b>approved by: </b>{{ calibration.approvedBy }}</p>
 
             <table class="table">
-                <tc><h2>Calibration<a href="#"><button class="btn btn-primary btn-lg pull-right" type="button">edit</button></a>
-                    </h2></tc>
+                <tc><h2>Calibration
+                        <a href="{{ path('addInfo', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">add calibration</button></a>
+                    </h2>
+                </tc>
                 <th>
                     <tr>
                         <th>Unit</th>
