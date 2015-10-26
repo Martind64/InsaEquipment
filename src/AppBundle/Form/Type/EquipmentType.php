@@ -41,12 +41,12 @@ class EquipmentType extends AbstractType
                 'expanded' => true,
                 'label' => 'status'
             ])
-//            ->add('types', 'entity', [
-//                'class' => 'AppBundle:Classification',
-//                'property' => 'type',
-//                'expanded' => false,
-//                'multiple' => false
-//            ])
+            ->add('types', 'entity', [
+                'class' => 'AppBundle:Classification',
+                'property' => 'type',
+                'multiple' => true,
+                'expanded' => true
+            ])
 //            ->add('types', 'entity', [
 //                'class' => Equipment::class,
 //                'property' => 'types',
