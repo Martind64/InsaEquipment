@@ -72,7 +72,7 @@
                     </tr>
                 </th>
                 {% for i in info %}
-                    <tr>
+                    <tr onclick="document.location = 'http://localhost:800=/updateInfo/'{{ info.id }}">
                         <td>{{ i.unit.unit }}</td>
                         <td>{{ i.prefix.prefix }}</td>
                         <td>{{ i.measuredAt}} </td>
