@@ -102,6 +102,11 @@ class Equipment
     protected $status;
 
     /**
+     * @ORM\OneToMany(targetEntity="Calibration", mappedBy="equipment")
+     */
+    protected $calibrations;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Classification", inversedBy="equipment")
      * @ORM\JoinTable(name="equipment_classification")
      **/
@@ -112,6 +117,7 @@ class Equipment
     {
         $this->createdDatetime = new DateTime('now');
         $this->types = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->callibrations = new ArrayCollection();
     }
 
     /**
@@ -565,5 +571,39 @@ class Equipment
     public function getTypes()
     {
         return $this->types;
+    }
+
+    /**
+     * Add calibration
+     *
+     * @param \AppBundle\Entity\Calibration $calibration
+     *
+     * @return Equipment
+     */
+    public function addCalibration(\AppBundle\Entity\Calibration $calibration)
+    {
+        $this->calibrations[] = $calibration;
+
+        return $this;
+    }
+
+    /**
+     * Remove calibration
+     *
+     * @param \AppBundle\Entity\Calibration $calibration
+     */
+    public function removeCalibration(\AppBundle\Entity\Calibration $calibration)
+    {
+        $this->calibrations->removeElement($calibration);
+    }
+
+    /**
+     * Get calibrations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCalibrations()
+    {
+        return $this->calibrations;
     }
 }

@@ -136,7 +136,7 @@ class EquipmentController extends ControllerBase
     }
 
     /**
-     * @Route("/equipment/{id}", name="ShowEquipment")
+     * @Route("/equipment/{id}", name="showEquipment")
      * @Template()
      */
 

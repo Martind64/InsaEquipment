@@ -91,10 +91,34 @@ class CalibrationController extends ControllerBase
         }
 
         return [
-            'Form' => $form
+            'Form' => $form->createView()
         ];
 
     }
+
+    /**
+     * @Route("/updateCalibration/{id}", name="updateCalibration")
+     * @Template()
+     */
+    public function updateCalibrationAction(Request $request, $id)
+    {
+        $em = $this->getEM();
+        $calibration = $em->getRepository('AppBundle:Calibration')->find($id);
+
+        $form = $this->createForm(new CalibrationType(), $calibration);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $this->flushAction($calibration);
+            return $this->redirectToRoute('showCalibration', ['id' => $calibration->getId()]);
+        }
+
+        return [
+            'Form' => $form->createView()
+        ];
+    }
+
 
 
 

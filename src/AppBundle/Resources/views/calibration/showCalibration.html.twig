@@ -55,6 +55,7 @@
             <table class="table table-hover" id="myTables">
                 <tc><h2>Calibration
                         <a href="{{ path('addInfo', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">add calibration</button></a>
+                        <a href="{{ path('updateCalibration', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">update</button></a>
                     </h2>
                 </tc>
                 <th>
@@ -72,7 +73,7 @@
                     </tr>
                 </th>
                 {% for i in info %}
-                    <tr onclick="document.location = 'http://localhost:800=/updateInfo/'{{ info.id }}">
+                    <tr onclick="document.location = 'http://localhost:8000/updateInfo/{{ i.Id }}'">
                         <td>{{ i.unit.unit }}</td>
                         <td>{{ i.prefix.prefix }}</td>
                         <td>{{ i.measuredAt}} </td>

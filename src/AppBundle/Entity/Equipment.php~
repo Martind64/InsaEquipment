@@ -102,6 +102,11 @@ class Equipment
     protected $status;
 
     /**
+     * @ORM\OneToMany(targetEntity="Calibration", mappedBy="equipment")
+     */
+    protected $calibrations;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Classification", inversedBy="equipment")
      * @ORM\JoinTable(name="equipment_classification")
      **/
