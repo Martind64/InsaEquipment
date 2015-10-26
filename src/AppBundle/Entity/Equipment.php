@@ -7,6 +7,7 @@ use DateTime;
 /**
  * @ORM\Entity
  * @ORM\Table(name="equipment")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\EquipmentRepository")
  */
 class Equipment
 {

@@ -122,7 +122,7 @@ class EquipmentController extends ControllerBase
     public function showAllEquipmentAction()
     {
         $equipment = $this->getEM()->getRepository('AppBundle:Equipment')
-            ->findall();
+            ->findAllEquipment();
 
 
         return[
