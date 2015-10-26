@@ -17,7 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class EquipmentController extends ControllerBase
 {
     /**
-     * @Route("/createEquipment", name="addEquipmentData")
+     * @Route("/createEquipment", name="createEquipment")
      * @Template()
      */
 
@@ -74,7 +74,7 @@ class EquipmentController extends ControllerBase
 
 
     /**
-     * @Route("/createType", name="addClassification")
+     * @Route("/createType", name="createType")
      * @Template()
      */
 
