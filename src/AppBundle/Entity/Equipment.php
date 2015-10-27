@@ -19,7 +19,7 @@ class Equipment
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="integer", length=100)
      */
     protected $equipmentID;
     /**

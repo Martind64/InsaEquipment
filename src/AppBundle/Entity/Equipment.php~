@@ -19,7 +19,7 @@ class Equipment
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="int", length=100)
      */
     protected $equipmentID;
     /**
@@ -110,8 +110,6 @@ class Equipment
     /**
      * @ORM\ManyToMany(targetEntity="Classification", inversedBy="equipment")
      * @ORM\JoinTable(name="equipment_classification")
-     * joinColumns={@ORM\JoinColumn(name="equipment_id", referencedColumnName="id")},
-     * inverseJoinColumns={@ORM\JoinColumn(name="classification_id", referencedColumnName="id")}
      **/
     protected $types;
 
@@ -119,7 +117,7 @@ class Equipment
     public function __construct()
     {
         $this->createdDatetime = new DateTime('now');
-        $this->types = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->types = new ArrayCollection();
         $this->callibrations = new ArrayCollection();
     }
 

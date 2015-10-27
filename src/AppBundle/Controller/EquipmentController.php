@@ -149,16 +149,10 @@ class EquipmentController extends ControllerBase
     {
         $em = $this->getEM()->getRepository('AppBundle:Equipment');
         $emcal = $this->getEM()->getRepository('AppBundle:Calibration');
-        $emClassification = $this->getEM()->getRepository('AppBundle:Classification');
-
 
         $calibration = $emcal->findByEquipment($id);
         $equipment = $em->find($id);
         $type = $em->findEquipmentJoinedWithTypes($id);
-
-//        $types = $emClassification->findByType($id);
-
-
 
         if(!$equipment)
         {
@@ -170,9 +164,6 @@ class EquipmentController extends ControllerBase
             'calibration' => $calibration,
             'types' => $type
         ];
-
-
-
     }
 
 
