@@ -151,7 +151,7 @@ class CalibrationController extends ControllerBase
 
     /**
      * @Route("/createUnit", name="createUnit")
-     * @Template
+     * @Template()
      */
     public function createUnitAction(Request $request)
     {
@@ -167,11 +167,10 @@ class CalibrationController extends ControllerBase
             unset($form);
             $unit = new Unit();
             $form = $this->createForm(New UnitType(), $unit);
-
         }
 
         return [
-            'Form' => $form->createView()
+            'Form' => $form->createView(),
         ];
 
     }
@@ -197,6 +196,72 @@ class CalibrationController extends ControllerBase
             $form = $this->createForm(new PrefixType(), $prefix);
         }
 
+        return [
+            'Form' => $form->createView()
+        ];
+
+    }
+
+    /**
+     * @Route("/updatePrefix/{id}", name="updatePrefix")
+     * @Template()
+     */
+    public function updatePrefixAction(Request $request, $id)
+    {
+        $em = $this->getEM()->getRepository('AppBundle:Prefix');
+        $prefix = $em->find($id);
+
+        $form = $this->createForm(new PrefixType(), $prefix);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $this->flushAction($prefix);
+            return $this->redirectToRoute('showAllPrefix');
+        }
+
+        return[
+            'Form' => $form->createView()
+        ];
+
+    }
+
+    /**
+     * @Route("/showAllPrefix", name="showAllPrefix")
+     * @Template()
+     */
+
+    public function showAllPrefixAction()
+    {
+        $em = $this->getEM()->getRepository('AppBundle:Prefix');
+        $prefix = $em->findAll();
+
+
+        return[
+            'prefix' => $prefix
+        ];
+    }
+
+
+
+    /**
+     * @Route("/updateUnit/{id}", name="updateUnit")
+     * @Template()
+     */
+
+    public function updateUnitAction(Request $request, $id)
+    {
+        $em = $this->getEM()->getRepository('AppBundle:Unit');
+        $unit = $em->find($id);
+
+        $form = $this->createForm(new UnitType(), $unit);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $this->flushAction($unit);
+            return $this->redirectToRoute('showAllUnits');
+        }
 
         return [
             'Form' => $form->createView()
@@ -204,6 +269,21 @@ class CalibrationController extends ControllerBase
 
     }
 
+    /**
+     * @Route("/showAllUnits", name="showAllUnits")
+     * @Template()
+     */
+    public function showAllUnitsAction()
+    {
+        $em = $this->getEM()->getRepository('AppBundle:Unit');
+        $unit = $em->findAll();
+
+
+        return [
+          'units' => $unit
+        ];
+
+    }
 
 
     public function flushAction($data)

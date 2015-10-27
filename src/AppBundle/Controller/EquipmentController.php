@@ -105,19 +105,6 @@ class EquipmentController extends ControllerBase
 
     }
 
-
-
-
-    public function flushAction($data)
-    {
-        $em = $this->getEM();
-
-        $em->persist($data);
-        $em->flush();
-
-    }
-
-
     /**
      * @Route("/overview", name="overview")
      * @Template()
@@ -170,6 +157,53 @@ class EquipmentController extends ControllerBase
         ];
     }
 
+    /**
+     * @Route("/showAllTypes", name="showAllTypes")
+     * @Template()
+     */
+    public function showAllTypesAction()
+    {
+        $em = $this->getEM()->getRepository('AppBundle:Classification');
+        $types = $em->findAll();
+
+        return [
+            'types' => $types
+        ];
+
+    }
+
+    /**
+     * @Route("/updateType/{id}", name="updateType")
+     * @Template()
+     */
+    public function updateTypeAction(Request $request, $id)
+    {
+        $em = $this->getEM()->getRepository('AppBundle:Classification');
+        $type = $em->find($id);
+
+        $form = $this->createForm(new ClassificationType(), $type);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $this->flushAction($type);
+            return $this->redirectToRoute('showAllTypes');
+        }
+
+        return [
+            'Form' => $form->createView()
+        ];
+
+    }
+
+    public function flushAction($data)
+    {
+        $em = $this->getEM();
+
+        $em->persist($data);
+        $em->flush();
+
+    }
 
     /**
      * @Route("/test", name="testPage")
