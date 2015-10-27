@@ -117,7 +117,7 @@ class Equipment
     public function __construct()
     {
         $this->createdDatetime = new DateTime('now');
-        $this->types = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->types = new ArrayCollection();
         $this->callibrations = new ArrayCollection();
     }
 

@@ -66,33 +66,28 @@
                     </ul>
                 </div>
 
-                <div class="col-lg-5">
-                    <table class="table">
-                        <th>
-                            <tr>
-                                <th>id</th>
-                                <th>measured at</th>
-                            </tr>
-                        </th>
-                        {% for i in id %}
-                        <tr>
-                            <td>{{ i.id }}</td>
-                            <td>{{ i.measuredAt }}</td>
-                            <td>{{ i.prefix.prefix }}</td>
-                        </tr>
+                <table class="table">
+                    <tr>
+                        <th>types</th>
+                    </tr>
+                      {% for t in types %}
+                      <tr>
+                          <td>
+                            {{ t.equipment }}
+                          </td>
+                      </tr>
 
-                        {% endfor %}
-                    </table>
+                    {{ t.id }}
+                    {% endfor %}
+                </table>
 
-                </div>
+
+
 
 
             </div>
-
-
         </div>
-
-    </div>
+</div>
 
 
 

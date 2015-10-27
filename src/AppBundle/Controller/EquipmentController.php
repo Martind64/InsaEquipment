@@ -149,9 +149,15 @@ class EquipmentController extends ControllerBase
     {
         $em = $this->getEM()->getRepository('AppBundle:Equipment');
         $emcal = $this->getEM()->getRepository('AppBundle:Calibration');
+        $emClassification = $this->getEM()->getRepository('AppBundle:Classification');
+
 
         $calibration = $emcal->findByEquipment($id);
         $equipment = $em->find($id);
+        $type = $em->findEquipmentJoinedWithTypes($id);
+
+//        $types = $emClassification->findByType($id);
+
 
 
         if(!$equipment)
@@ -161,7 +167,8 @@ class EquipmentController extends ControllerBase
 
         return[
             'equipment' => $equipment,
-            'calibration' => $calibration
+            'calibration' => $calibration,
+            'types' => $type
         ];
 
 
@@ -170,17 +177,17 @@ class EquipmentController extends ControllerBase
 
 
     /**
-     * @Route("/test/{id}", name="testPage")
+     * @Route("/test", name="testPage")
      */
 
-    public function testViews($id)
+    public function testViews()
     {
-        $em = $this->getEM()->getRepository('AppBundle:Calibration');
-        $calibration = $em->findCalibrationJoinedWithInfoUnitPrefix($id);
+        $em = $this->getEM()->getRepository('AppBundle:Equipment');
+        $types = $em->findEquipmentJoinedWithTypes(5);
 
 
 
-        return $this->render('AppBundle::testView.html.twig', ['id' => $calibration]);
+        return $this->render('AppBundle::testView.html.twig', ['types' => $types]);
     }
 
 

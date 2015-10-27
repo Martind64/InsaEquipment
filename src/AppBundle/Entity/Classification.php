@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,7 +31,7 @@ class Classification
 
     public function __construct()
     {
-        $this->equipment = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->equipment = new ArrayCollection();
     }
 
 

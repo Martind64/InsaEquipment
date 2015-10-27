@@ -16,6 +16,31 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
             return $this->findBy(array(), ['equipmentID' => 'ASC']);
         }
 
+        public function findEquipmentJoinedWithTypes($id)
+        {
+
+            $query = $this->getEntityManager()
+                ->createQuery('SELECT c from AppBundle:Classification c
+                               JOIN c.equipment e
+                               where e.id = :id')->setParameter('id', $id);
+
+            return $query->getResult();
+
+
+//
+//            $query = $this->getEntityManager()
+//                ->createQuery('SELECT i FROM AppBundle:Info i
+//                            JOIN i.calibration c
+//                            JOIN i.prefix p
+//                            JOIN i.unit u
+//                            WHERE c.id = :id')->setParameter('id', $id);
+//
+//            return $query->getResult();
+
+
+
+        }
+
 
 
 
