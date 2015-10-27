@@ -163,6 +163,11 @@ class CalibrationController extends ControllerBase
         if($form->isValid())
         {
             $this->flushAction($unit);
+            unset($unit);
+            unset($form);
+            $unit = new Unit();
+            $form = $this->createForm(New UnitType(), $unit);
+
         }
 
         return [
@@ -186,6 +191,10 @@ class CalibrationController extends ControllerBase
         if($form->isValid())
         {
             $this->flushAction($prefix);
+            unset($prefix);
+            unset($form);
+            $prefix = new Prefix();
+            $form = $this->createForm(new PrefixType(), $prefix);
         }
 
 

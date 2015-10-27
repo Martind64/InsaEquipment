@@ -56,6 +56,15 @@
                     {{ form_widget(Form)}}
                     {{ form_end(Form)}}
 
+                    <select>
+                        {% for t in Form.types %}
+                            <option value="type">{{ form_widget(t) }}</option>
+                            <option value="type">{{ form_label(t) }}</option>
+                        {% endfor %}
+                    </select>
+
+                    {#<option value="id">{{ e.equipmentID }}</option>#}
+
                 </div>
             </div>
         </div>

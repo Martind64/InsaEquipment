@@ -85,18 +85,22 @@ class EquipmentController extends ControllerBase
 
     public function createClassificationAction(Request $request)
     {
-        $Classification = new Classification();
+        $classification = new Classification();
 
-        $Form = $this->createForm(new ClassificationType(), $Classification);
-        $Form->handleRequest($request);
+        $form = $this->createForm(new ClassificationType(), $classification);
+        $form->handleRequest($request);
 
-        if($Form->isValid())
+        if($form->isValid())
         {
-            $this->flushAction($Classification);
+            $this->flushAction($classification);
+            unset($classification);
+            unset($form);
+            $classification = new Classification();
+            $form = $this->createForm(new ClassificationType(), $classification);
         }
 
         return [
-            'Form' => $Form->createView()
+            'Form' => $form->createView()
         ];
 
     }
