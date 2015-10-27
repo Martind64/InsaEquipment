@@ -7,6 +7,9 @@ use AppBundle\Entity\Classification;
 use AppBundle\Entity\Repository\CalibrationRepository;
 use AppBundle\Form\Type\EquipmentType;
 use AppBundle\Form\Type\ClassificationType;
+use DateInterval;
+use DatePeriod;
+use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -192,6 +195,26 @@ class EquipmentController extends ControllerBase
 
         return [
             'Form' => $form->createView()
+        ];
+
+    }
+
+    /**
+     * @Route("/upcomingCalibrations/{last}", name="showUpcomingCalibrations")
+     * Template()
+     */
+
+    public function upcomingCalibrationsAction($last)
+    {
+        $current = date('d-m-y');
+        $period = new DatePeriod(
+            new DateTime($current),
+            new DateInterval('P1D'),
+            new DateTime($last)
+        );
+
+        return [
+            'dates' => $period
         ];
 
     }
