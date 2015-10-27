@@ -15,7 +15,9 @@
                             <ul class="nav" id="viewCollapse">
                                 <li><a href="#">Equipment</a> </li>
                                 <li><a href="#">Calibrations</a> </li>
-                                <li><a href="#">Types</a> </li>
+                                <li><a href="{{ path('showAllTypes') }}">Types</a> </li>
+                                <li><a href="{{ path('showAllUnits') }}">Units</a> </li>
+                                <li><a href="{{ path('showAllPrefix') }}">Prefix</a> </li>
                                 <hr>
                             </ul>
                             <li class="active"><a href="#">Equipment</a></li>
@@ -29,16 +31,6 @@
                                     <li> <a href="{{ path('createPrefix') }}" >Prefix</a> </li>
                                     <hr>
                                 </ul>
-                                <li> <a href="#updateCollapse" data-toggle="collapse" >Update</a> </li>
-                                <ul class="nav collapse" id="updateCollapse">
-                                    <li> <a href="{{ path('createPrefix') }}">Equipment</a> </li>
-                                    <li> <a href="{{ path('createPrefix') }}">Calibration</a></li>
-                                    <li> <a href="{{ path('createPrefix') }}">Type</a></li>
-                                    <li> <a href="{{ path('createPrefix') }}">Unit</a></li>
-                                    <li> <a href="{{ path('createPrefix') }}">Prefix</a></li>
-                                    <hr>
-                                </ul>
-                                <hr>
                             </ul>
                         </ul>
                     </div>
