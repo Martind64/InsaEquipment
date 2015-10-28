@@ -200,21 +200,17 @@ class EquipmentController extends ControllerBase
     }
 
     /**
-     * @Route("/upcomingCalibrations/{last}", name="showUpcomingCalibrations")
-     * Template()
+     * @Route("/upcomingCalibrations", name="showUpcomingCalibrations")
+     * @Template()
      */
 
-    public function upcomingCalibrationsAction($last)
+    public function upcomingCalibrationsAction()
     {
-        $current = date('d-m-y');
-        $period = new DatePeriod(
-            new DateTime($current),
-            new DateInterval('P1D'),
-            new DateTime($last)
-        );
+        $em = $this->getEM()->getRepository('AppBundle:Equipment');
+        $calibrations = $em->getUpcomingCalibrations();
 
         return [
-            'dates' => $period
+            'calibrations' => $calibrations
         ];
 
     }
@@ -229,17 +225,17 @@ class EquipmentController extends ControllerBase
     }
 
     /**
-     * @Route("/test", name="testPage")
+     * @Route("/test/", name="testPage")
      */
 
     public function testViews()
     {
         $em = $this->getEM()->getRepository('AppBundle:Equipment');
-        $types = $em->findEquipmentJoinedWithTypes(5);
+        $calibrations = $em->getUpcomingCalibrations();
 
 
 
-        return $this->render('AppBundle::testView.html.twig', ['types' => $types]);
+        return $this->render('AppBundle::testView.html.twig', ['cal' => $calibrations]);
     }
 
 

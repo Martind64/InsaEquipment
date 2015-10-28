@@ -40,13 +40,18 @@
                 </div><!-- Sidebar End -->
                 <!-- Flexible Content END -->
 
-
-                <table>
-                    {% for d in dates %}
-                        {{ d }}
-                    {% endfor %}
-                </table>
-
+                <div class="col-lg-6">
+                    <table class="table">
+                        <th></th>
+                        {% for c in calibrations %}
+                            <tr>
+                                <td>
+                                    {{ c.nextCalibration|date('d-m-y') }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
             </div>
         </div>
 

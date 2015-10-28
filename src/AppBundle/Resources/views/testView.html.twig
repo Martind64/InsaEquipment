@@ -62,14 +62,13 @@
                     <tr>
                         <th>types</th>
                     </tr>
-                      {% for t in types %}
+                      {% for c in cal %}
                       <tr>
                           <td>
-                            {{ t.equipment }}
+                              {{ c.nextCalibration|date('d-m-y') }}
                           </td>
                       </tr>
 
-                    {{ t.id }}
                     {% endfor %}
                 </table>
 

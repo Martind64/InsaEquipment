@@ -1,6 +1,10 @@
 <?php
 
 namespace AppBundle\Entity\Repository;
+use Doctrine\ORM\Query\AST\Functions\CurrentDateFunction;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * CalibrationRepository
@@ -26,20 +30,34 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
 
             return $query->getResult();
 
-
-//
-//            $query = $this->getEntityManager()
-//                ->createQuery('SELECT i FROM AppBundle:Info i
-//                            JOIN i.calibration c
-//                            JOIN i.prefix p
-//                            JOIN i.unit u
-//                            WHERE c.id = :id')->setParameter('id', $id);
-//
-//            return $query->getResult();
-
-
-
         }
+
+        public function getUpcomingCalibrations()
+        {
+            $date_from = new \DateTime();
+            $date_to = new \DateTime();
+            $date_to->modify('+60 day');
+
+            $qb = $this->getEntityManager()
+                ->createQueryBuilder();
+
+            $query = $qb->select('e')
+                ->from('AppBundle:Equipment', 'e')
+                ->where('e.nextCalibration >= :date_from')
+                ->andWhere($qb->expr()->between('e.nextCalibration', ':date_from', ':date_to'))
+//            ->andWhere('e.nextCalibration <= :date_to')
+                ->setParameter('date_from', $date_from, \Doctrine\DBAL\Types\Type::DATETIME)
+                ->setParameter('date_to', $date_to,\Doctrine\DBAL\Types\Type::DATETIME)
+                ->getQuery();
+
+            return $query->getResult();
+        }
+
+    public function getdates()
+    {
+
+//
+    }
 
 
 
