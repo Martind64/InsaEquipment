@@ -224,6 +224,8 @@ class EquipmentController extends ControllerBase
 
     }
 
+
+
     /**
      * @Route("/test/", name="testPage")
      */

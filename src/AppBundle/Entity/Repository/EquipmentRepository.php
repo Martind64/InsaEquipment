@@ -47,7 +47,7 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
                 ->andWhere($qb->expr()->between('e.nextCalibration', ':date_from', ':date_to'))
                 ->setParameter('date_from', $date_from, \Doctrine\DBAL\Types\Type::DATETIME)
                 ->setParameter('date_to', $date_to,\Doctrine\DBAL\Types\Type::DATETIME)
-                ->orderBy('e.nextCalibration')
+                ->orderBy('e.nextCalibration', 'ASC')
                 ->getQuery();
 
             return $query->getResult();
