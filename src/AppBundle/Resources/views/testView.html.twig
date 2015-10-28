@@ -1,4 +1,4 @@
-{% extends 'AppBundle::base.html.twig' %}
+{% extends 'AppBundle::sidebar.html.twig' %}
 
 {% block body %}
 
@@ -6,6 +6,7 @@
     <div class="container-fluid" id="main-content-wrapper">
 
         <div class="row">
+            {% block sidebar %}{{ parent() }}{% endblock %}
 
             <div class="col-md-4">
                 <select>
@@ -29,15 +30,11 @@
                     <tr>
                         <th>types</th>
                     </tr>
-                      {% for c in cal %}
-                      <tr>
-                          <td>
-                              {{ c.nextCalibration|date('d-m-y') }}
-                          </td>
-                      </tr>
 
-                    {% endfor %}
                 </table>
+                {#{{ form_start(Form) }}#}
+                {#{{ form_widget(Form) }}#}
+                {#{{ form_end(Form) }}#}
 
 
 

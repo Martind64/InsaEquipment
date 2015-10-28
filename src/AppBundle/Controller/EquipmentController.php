@@ -7,6 +7,7 @@ use AppBundle\Entity\Classification;
 use AppBundle\Entity\Repository\CalibrationRepository;
 use AppBundle\Form\Type\EquipmentType;
 use AppBundle\Form\Type\ClassificationType;
+use AppBundle\Form\Type\SearchType;
 use DateInterval;
 use DatePeriod;
 use DateTime;
@@ -225,19 +226,24 @@ class EquipmentController extends ControllerBase
     }
 
 
-
     /**
      * @Route("/test/", name="testPage")
      */
 
-    public function testViews()
+    public function testViewsAction()
     {
-        $em = $this->getEM()->getRepository('AppBundle:Equipment');
-        $calibrations = $em->getUpcomingCalibrations();
+
+//        $em = $this->getEM()->getRepository('AppBundle:Equipment');
+//        $search = $this->createForm(new SearchType());
+//
+//        if($search->isValid())
+//        {
+//            $equipment = $em->findById($id);
+//        }
+
+        return $this->render('AppBundle::testView.html.twig');
 
 
-
-        return $this->render('AppBundle::testView.html.twig', ['cal' => $calibrations]);
     }
 
 
