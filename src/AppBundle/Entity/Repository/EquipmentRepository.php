@@ -45,20 +45,13 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
                 ->from('AppBundle:Equipment', 'e')
                 ->where('e.nextCalibration >= :date_from')
                 ->andWhere($qb->expr()->between('e.nextCalibration', ':date_from', ':date_to'))
-//            ->andWhere('e.nextCalibration <= :date_to')
                 ->setParameter('date_from', $date_from, \Doctrine\DBAL\Types\Type::DATETIME)
                 ->setParameter('date_to', $date_to,\Doctrine\DBAL\Types\Type::DATETIME)
+                ->orderBy('e.nextCalibration')
                 ->getQuery();
 
             return $query->getResult();
         }
-
-    public function getdates()
-    {
-
-//
-    }
-
 
 
 

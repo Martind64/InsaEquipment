@@ -31,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="http://localhost:8000/homepage" class="navbar-brand">Insatech Equipment</a>
+                <a href="{{ path('homepage') }}" class="navbar-brand">Insatech Equipment</a>
             </div>
 
             <div class="collapse navbar-collapse" id="top-nav-bar">
@@ -48,39 +48,6 @@
     </div><!-- Navbar end -->
 
 
-    {#<!-- Sidebar -->#}
-    {#<div id="sidebar-wrapper">#}
-        {#<ul class="sidebar-nav">#}
-            {#<li><a href="#">Equipment1</a> </li>#}
-            {#<li><a href="#">Equipment2</a> </li>#}
-            {#<li><a href="#">Equipment3</a> </li>#}
-        {#</ul>#}
-    {#</div>#}
-
-    {#<!-- Page content -->#}
-    {#<div id="page-content-wrapper">#}
-        {#<div class="container-fluid">#}
-            {#<div class="row">#}
-                {#<div class="col-lg-12">#}
-                    {#<a href="#" class="btn btn-success" id="menu-toggle">Toggle Menu</a>#}
-                    {#<h1>Sidebar Layouts are cool</h1>#}
-                    {#<p>I love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pie#}
-                        {#I love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pie#}
-                        {#I love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pie#}
-                        {#I love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pieI love Apple pie</p>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-
-    {#<!-- Menu toggle script -->#}
-    {#<script>#}
-        {#$("#menu-toggle").click(function(e)#}
-        {#{#}
-            {#e.preventDefault();#}
-            {#$("#wrapper").toggleClass("menuDisplayed")#}
-        {#})#}
-    {#</script>#}
 
 
 </div> <!-- Wrapper End -->
@@ -97,30 +64,3 @@
 
 
 
-
-
-
-
-
-{#  BASIC BASE.HTML.TWIG  #}
-{#<!DOCTYPE html>#}
-{#<html>#}
-    {#<head><!-- Latest compiled and minified CSS -->#}
-        {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">#}
-        {#<!-- Optional theme -->#}
-        {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">#}
-        {#<!-- GoogleJS-->#}
-        {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>#}
-
-        {#<meta charset="UTF-8" />#}
-        {#<title>{% block title %}Welcome!{% endblock %}</title>#}
-        {#{% block stylesheets %}{% endblock %}#}
-        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
-    {#</head>#}
-    {#<body>#}
-        {#{% block body %}{% endblock %}#}
-        {#{% block javascripts %}{% endblock %}#}
-        {#<!-- Latest compiled and minified JavaScript -->#}
-        {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>#}
-    {#</body>#}
-{#</html>#}
