@@ -200,21 +200,7 @@ class EquipmentController extends ControllerBase
 
     }
 
-    /**
-     * @Route("/upcomingCalibrations", name="showUpcomingCalibrations")
-     * @Template()
-     */
 
-    public function upcomingCalibrationsAction()
-    {
-        $em = $this->getEM()->getRepository('AppBundle:Equipment');
-        $calibrations = $em->getUpcomingCalibrations();
-
-        return [
-            'calibrations' => $calibrations
-        ];
-
-    }
 
     public function flushAction($data)
     {
