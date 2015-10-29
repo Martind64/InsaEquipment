@@ -296,7 +296,7 @@ class CalibrationController extends ControllerBase
         $calibrations = $em->getUpcomingCalibrations();
 
         return [
-            'calibrations' => $calibrations
+            'equipment' => $calibrations
         ];
 
     }

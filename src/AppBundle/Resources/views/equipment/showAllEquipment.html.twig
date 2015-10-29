@@ -19,7 +19,7 @@
                             </tr>
                         </th>
                         {% for e in equipment %}
-                            <tr onclick="document.location = 'http://localhost:8000/equipment/{{ e.ID }}'">
+                            <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
                                 <td>{{ e.equipmentID }}</td>
                                 <td>{{ e.serialNr }}</td>
                                 <td>{{ e.model }}</td>

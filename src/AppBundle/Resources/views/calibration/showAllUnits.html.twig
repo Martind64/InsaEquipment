@@ -17,7 +17,7 @@
                             </tr>
                         </th>
                         {% for u in units %}
-                            <tr onclick="document.location = 'http://localhost:8000/updateUnit/{{ u.ID }}'">
+                            <tr onclick="document.location = '{{ path('updateUnit', {'id': u.id}) }}'">
                                 <td>{{ u.unit }}</td>
                             </tr>
                         {% endfor %}

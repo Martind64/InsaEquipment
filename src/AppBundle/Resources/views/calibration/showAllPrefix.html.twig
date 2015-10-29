@@ -16,7 +16,7 @@
                             </tr>
                         </th>
                         {% for p in prefix %}
-                            <tr onclick="document.location = 'http://localhost:8000/updatePrefix/{{ p.ID }}'">
+                            <tr onclick="document.location = '{{ path('updatePrefix', {'id': p.id}) }}'">
                                 <td>{{ p.prefix }}</td>
                             </tr>
                         {% endfor %}

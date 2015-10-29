@@ -50,7 +50,7 @@
                     </tr>
                 </th>
                 {% for c in calibration %}
-                    <tr onclick="document.location = 'http://localhost:8000/calibration/{{ c.ID }}'">
+                    <tr onclick="document.location = '{{ path('showCalibration', {'id': c.id}) }}'">
                         <td>{{ c.calibrationDate|date('d-m-y') }}</td>
                         <td>{{ c.calibrationInstitute }}</td>
                         <td>{{ c.status?'active':'inactive' }}</td>

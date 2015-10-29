@@ -21,13 +21,13 @@
                                 <th>Next Calibration</th>
                             </tr>
                         </th>
-                        {% for c in calibrations %}
-                            <tr onclick="document.location = 'http://localhost:8000/equipment/{{ c.ID }}'">
-                                <td>{{ c.equipmentID}}</td>
-                                <td>{{ c.serialNr}}</td>
-                                <td>{{ c.Model}}</td>
-                                <td>{{ c.IsoStandard }}</td>
-                                <td>{{ c.nextCalibration|date('d-m-y') }}</td>
+                        {% for e in equipment %}
+                            <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
+                            <td>{{ e.equipmentID}}</td>
+                                <td>{{ e.serialNr}}</td>
+                                <td>{{ e.Model}}</td>
+                                <td>{{ e.IsoStandard }}</td>
+                                <td>{{ e.nextCalibration|date('d-m-y') }}</td>
 
                             </tr>
                         {% endfor %}
