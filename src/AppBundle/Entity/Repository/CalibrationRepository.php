@@ -20,7 +20,8 @@ class CalibrationRepository extends \Doctrine\ORM\EntityRepository
                             JOIN i.calibration c
                             JOIN i.prefix p
                             JOIN i.unit u
-                            WHERE c.id = :id')->setParameter('id', $id);
+                            WHERE c.id = :id
+                            ORDER BY i.measuredAt ASC')->setParameter('id', $id);
 
         return $query->getResult();
 
@@ -35,6 +36,8 @@ class CalibrationRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+
+
 
 
 
