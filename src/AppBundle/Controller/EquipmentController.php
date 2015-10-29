@@ -145,7 +145,7 @@ class EquipmentController extends ControllerBase
         $em = $this->getEM()->getRepository('AppBundle:Equipment');
         $emcal = $this->getEM()->getRepository('AppBundle:Calibration');
 
-        $calibration = $emcal->findByEquipment($id);
+        $calibration = $emcal->findAllCalibrations($id);
         $equipment = $em->find($id);
         $type = $em->findEquipmentJoinedWithTypes($id);
 
@@ -219,13 +219,6 @@ class EquipmentController extends ControllerBase
     public function testViewsAction()
     {
 
-//        $em = $this->getEM()->getRepository('AppBundle:Equipment');
-//        $search = $this->createForm(new SearchType());
-//
-//        if($search->isValid())
-//        {
-//            $equipment = $em->findById($id);
-//        }
 
         return $this->render('AppBundle::testView.html.twig');
 

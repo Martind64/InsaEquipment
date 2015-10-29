@@ -29,7 +29,6 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
                                where e.id = :id')->setParameter('id', $id);
 
             return $query->getResult();
-
         }
 
         public function getUpcomingCalibrations()

@@ -26,6 +26,16 @@ class CalibrationRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    public function findAllCalibrations($id)
+    {
+        $query = $this->getEntityManager()
+            ->createQuery('SELECT c FROM AppBundle:Calibration c
+                            WHERE c.equipment = :id
+                            ORDER BY c.calibrationDate DESC')->setParameter('id', $id);
+
+        return $query->getResult();
+    }
+
 
 
 
