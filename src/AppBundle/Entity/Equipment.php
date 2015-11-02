@@ -108,10 +108,17 @@ class Equipment
     protected $calibrations;
 
     /**
+     * @ORM\OneToMany(targetEntity="Link", mappedBy="equipment")
+     */
+    private $link;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Classification", inversedBy="equipment")
      * @ORM\JoinTable(name="equipment_classification")
      **/
     protected $types;
+
+
 
 
     public function __construct()
@@ -606,5 +613,39 @@ class Equipment
     public function getCalibrations()
     {
         return $this->calibrations;
+    }
+
+    /**
+     * Add link
+     *
+     * @param \AppBundle\Entity\Link $link
+     *
+     * @return Equipment
+     */
+    public function addLink(\AppBundle\Entity\Link $link)
+    {
+        $this->link[] = $link;
+
+        return $this;
+    }
+
+    /**
+     * Remove link
+     *
+     * @param \AppBundle\Entity\Link $link
+     */
+    public function removeLink(\AppBundle\Entity\Link $link)
+    {
+        $this->link->removeElement($link);
+    }
+
+    /**
+     * Get link
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 }

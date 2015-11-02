@@ -1,7 +1,6 @@
 <?php
 
 namespace AppBundle\Controller;
-
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Classification;
 use AppBundle\Entity\Repository\CalibrationRepository;
@@ -11,6 +10,7 @@ use AppBundle\Form\Type\SearchType;
 use DateInterval;
 use DatePeriod;
 use DateTime;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -78,7 +78,6 @@ class EquipmentController extends ControllerBase
             'equipment' => $equipment
         ];
     }
-
 
 
 
@@ -218,9 +217,26 @@ class EquipmentController extends ControllerBase
 
     public function testViewsAction()
     {
+        $finder = new Finder();
+        $finder->files()->in('C:/Users/Martin/Documents/Dbz');
+
+        foreach($finder as $file)
+        {
+            // Dump the absolute path
+            var_dump($file->getRealpath());
+
+            // Dump the relative path to the file, omitting the filename
+            var_dump($file->getRelativePath());
+
+            // Dump the relative path to the file
+            var_dump($file->getRelativePathname());
+        }
+        return new Response($file);
 
 
-        return $this->render('AppBundle::testView.html.twig');
+
+
+//        return $this->render('AppBundle::testView.html.twig');
 
 
     }

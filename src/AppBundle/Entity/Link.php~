@@ -1,0 +1,108 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Info
+ *
+ * @ORM\Table(name="link")
+ * @ORM\Entity
+ */
+class Link
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", length=200)
+     */
+
+    protected $link;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="LinkClassification", inversedBy="link")
+     * @ORM\JoinColumn(name="linkClassification_id", referencedColumnName="id")
+     */
+    private $linkClassification;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="link")
+     * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")
+     */
+    private $equipment;
+
+
+
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return Link
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Set linkClassification
+     *
+     * @param \AppBundle\Entity\LinkClassification $linkClassification
+     *
+     * @return Link
+     */
+    public function setLinkClassification(\AppBundle\Entity\LinkClassification $linkClassification = null)
+    {
+        $this->linkClassification = $linkClassification;
+
+        return $this;
+    }
+
+    /**
+     * Get linkClassification
+     *
+     * @return \AppBundle\Entity\LinkClassification
+     */
+    public function getLinkClassification()
+    {
+        return $this->linkClassification;
+    }
+}

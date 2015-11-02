@@ -19,7 +19,7 @@ class Equipment
     protected $id;
 
     /**
-     * @ORM\Column(type="int", length=100)
+     * @ORM\Column(type="integer", length=100)
      */
     protected $equipmentID;
     /**
@@ -108,10 +108,17 @@ class Equipment
     protected $calibrations;
 
     /**
+     * @ORM\OneToMany(targetEntity="Link", mappedBy="equipment")
+     */
+    private $link;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Classification", inversedBy="equipment")
      * @ORM\JoinTable(name="equipment_classification")
      **/
     protected $types;
+
+
 
 
     public function __construct()
