@@ -48,23 +48,6 @@ class EquipmentType extends AbstractType
                 'expanded' => false
 
             ])
-//            ->add('types', 'entity', [
-//                'class' => Equipment::class,
-//                'property' => 'types',
-//                'empty_value' => 'select type',
-//                'query_builder' => function(EntityRepository $er){
-//                    return $er->createQueryBuilder('c')
-//                    ->orderBy('c.type', 'ASC');
-//                }
-//            ])
-//            ->add('equipmentID', 'entity', [
-//                'class' => Equipment::class,
-//                'property' => 'equipmentID',
-//                'empty_value' => 'select id',
-//                'query_builder' => function(EntityRepository $er){
-//                    return $er->createQueryBuilder('c')
-//                    ->orderBy('c.equipmentID', 'ASC');
-//                }
 //            ])
             ->add('comment', 'textarea', array('attr' => array('class' => 'form-control')))
             ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));

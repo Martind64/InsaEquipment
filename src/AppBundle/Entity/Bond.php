@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Info
  *
- * @ORM\Table(name="link")
+ * @ORM\Table(name="bond")
  * @ORM\Entity
  */
-class Link
+class Bond
 {
     /**
      * @var integer
@@ -31,20 +31,16 @@ class Link
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="LinkClassification", inversedBy="link")
-     * @ORM\JoinColumn(name="linkClassification_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="BondClassification", inversedBy="link")
+     * @ORM\JoinColumn(name="bondClassification_id", referencedColumnName="id")
      */
-    private $linkClassification;
+    private $bondClassification;
 
     /**
      * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="link")
      * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")
      */
     private $equipment;
-
-
-
-
 
 
 
@@ -63,7 +59,7 @@ class Link
      *
      * @param string $link
      *
-     * @return Link
+     * @return Bond
      */
     public function setLink($link)
     {
@@ -83,27 +79,27 @@ class Link
     }
 
     /**
-     * Set linkClassification
+     * Set bondClassification
      *
-     * @param \AppBundle\Entity\LinkClassification $linkClassification
+     * @param \AppBundle\Entity\bondClassification $bondClassification
      *
-     * @return Link
+     * @return Bond
      */
-    public function setLinkClassification(\AppBundle\Entity\LinkClassification $linkClassification = null)
+    public function setBondClassification(\AppBundle\Entity\bondClassification $bondClassification = null)
     {
-        $this->linkClassification = $linkClassification;
+        $this->bondClassification = $bondClassification;
 
         return $this;
     }
 
     /**
-     * Get linkClassification
+     * Get bondClassification
      *
-     * @return \AppBundle\Entity\LinkClassification
+     * @return \AppBundle\Entity\bondClassification
      */
-    public function getLinkClassification()
+    public function getBondClassification()
     {
-        return $this->linkClassification;
+        return $this->bondClassification;
     }
 
     /**
@@ -111,7 +107,7 @@ class Link
      *
      * @param \AppBundle\Entity\Equipment $equipment
      *
-     * @return Link
+     * @return Bond
      */
     public function setEquipment(\AppBundle\Entity\Equipment $equipment = null)
     {

@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Info
  *
- * @ORM\Table(name="link_classification")
+ * @ORM\Table(name="bond_classification")
  * @ORM\Entity
  */
-class LinkClassification
+class BondClassification
 {
     /**
      * @var integer
@@ -30,11 +30,9 @@ class LinkClassification
     protected $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="Link", mappedBy="linkClassification")
+     * @ORM\OneToMany(targetEntity="Bond", mappedBy="bondClassification")
      */
     private $link;
-
-
 
 
     /**
@@ -60,7 +58,7 @@ class LinkClassification
      *
      * @param string $type
      *
-     * @return LinkClassification
+     * @return BondClassification
      */
     public function setType($type)
     {
@@ -82,11 +80,11 @@ class LinkClassification
     /**
      * Add link
      *
-     * @param \AppBundle\Entity\Link $link
+     * @param \AppBundle\Entity\Bond $link
      *
-     * @return LinkClassification
+     * @return BondClassification
      */
-    public function addLink(\AppBundle\Entity\Link $link)
+    public function addLink(\AppBundle\Entity\Bond $link)
     {
         $this->link[] = $link;
 
@@ -96,9 +94,9 @@ class LinkClassification
     /**
      * Remove link
      *
-     * @param \AppBundle\Entity\Link $link
+     * @param \AppBundle\Entity\Bond $link
      */
-    public function removeLink(\AppBundle\Entity\Link $link)
+    public function removeLink(\AppBundle\Entity\Bond $link)
     {
         $this->link->removeElement($link);
     }

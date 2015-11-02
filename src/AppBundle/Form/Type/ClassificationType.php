@@ -17,7 +17,7 @@ class ClassificationType extends AbstractType
 
     public function getName()
     {
-        return 'classificationType';
+        return 'classification';
     }
 
 }

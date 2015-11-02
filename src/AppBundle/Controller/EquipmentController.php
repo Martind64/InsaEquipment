@@ -1,15 +1,18 @@
 <?php
 
 namespace AppBundle\Controller;
+use AppBundle\Entity\Bond;
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Classification;
 use AppBundle\Entity\Repository\CalibrationRepository;
 use AppBundle\Form\Type\EquipmentType;
 use AppBundle\Form\Type\ClassificationType;
+use AppBundle\Form\Type\BondType;
 use AppBundle\Form\Type\SearchType;
 use DateInterval;
 use DatePeriod;
 use DateTime;
+use Symfony\Component\DomCrawler\Link;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -191,6 +194,29 @@ class EquipmentController extends ControllerBase
         {
             $this->flushAction($type);
             return $this->redirectToRoute('showAllTypes');
+        }
+
+        return [
+            'Form' => $form->createView()
+        ];
+
+    }
+
+    /**
+     * @Route("/createLink", name="createLink")
+     * @Template()
+     */
+    public function createLinkAction(Request $request)
+    {
+        $link = new Bond();
+
+
+        $form = $this->createForm(new BondType(), $link);
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $this->flushAction($link);
         }
 
         return [

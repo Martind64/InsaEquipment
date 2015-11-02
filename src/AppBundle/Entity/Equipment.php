@@ -108,9 +108,9 @@ class Equipment
     protected $calibrations;
 
     /**
-     * @ORM\OneToMany(targetEntity="Link", mappedBy="equipment")
+     * @ORM\OneToMany(targetEntity="Bond", mappedBy="equipment")
      */
-    private $link;
+    private $bond;
 
     /**
      * @ORM\ManyToMany(targetEntity="Classification", inversedBy="equipment")
@@ -125,6 +125,7 @@ class Equipment
     {
         $this->createdDatetime = new DateTime('now');
         $this->types = new ArrayCollection();
+        $this->bond = new ArrayCollection();
         $this->callibrations = new ArrayCollection();
     }
 
@@ -615,37 +616,38 @@ class Equipment
         return $this->calibrations;
     }
 
+
     /**
-     * Add link
+     * Add bond
      *
-     * @param \AppBundle\Entity\Link $link
+     * @param \AppBundle\Entity\Bond $bond
      *
      * @return Equipment
      */
-    public function addLink(\AppBundle\Entity\Link $link)
+    public function addBond(\AppBundle\Entity\Bond $bond)
     {
-        $this->link[] = $link;
+        $this->bond[] = $bond;
 
         return $this;
     }
 
     /**
-     * Remove link
+     * Remove bond
      *
-     * @param \AppBundle\Entity\Link $link
+     * @param \AppBundle\Entity\Bond $bond
      */
-    public function removeLink(\AppBundle\Entity\Link $link)
+    public function removeBond(\AppBundle\Entity\Bond $bond)
     {
-        $this->link->removeElement($link);
+        $this->bond->removeElement($bond);
     }
 
     /**
-     * Get link
+     * Get bond
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLink()
+    public function getBond()
     {
-        return $this->link;
+        return $this->bond;
     }
 }

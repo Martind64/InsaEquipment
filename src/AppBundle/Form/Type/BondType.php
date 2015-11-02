@@ -2,21 +2,21 @@
 
 
 namespace AppBundle\Form\Type;
-use AppBundle\Entity\LinkClassification;
+use AppBundle\Entity\BondClassification;
 use Doctrine\ORM\EntityRepository;
 use Proxies\__CG__\AppBundle\Entity\Equipment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 
-class LinkType extends AbstractType
+class BondType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('equipment', 'entity', [
                 'class' => Equipment::class,
-                'property' => 'link',
+                'property' => 'equipmentID',
                 'empty_value' => 'select equipment',
                 'query_builder' => function(EntityRepository $er)
                 {
@@ -24,8 +24,8 @@ class LinkType extends AbstractType
                         ->orderBy('e.equipmentID', 'ASC');
                 }
             ])
-            ->add('type', 'entity', [
-                'class' => LinkClassification::class,
+            ->add('bondClassification', 'entity', [
+                'class' => BondClassification::class,
                 'property' => 'type',
                 'empty_value' => 'select type',
                 'query_builder' => function(EntityRepository $er)
@@ -36,12 +36,12 @@ class LinkType extends AbstractType
 
             ])
             ->add('link', 'file', ['attr' => ['class' => 'form-control']])
-            ->add('save', 'submit'. ['attr' => ['class' => 'form-control']]);
+            ->add('save', 'submit', ['attr' => ['class' => 'btn btn-lg btn-primary']]);
 
     }
 
     public function getName()
     {
-        return 'link';
+        return 'bond';
     }
 }
