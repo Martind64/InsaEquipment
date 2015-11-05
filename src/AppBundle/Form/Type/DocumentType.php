@@ -2,14 +2,14 @@
 
 
 namespace AppBundle\Form\Type;
-use AppBundle\Entity\BondClassification;
+use AppBundle\Entity\DocumentClassification;
 use Doctrine\ORM\EntityRepository;
 use Proxies\__CG__\AppBundle\Entity\Equipment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 
-class BondType extends AbstractType
+class DocumentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -24,8 +24,8 @@ class BondType extends AbstractType
                         ->orderBy('e.equipmentID', 'ASC');
                 }
             ])
-            ->add('bondClassification', 'entity', [
-                'class' => BondClassification::class,
+            ->add('documentClassification', 'entity', [
+                'class' => DocumentClassification::class,
                 'property' => 'type',
                 'empty_value' => 'select type',
                 'query_builder' => function(EntityRepository $er)
@@ -35,13 +35,13 @@ class BondType extends AbstractType
                 }
 
             ])
-            ->add('link', 'file', ['attr' => ['class' => 'form-control']])
+            ->add('path', 'file', ['attr' => ['class' => 'form-control']])
             ->add('save', 'submit', ['attr' => ['class' => 'btn btn-lg btn-primary']]);
 
     }
 
     public function getName()
     {
-        return 'bond';
+        return 'document';
     }
 }

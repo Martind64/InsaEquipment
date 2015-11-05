@@ -108,9 +108,9 @@ class Equipment
     protected $calibrations;
 
     /**
-     * @ORM\OneToMany(targetEntity="Bond", mappedBy="equipment")
+     * @ORM\OneToMany(targetEntity="Document", mappedBy="equipment")
      */
-    private $bond;
+    private $document;
 
     /**
      * @ORM\ManyToMany(targetEntity="Classification", inversedBy="equipment")
@@ -649,5 +649,39 @@ class Equipment
     public function getBond()
     {
         return $this->bond;
+    }
+
+    /**
+     * Add document
+     *
+     * @param \AppBundle\Entity\Document $document
+     *
+     * @return Equipment
+     */
+    public function addDocument(\AppBundle\Entity\Document $document)
+    {
+        $this->document[] = $document;
+
+        return $this;
+    }
+
+    /**
+     * Remove document
+     *
+     * @param \AppBundle\Entity\Document $document
+     */
+    public function removeDocument(\AppBundle\Entity\Document $document)
+    {
+        $this->document->removeElement($document);
+    }
+
+    /**
+     * Get document
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDocument()
+    {
+        return $this->document;
     }
 }

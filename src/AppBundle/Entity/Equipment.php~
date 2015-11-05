@@ -108,9 +108,9 @@ class Equipment
     protected $calibrations;
 
     /**
-     * @ORM\OneToMany(targetEntity="Bond", mappedBy="equipment")
+     * @ORM\OneToMany(targetEntity="Document", mappedBy="equipment")
      */
-    private $bond;
+    private $document;
 
     /**
      * @ORM\ManyToMany(targetEntity="Classification", inversedBy="equipment")

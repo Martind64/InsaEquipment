@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Info
  *
- * @ORM\Table(name="bond")
+ * @ORM\Table(name="document")
  * @ORM\Entity
  */
-class Bond
+class Document
 {
     /**
      * @var integer
@@ -27,20 +27,21 @@ class Bond
      * @ORM\Column(type="text", length=200)
      */
 
-    protected $link;
+    protected $path;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="BondClassification", inversedBy="link")
-     * @ORM\JoinColumn(name="bondClassification_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="DocumentClassification", inversedBy="path")
+     * @ORM\JoinColumn(name="documentClassification_id", referencedColumnName="id")
      */
-    private $bondClassification;
+    private $documentClassification;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="link")
+     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="document")
      * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")
      */
     private $equipment;
+
 
 
 
@@ -55,51 +56,51 @@ class Bond
     }
 
     /**
-     * Set link
+     * Set path
      *
-     * @param string $link
+     * @param string $path
      *
-     * @return Bond
+     * @return Document
      */
-    public function setLink($link)
+    public function setPath($path)
     {
-        $this->link = $link;
+        $this->path = $path;
 
         return $this;
     }
 
     /**
-     * Get link
+     * Get path
      *
      * @return string
      */
-    public function getLink()
+    public function getPath()
     {
-        return $this->link;
+        return $this->path;
     }
 
     /**
-     * Set bondClassification
+     * Set documentClassification
      *
-     * @param \AppBundle\Entity\bondClassification $bondClassification
+     * @param \AppBundle\Entity\DocumentClassification $documentClassification
      *
-     * @return Bond
+     * @return Document
      */
-    public function setBondClassification(\AppBundle\Entity\bondClassification $bondClassification = null)
+    public function setDocumentClassification(\AppBundle\Entity\DocumentClassification $documentClassification = null)
     {
-        $this->bondClassification = $bondClassification;
+        $this->documentClassification = $documentClassification;
 
         return $this;
     }
 
     /**
-     * Get bondClassification
+     * Get documentClassification
      *
-     * @return \AppBundle\Entity\bondClassification
+     * @return \AppBundle\Entity\DocumentClassification
      */
-    public function getBondClassification()
+    public function getDocumentClassification()
     {
-        return $this->bondClassification;
+        return $this->documentClassification;
     }
 
     /**
@@ -107,7 +108,7 @@ class Bond
      *
      * @param \AppBundle\Entity\Equipment $equipment
      *
-     * @return Bond
+     * @return Document
      */
     public function setEquipment(\AppBundle\Entity\Equipment $equipment = null)
     {

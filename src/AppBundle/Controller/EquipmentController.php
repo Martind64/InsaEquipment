@@ -1,13 +1,13 @@
 <?php
 
 namespace AppBundle\Controller;
-use AppBundle\Entity\Bond;
+use AppBundle\Entity\Document;
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Classification;
 use AppBundle\Entity\Repository\CalibrationRepository;
 use AppBundle\Form\Type\EquipmentType;
 use AppBundle\Form\Type\ClassificationType;
-use AppBundle\Form\Type\BondType;
+use AppBundle\Form\Type\DocumentType;
 use AppBundle\Form\Type\SearchType;
 use DateInterval;
 use DatePeriod;
@@ -208,10 +208,11 @@ class EquipmentController extends ControllerBase
      */
     public function createLinkAction(Request $request)
     {
-        $link = new Bond();
+        $link = new Document();
 
 
-        $form = $this->createForm(new BondType(), $link);
+
+        $form = $this->createForm(new DocumentType(), $link);
         $form->handleRequest($request);
 
         if($form->isValid())

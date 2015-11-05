@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Info
  *
- * @ORM\Table(name="bond_classification")
+ * @ORM\Table(name="document_classification")
  * @ORM\Entity
  */
-class BondClassification
+class DocumentClassification
 {
     /**
      * @var integer
@@ -30,9 +30,9 @@ class BondClassification
     protected $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="Bond", mappedBy="bondClassification")
+     * @ORM\OneToMany(targetEntity="Document", mappedBy="documentClassification")
      */
-    private $link;
+    private $path;
 
 
     /**
@@ -40,8 +40,9 @@ class BondClassification
      */
     public function __construct()
     {
-        $this->link = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->path = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -58,7 +59,7 @@ class BondClassification
      *
      * @param string $type
      *
-     * @return BondClassification
+     * @return DocumentClassification
      */
     public function setType($type)
     {
@@ -78,36 +79,36 @@ class BondClassification
     }
 
     /**
-     * Add link
+     * Add path
      *
-     * @param \AppBundle\Entity\Bond $link
+     * @param \AppBundle\Entity\Bond $path
      *
-     * @return BondClassification
+     * @return DocumentClassification
      */
-    public function addLink(\AppBundle\Entity\Bond $link)
+    public function addPath(\AppBundle\Entity\Bond $path)
     {
-        $this->link[] = $link;
+        $this->path[] = $path;
 
         return $this;
     }
 
     /**
-     * Remove link
+     * Remove path
      *
-     * @param \AppBundle\Entity\Bond $link
+     * @param \AppBundle\Entity\Bond $path
      */
-    public function removeLink(\AppBundle\Entity\Bond $link)
+    public function removePath(\AppBundle\Entity\Bond $path)
     {
-        $this->link->removeElement($link);
+        $this->path->removeElement($path);
     }
 
     /**
-     * Get link
+     * Get path
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLink()
+    public function getPath()
     {
-        return $this->link;
+        return $this->path;
     }
 }
