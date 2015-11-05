@@ -226,15 +226,15 @@ class EquipmentController extends ControllerBase
         ];
     }
 
-    public function getFilePathAction($file)
-    {
-
-        $fh = 
-//        $fh = fopen($file, 'w');
-
-        return $fh;
-
-    }
+//    public function getFilePathAction($file)
+//    {
+//
+//        $fh =
+////        $fh = fopen($file, 'w');
+//
+//        return $fh;
+//
+//    }
 
 
     public function flushAction($data)
