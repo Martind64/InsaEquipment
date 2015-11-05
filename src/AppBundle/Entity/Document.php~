@@ -1,7 +1,6 @@
 <?php
 
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -44,4 +43,88 @@ class Document
 
 
 
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return Document
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set documentClassification
+     *
+     * @param \AppBundle\Entity\DocumentClassification $documentClassification
+     *
+     * @return Document
+     */
+    public function setDocumentClassification(\AppBundle\Entity\DocumentClassification $documentClassification = null)
+    {
+        $this->documentClassification = $documentClassification;
+
+        return $this;
+    }
+
+    /**
+     * Get documentClassification
+     *
+     * @return \AppBundle\Entity\DocumentClassification
+     */
+    public function getDocumentClassification()
+    {
+        return $this->documentClassification;
+    }
+
+    /**
+     * Set equipment
+     *
+     * @param \AppBundle\Entity\Equipment $equipment
+     *
+     * @return Document
+     */
+    public function setEquipment(\AppBundle\Entity\Equipment $equipment = null)
+    {
+        $this->equipment = $equipment;
+
+        return $this;
+    }
+
+    /**
+     * Get equipment
+     *
+     * @return \AppBundle\Entity\Equipment
+     */
+    public function getEquipment()
+    {
+        return $this->equipment;
+    }
 }
