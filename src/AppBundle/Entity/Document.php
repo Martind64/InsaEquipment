@@ -1,7 +1,6 @@
 <?php
 
 namespace AppBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,6 +44,7 @@ class Document
 
 
 
+
     /**
      * Get id
      *
@@ -68,6 +68,7 @@ class Document
 
         return $this;
     }
+
 
     /**
      * Get path

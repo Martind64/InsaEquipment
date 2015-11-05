@@ -35,7 +35,10 @@ class DocumentType extends AbstractType
                 }
 
             ])
-            ->add('path', 'file', ['attr' => ['class' => 'form-control']])
+            ->add('path', 'file', [
+                'attr' => ['class' => 'form-control'],
+
+            ])
             ->add('save', 'submit', ['attr' => ['class' => 'btn btn-lg btn-primary']]);
 
     }

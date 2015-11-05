@@ -203,29 +203,38 @@ class EquipmentController extends ControllerBase
     }
 
     /**
-     * @Route("/createLink", name="createLink")
+     * @Route("/createPath", name="createPath")
      * @Template()
      */
-    public function createLinkAction(Request $request)
+    public function createPathAction(Request $request)
     {
-        $link = new Document();
+        $path = new Document();
 
 
 
-        $form = $this->createForm(new DocumentType(), $link);
+        $form = $this->createForm(new DocumentType(), $path);
         $form->handleRequest($request);
 
         if($form->isValid())
         {
-            $this->flushAction($link);
+            $file = $this->getFilePathAction($path);
+            $this->flushAction($file);
         }
 
         return [
             'Form' => $form->createView()
         ];
-
     }
 
+    public function getFilePathAction($file)
+    {
+
+        $fh = 
+//        $fh = fopen($file, 'w');
+
+        return $fh;
+
+    }
 
 
     public function flushAction($data)
@@ -260,13 +269,11 @@ class EquipmentController extends ControllerBase
         }
         return new Response($file);
 
-
-
-
 //        return $this->render('AppBundle::testView.html.twig');
 
-
     }
+
+
 
 
 }
