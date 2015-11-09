@@ -84,7 +84,7 @@ class Info
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Calibration", inversedBy="Info")
+     * @ORM\ManyToOne(targetEntity="Calibration", inversedBy="info")
      * @ORM\JoinColumn(name="calibration_id", referencedColumnName="id")
      */
     protected $calibration;
