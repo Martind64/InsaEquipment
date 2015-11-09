@@ -125,7 +125,7 @@ class Equipment
     {
         $this->createdDatetime = new DateTime('now');
         $this->types = new ArrayCollection();
-        $this->bond = new ArrayCollection();
+        $this->document = new ArrayCollection();
         $this->callibrations = new ArrayCollection();
     }
 
@@ -616,40 +616,6 @@ class Equipment
         return $this->calibrations;
     }
 
-
-    /**
-     * Add bond
-     *
-     * @param \AppBundle\Entity\Bond $bond
-     *
-     * @return Equipment
-     */
-    public function addBond(\AppBundle\Entity\Bond $bond)
-    {
-        $this->bond[] = $bond;
-
-        return $this;
-    }
-
-    /**
-     * Remove bond
-     *
-     * @param \AppBundle\Entity\Bond $bond
-     */
-    public function removeBond(\AppBundle\Entity\Bond $bond)
-    {
-        $this->bond->removeElement($bond);
-    }
-
-    /**
-     * Get bond
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getBond()
-    {
-        return $this->bond;
-    }
 
     /**
      * Add document
