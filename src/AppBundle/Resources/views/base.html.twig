@@ -21,31 +21,28 @@
 
 <!-- Wrapper Begin -->
 <div id="wrapper">
+    {% block navbar %}
+        <!-- NAVIGATION TOP BAR -->
+        <div class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav-bar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="{{ path('homepage') }}" class="navbar-brand">Insatech Equipment</a>
+                </div>
 
-    <!-- NAVIGATION TOP BAR -->
-    <div class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav-bar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="{{ path('homepage') }}" class="navbar-brand">Insatech Equipment</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="top-nav-bar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ path('fos_user_profile_show') }}">Profile</a> </li>
-                    <li><a href="{{ path('fos_user_security_logout') }}">Logout</a> </li>
-                </ul>
-            </div>
-        </div><!-- Container End -->
-    </div><!-- Navbar end -->
-
-
-
-
+                <div class="collapse navbar-collapse" id="top-nav-bar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('fos_user_profile_show') }}">Profile</a> </li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Logout</a> </li>
+                    </ul>
+                </div>
+            </div><!-- Container End -->
+        </div><!-- Navbar end -->
+    {% endblock %}
 </div> <!-- Wrapper End -->
 
 
