@@ -129,7 +129,7 @@ class EquipmentController extends ControllerBase
 
 
     /**
-     * @Route("/homepage", name="homepage")
+     * @Route("/", name="homepage")
      */
 
     public function homePageAction()
