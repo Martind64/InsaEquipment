@@ -4,8 +4,12 @@
 
     {% block sidebar %}{{ parent() }}{% endblock %}
 
-    {% block fos_user_content %}
-    {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
-    {% endblock fos_user_content %}
+    <div class="container">
+        <div class="col-lg-4">
+            {% block fos_user_content %}
+            {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+            {% endblock fos_user_content %}
+        </div>
+    </div>
 
 {% endblock %}
