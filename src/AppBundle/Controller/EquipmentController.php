@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Document;
 use AppBundle\Entity\Equipment;
 use AppBundle\Entity\Classification;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Entity\Repository\CalibrationRepository;
 use AppBundle\Form\Type\EquipmentType;
 use AppBundle\Form\Type\ClassificationType;
@@ -58,6 +59,7 @@ class EquipmentController extends ControllerBase
 
     public function updateEquipmentAction(Request $request, $id)
     {
+        $this->checkForAdminAction();
 
         $em = $this->getEM();
         $equipment = $em->getRepository('AppBundle:Equipment')->find($id);
@@ -184,6 +186,8 @@ class EquipmentController extends ControllerBase
      */
     public function updateTypeAction(Request $request, $id)
     {
+        $this->checkForAdminAction();
+
         $em = $this->getEM()->getRepository('AppBundle:Classification');
         $type = $em->find($id);
 
@@ -246,6 +250,19 @@ class EquipmentController extends ControllerBase
 
     }
 
+    // Checks if the user has admin rights
+    public function checkForAdminAction()
+    {
+        $user = $this->getUser();
+
+        //Queries the database to check if the user has the role: ROLE_ADMIN
+        if(!$user->hasRole('ROLE_ADMIN'))
+        {
+            throw new NotFoundHttpException('You have to be an admin to access this page');
+        }
+
+        return $user;
+    }
 
     /**
      * @Route("/test/", name="testPage")
@@ -269,9 +286,8 @@ class EquipmentController extends ControllerBase
         }
         return new Response($file);
 
-//        return $this->render('AppBundle::testView.html.twig');
-
     }
+
 
 
 
