@@ -1,0 +1,11 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block body %}
+
+    {% block sidebar %}{{ parent() }}{% endblock %}
+
+    {% block fos_user_content %}
+    {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+    {% endblock fos_user_content %}
+
+{% endblock %}
