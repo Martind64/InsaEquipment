@@ -16,8 +16,10 @@
 
             <table class="table table-hover" id="myTables">
                 <tc><h2>Calibration
-                        <a href="{{ path('addInfo', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">add calibration</button></a>
-                        <a href="{{ path('updateCalibration', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">update</button></a>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <a href="{{ path('addInfo', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">add calibration</button></a>
+                            <a href="{{ path('updateCalibration', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">update</button></a>
+                        {% endif %}
                     </h2>
                 </tc>
                 <th>
@@ -35,18 +37,33 @@
                     </tr>
                 </th>
                 {% for i in info %}
-                    <tr onclick="document.location = '{{ path('updateInfo', {'id': i.id}) }}'">
-                        <td>{{ i.unit.unit }}</td>
-                        <td>{{ i.prefix.prefix }}</td>
-                        <td>{{ i.measuredAt}} </td>
-                        <td>{{ i.uncertaintyRequests }} </td>
-                        <td>{{ i.actualUncertainty }} </td>
-                        <td>{{ i.labReference }} </td>
-                        <td>{{ i.uut }} </td>
-                        <td>{{ i.deviation }} </td>
-                        <td>{{ i.adjustmentLimit }} </td>
-                        <td>{{ i.comment }} </td>
-                    </tr>
+                    {% if is_granted("ROLE_ADMIN")  %}
+                        <tr onclick="document.location = '{{ path('updateInfo', {'id': i.id}) }}'">
+                            <td>{{ i.unit.unit }}</td>
+                            <td>{{ i.prefix.prefix }}</td>
+                            <td>{{ i.measuredAt}} </td>
+                            <td>{{ i.uncertaintyRequests }} </td>
+                            <td>{{ i.actualUncertainty }} </td>
+                            <td>{{ i.labReference }} </td>
+                            <td>{{ i.uut }} </td>
+                            <td>{{ i.deviation }} </td>
+                            <td>{{ i.adjustmentLimit }} </td>
+                            <td>{{ i.comment }} </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td>{{ i.unit.unit }}</td>
+                            <td>{{ i.prefix.prefix }}</td>
+                            <td>{{ i.measuredAt}} </td>
+                            <td>{{ i.uncertaintyRequests }} </td>
+                            <td>{{ i.actualUncertainty }} </td>
+                            <td>{{ i.labReference }} </td>
+                            <td>{{ i.uut }} </td>
+                            <td>{{ i.deviation }} </td>
+                            <td>{{ i.adjustmentLimit }} </td>
+                            <td>{{ i.comment }} </td>
+                        </tr>
+                {% endif %}
                 {% endfor %}
 
 
