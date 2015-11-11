@@ -18,7 +18,7 @@ class InfoType extends AbstractType
         $builder
             ->add('unit', 'entity', [
                 'class' => Unit::class,
-                'property' => 'unit',
+                'choice_label' => 'unit',
                 'empty_value' => 'select unit',
                 'query_builder' => function(EntityRepository $er)
                 {
@@ -28,7 +28,7 @@ class InfoType extends AbstractType
             ])
             ->add('prefix', 'entity', [
                 'class' => prefix::class,
-                'property' => 'prefix',
+                'choice_label' => 'prefix',
                 'empty_value' => 'select prefix',
                 'query_builder' => function(EntityRepository $er)
                 {
@@ -45,7 +45,6 @@ class InfoType extends AbstractType
             ->add('adjustmentLimit', 'text', array('attr' => array('class' => 'form-control')))
             ->add('comment', 'text', array('attr' => array('class' => 'form-control')))
             ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg inline')));
-
 
     }
 

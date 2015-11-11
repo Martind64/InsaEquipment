@@ -69,14 +69,14 @@ class Info
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Unit", inversedBy="Info")
+     * @ORM\ManyToOne(targetEntity="Unit")
      * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
      */
     protected $unit;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Prefix", inversedBy="Info")
+     * @ORM\ManyToOne(targetEntity="Prefix")
      * @ORM\JoinColumn(name="prefix_id", referencedColumnName="id")
      */
     protected $prefix;

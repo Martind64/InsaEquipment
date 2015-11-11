@@ -18,7 +18,7 @@ class CalibrationType extends AbstractType
         $builder
             ->add('equipment', 'entity', [
                 'class' => Equipment::class,
-                'property' => 'equipmentID',
+                'choice_label' => 'equipmentID',
                 'empty_value' => 'select equipment',
                 'query_builder' => function(EntityRepository $er)
                 {
