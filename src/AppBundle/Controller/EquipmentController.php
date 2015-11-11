@@ -31,6 +31,9 @@ class EquipmentController extends ControllerBase
 
     public function addEquipmentAction(Request $request)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $equipment = new Equipment();
 
         $form = $this->createForm(new EquipmentType(), $equipment);
@@ -93,6 +96,9 @@ class EquipmentController extends ControllerBase
 
     public function createClassificationAction(Request $request)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $classification = new Classification();
 
         $form = $this->createForm(new ClassificationType(), $classification);
@@ -212,9 +218,10 @@ class EquipmentController extends ControllerBase
      */
     public function createPathAction(Request $request)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $path = new Document();
-
-
 
         $form = $this->createForm(new DocumentType(), $path);
         $form->handleRequest($request);
@@ -229,16 +236,6 @@ class EquipmentController extends ControllerBase
             'Form' => $form->createView()
         ];
     }
-
-//    public function getFilePathAction($file)
-//    {
-//
-//        $fh =
-////        $fh = fopen($file, 'w');
-//
-//        return $fh;
-//
-//    }
 
 
     public function flushAction($data)

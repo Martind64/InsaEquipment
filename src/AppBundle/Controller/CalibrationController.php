@@ -10,6 +10,7 @@ use AppBundle\Form\Type\CalibrationType;
 use AppBundle\Entity\Info;
 use AppBundle\Form\Type\PrefixType;
 use AppBundle\Form\Type\UnitType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -26,6 +27,9 @@ class CalibrationController extends ControllerBase
 
     public function createCalibrationAction(Request $request)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $calibration = new Calibration();
 
         $Form = $this->createForm(new CalibrationType(), $calibration);
@@ -50,6 +54,9 @@ class CalibrationController extends ControllerBase
 
     public function addInfoAction(Request $request, $id)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $em = $this->getEM();
         $calibration = $em->getRepository('AppBundle:Calibration')->find($id);
 
@@ -84,6 +91,9 @@ class CalibrationController extends ControllerBase
      */
     public function updateInfoAction(Request $request, $id)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $em = $this->getEM();
         $info = $em->getRepository('AppBundle:Info')->find($id);
 
@@ -108,6 +118,9 @@ class CalibrationController extends ControllerBase
      */
     public function updateCalibrationAction(Request $request, $id)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $em = $this->getEM();
         $calibration = $em->getRepository('AppBundle:Calibration')->find($id);
 
@@ -155,6 +168,9 @@ class CalibrationController extends ControllerBase
      */
     public function createUnitAction(Request $request)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $unit = new Unit();
 
         $form = $this->createForm(new UnitType(), $unit);
@@ -182,8 +198,10 @@ class CalibrationController extends ControllerBase
 
     public function createPrefixAction(Request $request)
     {
-        $prefix = new Prefix();
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
 
+        $prefix = new Prefix();
         $form = $this->createForm(new PrefixType(), $prefix);
         $form->handleRequest($request);
 
@@ -208,6 +226,9 @@ class CalibrationController extends ControllerBase
      */
     public function updatePrefixAction(Request $request, $id)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $em = $this->getEM()->getRepository('AppBundle:Prefix');
         $prefix = $em->find($id);
 
@@ -251,6 +272,9 @@ class CalibrationController extends ControllerBase
 
     public function updateUnitAction(Request $request, $id)
     {
+        //Checks if the user has admin rights
+        $this->checkForAdminAction();
+
         $em = $this->getEM()->getRepository('AppBundle:Unit');
         $unit = $em->find($id);
 
@@ -301,6 +325,19 @@ class CalibrationController extends ControllerBase
 
     }
 
+    // Checks if the user has admin rights
+    public function checkForAdminAction()
+    {
+        $user = $this->getUser();
+
+        //Queries the database to check if the user has the role: ROLE_ADMIN
+        if(!$user->hasRole('ROLE_ADMIN'))
+        {
+            throw new NotFoundHttpException('You have to be an admin to access this page');
+        }
+
+        return $user;
+    }
 
     public function flushAction($data)
     {
