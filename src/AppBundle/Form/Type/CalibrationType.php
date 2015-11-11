@@ -20,7 +20,7 @@ class CalibrationType extends AbstractType
                 'query_builder' => function(EntityRepository $er)
                 {
                     return $er->createQueryBuilder('c')
-                        ->orderBy('c.equipmentID', 'ASC');
+                        ->orderBy('c.equipmentID * 1');
                 }
             ])
             ->add('calibrationDate', 'date', ['attr' => ['class' => 'form-control']])
