@@ -2,6 +2,7 @@
 
 
 namespace AppBundle\Form\Type;
+use AppBundle\Entity\Document;
 use AppBundle\Entity\DocumentClassification;
 use Doctrine\ORM\EntityRepository;
 use Proxies\__CG__\AppBundle\Entity\Equipment;
@@ -41,6 +42,13 @@ class DocumentType extends AbstractType
             ])
             ->add('save', 'submit', ['attr' => ['class' => 'btn btn-lg btn-primary']]);
 
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Document::class,
+        ]);
     }
 
     public function getName()

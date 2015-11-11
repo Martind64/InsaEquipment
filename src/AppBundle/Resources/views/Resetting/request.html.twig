@@ -1,5 +1,21 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
-{% endblock fos_user_content %}
+
+{% block body %}
+    {% block navbar %}{% endblock %}
+    <header>
+        <div class="container" id="main-content-wrapper">
+            <div class="container">
+                <div class="jumbotron">
+                    <h1>Reset password</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        {% block fos_user_content %}
+            {% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+        {% endblock fos_user_content %}
+    </div>
+{% endblock %}

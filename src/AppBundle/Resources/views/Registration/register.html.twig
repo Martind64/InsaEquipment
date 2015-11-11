@@ -13,12 +13,18 @@
     </div>
 </header>
 
-{% block fos_user_content %}
     <div class="container">
-        <div class="col-lg-4">
-            {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+        <div class="row">
+            <div class="col-lg-1">
+        {% block fos_user_content %}
+            <div class="container">
+                <div class="col-lg-2">
+                    {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+                </div>
+            </div>
+        {% endblock fos_user_content %}
         </div>
     </div>
-{% endblock fos_user_content %}
+    </div>
 
 {% endblock %}

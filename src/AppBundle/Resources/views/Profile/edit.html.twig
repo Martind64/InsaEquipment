@@ -1,13 +1,15 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block body %}
-
     {% block sidebar %}{{ parent() }}{% endblock %}
+
 
     <div class="container">
         <div class="col-lg-4">
             {% block fos_user_content %}
-            {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+                <div class="col-lg-4">
+                    {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+                </div>
             {% endblock fos_user_content %}
         </div>
     </div>

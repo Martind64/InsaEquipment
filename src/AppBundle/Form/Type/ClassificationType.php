@@ -2,8 +2,10 @@
 
 
 namespace AppBundle\Form\Type;
+use AppBundle\Entity\Classification;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
 class ClassificationType extends AbstractType
@@ -15,6 +17,12 @@ class ClassificationType extends AbstractType
             ->add('save', 'submit', ['attr' => ['class' => 'btn btn-lg btn-primary']]);
     }
 
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Classification::class,
+        ]);
+    }
     public function getName()
     {
         return 'classification';

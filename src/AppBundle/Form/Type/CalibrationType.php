@@ -2,10 +2,13 @@
 
 
 namespace AppBundle\Form\Type;
+use AppBundle\Entity\Calibration;
 use AppBundle\Entity\Equipment;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 
 class CalibrationType extends AbstractType
@@ -35,7 +38,12 @@ class CalibrationType extends AbstractType
             ->add('save', 'submit', ['attr' => ['class' => 'btn btn-lg btn-primary']]);
 
     }
-
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Calibration::class,
+        ]);
+    }
     public function getName()
     {
         return 'calibration';
