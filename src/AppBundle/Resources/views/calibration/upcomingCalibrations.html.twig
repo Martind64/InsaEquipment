@@ -8,7 +8,6 @@
             <div class="row">
                 {% block sidebar %}{{ parent() }}{% endblock %}
 
-
                 <div class="col-lg-10">
                     <table class="table table-hover" id="myTables">
                         <tc><h1>Upcoming calibrations</h1></tc>
@@ -28,7 +27,6 @@
                                 <td>{{ e.Model}}</td>
                                 <td>{{ e.IsoStandard }}</td>
                                 <td>{{ e.nextCalibration|date('d-m-y') }}</td>
-
                             </tr>
                         {% endfor %}
                     </table>

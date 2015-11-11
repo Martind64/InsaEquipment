@@ -19,13 +19,13 @@ class Equipment
     protected $id;
 
     /**
-     * @ORM\Column(type="integer", length=100)
+     * @ORM\Column(type="string", length=100)
      */
     protected $equipmentID;
+
     /**
      * @ORM\Column(type="text", length=200)
      */
-
     protected $description;
     /**
      * @ORM\Column(type="string", length=100)
@@ -139,29 +139,6 @@ class Equipment
         return $this->id;
     }
 
-    /**
-     * Set equipmentID
-     *
-     * @param string $equipmentID
-     *
-     * @return Equipment
-     */
-    public function setEquipmentID($equipmentID)
-    {
-        $this->equipmentID = $equipmentID;
-
-        return $this;
-    }
-
-    /**
-     * Get equipmentID
-     *
-     * @return string
-     */
-    public function getEquipmentID()
-    {
-        return $this->equipmentID;
-    }
 
     /**
      * Set description
@@ -649,5 +626,29 @@ class Equipment
     public function getDocument()
     {
         return $this->document;
+    }
+
+    /**
+     * Set equipmentID
+     *
+     * @param string $equipmentID
+     *
+     * @return Equipment
+     */
+    public function setEquipmentID($equipmentID)
+    {
+        $this->equipmentID = $equipmentID;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentID
+     *
+     * @return string
+     */
+    public function getEquipmentID()
+    {
+        return $this->equipmentID;
     }
 }

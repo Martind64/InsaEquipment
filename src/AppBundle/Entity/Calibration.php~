@@ -49,7 +49,7 @@ class Calibration
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="Calibration")
+     * @ORM\ManyToOne(targetEntity="Equipment", inversedBy="calibrations")
      * @ORM\JoinColumn(name="equipment_id", referencedColumnName="id")
      */
     protected $equipment;

@@ -17,16 +17,21 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
 
         public function findAllEquipment()
         {
-            return $this->findBy(array(), ['equipmentID' => 'ASC']);
+//            return $this->findBy(array(), ['equipmentID' => 'ASC']);
+            $query = $this->getEntityManager()
+                ->createQuery('SELECT e FROM AppBundle:Equipment e
+                               ORDER BY e.equipmentID *1');
+            return $query->getResult();
+
         }
 
         public function findEquipmentJoinedWithTypes($id)
         {
 
             $query = $this->getEntityManager()
-                ->createQuery('SELECT c from AppBundle:Classification c
+                ->createQuery('SELECT c FROM AppBundle:Classification c
                                JOIN c.equipment e
-                               where e.id = :id')->setParameter('id', $id);
+                               WHERE e.id = :id')->setParameter('id', $id);
 
             return $query->getResult();
         }
