@@ -16,6 +16,12 @@ class EquipmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+//            ->add('isoStandard', 'choice', [
+//                    'choices' => ['17025', '125'],
+//                    'multiple' => false,
+//                    'expanded' => false,
+//                    'label' => 'Iso Standard',
+//                ])
             ->add('isoStandard', 'text', array('attr' => array('class' => 'form-control')))
             ->add('equipmentId', 'text', array('attr' => array('class' => 'form-control')))
             ->add('description', 'text', array('attr' => array('class' => 'form-control')))

@@ -2,6 +2,7 @@
 
 
 namespace AppBundle\Form\Type;
+use AppBundle\Entity\Info;
 use AppBundle\Entity\Prefix;
 use AppBundle\Entity\Unit;
 use Doctrine\ORM\EntityRepository;
