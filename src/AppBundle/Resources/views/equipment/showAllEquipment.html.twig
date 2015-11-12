@@ -19,12 +19,21 @@
                             </tr>
                         </th>
                         {% for e in equipment %}
-                            <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
+                            {% if e.status == 0 %}
+                            <tr class="danger" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
                                 <td>{{ e.equipmentID }}</td>
                                 <td>{{ e.serialNr }}</td>
                                 <td>{{ e.model }}</td>
                                 <td>{{ e.isoStandard }}</td>
                             </tr>
+                            {% else %}
+                            <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
+                                    <td>{{ e.equipmentID }}</td>
+                                    <td>{{ e.serialNr }}</td>
+                                    <td>{{ e.model }}</td>
+                                    <td>{{ e.isoStandard }}</td>
+                                </tr>
+                            {% endif %}
                         {% endfor %}
                     </table>
                 </div>

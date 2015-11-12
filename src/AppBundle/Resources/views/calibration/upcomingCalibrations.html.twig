@@ -26,7 +26,7 @@
                             </tr>
                         </th>
                         {% for e in exceededEquipment %}
-                            <tr class="warning" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
+                            <tr class="danger" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
                                 <td>{{ e.equipmentID}}</td>
                                 <td>{{ e.serialNr}}</td>
                                 <td>{{ e.Model}}</td>
