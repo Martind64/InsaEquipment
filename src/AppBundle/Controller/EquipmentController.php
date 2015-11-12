@@ -81,10 +81,10 @@ class EquipmentController extends ControllerBase
 
         //Calls getEM which is a method in ControllerBase.php which calls getDoctrine->getEntityManager()
         $em = $this->getEM();
-        //gets the Equipment Entity and query for the ID
+        //gets the Equipment Entity and find all equipment where id=$id
         $equipment = $em->getRepository('AppBundle:Equipment')->find($id);
 
-        //Creates the form and passes the equipment variable containing all the fields that was just retrieved
+        //Creates the form and passes the $equipment variable containing all the fields that was just retrieved
         $Form = $this->createForm(new EquipmentType(), $equipment);
 
         //Handles the form request
@@ -96,9 +96,10 @@ class EquipmentController extends ControllerBase
             throw $this->createNotFountException('There is no equipment with that id');
         }
 
-        //Checks to see if the form is valid and if it is, it saves the data to the database.
+        //Checks to see if the form is valid and if it is, it saves the data to the database and redirects.
         if($Form->isValid())
         {
+            // Calls the flushAction which (Look in the bottom of the code)
             $em->flush($equipment);
             //Redirects to the showEquipmentAction which renders
             //the view for the equipment with the id that was just updated
