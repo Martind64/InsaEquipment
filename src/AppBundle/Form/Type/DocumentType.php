@@ -5,6 +5,7 @@ namespace AppBundle\Form\Type;
 use AppBundle\Entity\Document;
 use AppBundle\Entity\DocumentClassification;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Proxies\__CG__\AppBundle\Entity\Equipment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

@@ -24,11 +24,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class EquipmentController extends ControllerBase
 {
+    //Action for adding equipment to the database
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/createEquipment", name="createEquipment")
      * @Template()
      */
-    //Action for adding equipment to the database
     public function addEquipmentAction(Request $request)
     {
         //Checks if the user has admin rights (Check bottom code)
@@ -62,12 +63,15 @@ class EquipmentController extends ControllerBase
         ];
 
     }
+    //------------------------------------------------------------------------------------------
 
+
+    //Action for updating equipment in the database
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/updateEquipment/{id}", name="updateEquipment")
      * @Template()
      */
-    //Action for updating equipment in the database
     public function updateEquipmentAction(Request $request, $id)
     {
         //Checks if the user has admin rights (Check bottom code)
@@ -94,7 +98,7 @@ class EquipmentController extends ControllerBase
         if($Form->isValid())
         {
             $em->flush($equipment);
-            //Redirects to the Route showEquipmentAction which renders
+            //Redirects to the showEquipmentAction which renders
             //the view for the equipment with the id that was just updated
             return $this->redirectToRoute('showEquipment', ['id' => $equipment->getId()]);
         }
@@ -108,12 +112,12 @@ class EquipmentController extends ControllerBase
     }
 
 
-
+    //Action for adding a Classification to the database
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/createType", name="createType")
      * @Template()
      */
-    //Action for adding a Classification to the database
     public function createClassificationAction(Request $request)
     {
         //Checks if the user has admin rights (Check bottom code)
@@ -149,39 +153,49 @@ class EquipmentController extends ControllerBase
         ];
 
     }
+    //------------------------------------------------------------------------------------------
 
+
+    //Action for showing all the equipment in the database
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/overview", name="overview")
      * @Template()
      */
-    //Action for showing all the equipment in the database
     public function showAllEquipmentAction()
     {
         //Gets the Equipment entity and queries for all equipment
         $equipment = $this->getEM()->getRepository('AppBundle:Equipment')
             ->findAllEquipment();
 
-        //Sends an equipment variable to the template containing all rows in the Equipment Table
+        //Sends an equipment variable to the view containing all rows in the Equipment Table
         return[
             'equipment' => $equipment
         ];
     }
+    //------------------------------------------------------------------------------------------
 
 
+
+    //Action for showing the homepage
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/", name="homepage")
      */
-    //Action for showing the homepage
     public function homePageAction()
     {
         return $this->render('AppBundle::homepage.html.twig');
     }
+    //------------------------------------------------------------------------------------------
 
+
+
+    //Action for showing the information on specific equipment
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/equipment/{id}", name="showEquipment")
      * @Template()
      */
-    //Action for showing the information on specific equipment
     public function showEquipmentAction($id)
     {
         //gets the Equipment and AppBundle Entity
@@ -189,68 +203,105 @@ class EquipmentController extends ControllerBase
         $em = $this->getEM()->getRepository('AppBundle:Equipment');
         $emcal = $this->getEM()->getRepository('AppBundle:Calibration');
 
-        //Queries
+        //Queries the database for all the Calibrations belonging to the equipment with id=$id
         $calibration = $emcal->findAllCalibrations($id);
+
+        //Queries the database for an equipment with the id=$id
         $equipment = $em->find($id);
+
+        //Queries the database for the types belonging to equipment where id=$id
+        //The method residse in the /Entity/Repository/EquipmentRepository folder
         $type = $em->findEquipmentJoinedWithTypes($id);
 
+        //Checks to see if the equipment exists if not then throws and exception
         if(!$equipment)
         {
             throw $this->createNotFoundException('There is no equipment with that id');
         }
 
+        //Returns the variables to the corresponding view so the data can be shown in the browser
         return[
             'equipment' => $equipment,
             'calibration' => $calibration,
             'types' => $type
         ];
     }
+    //------------------------------------------------------------------------------------------
 
+
+
+    //Action for showing all classifications(Types of equipment)
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/showAllTypes", name="showAllTypes")
      * @Template()
      */
     public function showAllTypesAction()
     {
+        //Gets the Classification entity and queries for all classifications
+        //getEM() is a method in ControllerBase.php which calls getDoctrine->getEntityManager()
         $em = $this->getEM()->getRepository('AppBundle:Classification');
         $types = $em->findAll();
 
+        //Returns the variable to the corresponding view so the data can be shown in the browser
         return [
             'types' => $types
         ];
-
     }
+    //------------------------------------------------------------------------------------------
 
+
+
+    //Action for updating a type
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/updateType/{id}", name="updateType")
      * @Template()
      */
     public function updateTypeAction(Request $request, $id)
     {
+        //Checks if the user has admin rights (Check bottom code)
         $this->checkForAdminAction();
 
+        //Gets the Classification entity
+        //getEM() is a method in ControllerBase.php which calls getDoctrine->getEntityManager()
         $em = $this->getEM()->getRepository('AppBundle:Classification');
         $type = $em->find($id);
 
+        //Creates the form and passes the $type variable containing all the fields that was just retrieved
         $form = $this->createForm(new ClassificationType(), $type);
         $form->handleRequest($request);
 
+
+        //Checks to see if the form is valid, if it is. Saves the data to the database
         if($form->isValid())
         {
+            // Calls the flushAction which (Look in the bottom of the code)
             $this->flushAction($type);
+
+            //Redirects to the showAllTypesAction which renders
+            //the view for the type with the id that was just updated
             return $this->redirectToRoute('showAllTypes');
         }
 
+        // Creates the view and sends the form variable to the template
         return [
             'Form' => $form->createView()
         ];
 
     }
+    //------------------------------------------------------------------------------------------
 
+
+
+    //This gets a file and saves it to the database
+    //It is not completed. The goal is to save only the path to the server and not the entire file
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/createPath", name="createPath")
      * @Template()
      */
+
     public function createPathAction(Request $request)
     {
         //Checks if the user has admin rights
@@ -271,9 +322,12 @@ class EquipmentController extends ControllerBase
             'Form' => $form->createView()
         ];
     }
+    //------------------------------------------------------------------------------------------
+
+
 
     // Methods used in my route actions
-
+    //------------------------------------------------------------------------------------------
     public function flushAction($data)
     {
         //Calls getEM which is a method in ControllerBase.php which calls getDoctrine->getEntityManager()
@@ -299,11 +353,14 @@ class EquipmentController extends ControllerBase
 
         return $user;
     }
+    //------------------------------------------------------------------------------------------
 
+
+    //Used this function to try and test new things
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/test/", name="testPage")
      */
-    //Used this function to try and test new things
     public function testViewsAction()
     {
         $finder = new Finder();
@@ -323,9 +380,7 @@ class EquipmentController extends ControllerBase
         return new Response($file);
 
     }
-
-
-
+    //------------------------------------------------------------------------------------------
 
 
 }
