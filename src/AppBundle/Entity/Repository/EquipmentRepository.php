@@ -17,7 +17,6 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
 
         public function findAllEquipment()
         {
-//            return $this->findBy(array(), ['equipmentID' => 'ASC']);
             $query = $this->getEntityManager()
                 ->createQuery('SELECT e FROM AppBundle:Equipment e
                                ORDER BY e.equipmentID *1');
