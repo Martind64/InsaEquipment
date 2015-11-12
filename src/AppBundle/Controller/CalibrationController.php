@@ -406,6 +406,8 @@ class CalibrationController extends ControllerBase
     }
     //------------------------------------------------------------------------------------------
 
+
+
     //Action for showing all prefixes
     //------------------------------------------------------------------------------------------
     /**
@@ -424,6 +426,8 @@ class CalibrationController extends ControllerBase
         ];
     }
     //------------------------------------------------------------------------------------------
+
+
 
     //Action for showing all units
     //------------------------------------------------------------------------------------------
@@ -444,7 +448,9 @@ class CalibrationController extends ControllerBase
     }
     //------------------------------------------------------------------------------------------
 
-    //Action for showing all upcoming callibrations
+
+
+    //Action for showing all upcoming calibrations
     //------------------------------------------------------------------------------------------
     /**
      * @Route("/upcomingCalibrations", name="showUpcomingCalibrations")
@@ -464,6 +470,7 @@ class CalibrationController extends ControllerBase
         ];
     }
     //------------------------------------------------------------------------------------------
+
 
 
     //Shows exceeded calibrations
@@ -487,6 +494,9 @@ class CalibrationController extends ControllerBase
             'equipment' => $calibrations
         ];
     }
+    //------------------------------------------------------------------------------------------
+
+
 
     // Methods used in my route actions
     //------------------------------------------------------------------------------------------
@@ -500,6 +510,7 @@ class CalibrationController extends ControllerBase
         $em->flush();
 
     }
+
 
     // Checks if the user has admin rights
     public function checkForAdminAction()
