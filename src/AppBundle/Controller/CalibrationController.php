@@ -471,7 +471,7 @@ class CalibrationController extends ControllerBase
 
     /**
      * @Route("/exceededCalibrations", name="showExceededCalibrations")
-     * Template()
+     * @Template()
      */
     public function exceededCalibrationsAction()
     {
