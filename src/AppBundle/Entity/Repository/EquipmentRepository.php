@@ -39,7 +39,8 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
         {
             $date_from = new \DateTime();
             $date_to = new \DateTime();
-            $date_to->modify('+60 day');
+            $date_to->modify('+2 month');
+
 
             $qb = $this->getEntityManager()
                 ->createQueryBuilder();
