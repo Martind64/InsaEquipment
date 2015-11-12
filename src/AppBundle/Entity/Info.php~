@@ -25,7 +25,7 @@ class Info
     /**
      * @var string
      *
-     * @ORM\Column(type="text", length=200)
+     * @ORM\Column(type="decimal", precision=8, scale=16)
      */
     private $uncertaintyRequests;
 
@@ -69,14 +69,14 @@ class Info
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Unit", inversedBy="Info")
+     * @ORM\ManyToOne(targetEntity="Unit")
      * @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
      */
     protected $unit;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Prefix", inversedBy="Info")
+     * @ORM\ManyToOne(targetEntity="Prefix")
      * @ORM\JoinColumn(name="prefix_id", referencedColumnName="id")
      */
     protected $prefix;
@@ -293,32 +293,6 @@ class Info
         return $this->measuredAt;
     }
 
-
-    /**
-     * Set calibration
-     *
-     * @param \AppBundle\Entity\Calibration $calibration
-     *
-     * @return Info
-     */
-    public function setCalibration(\AppBundle\Entity\Calibration $calibration = null)
-    {
-        $this->calibration = $calibration;
-
-        return $this;
-    }
-
-    /**
-     * Get calibration
-     *
-     * @return \AppBundle\Entity\Calibration
-     */
-    public function getCalibration()
-    {
-        return $this->calibration;
-    }
-
-
     /**
      * Set unit
      *
@@ -365,5 +339,29 @@ class Info
     public function getPrefix()
     {
         return $this->prefix;
+    }
+
+    /**
+     * Set calibration
+     *
+     * @param \AppBundle\Entity\Calibration $calibration
+     *
+     * @return Info
+     */
+    public function setCalibration(\AppBundle\Entity\Calibration $calibration = null)
+    {
+        $this->calibration = $calibration;
+
+        return $this;
+    }
+
+    /**
+     * Get calibration
+     *
+     * @return \AppBundle\Entity\Calibration
+     */
+    public function getCalibration()
+    {
+        return $this->calibration;
     }
 }

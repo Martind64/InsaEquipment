@@ -627,4 +627,28 @@ class Equipment
     {
         return $this->document;
     }
+
+    /**
+     * Set equipmentID
+     *
+     * @param string $equipmentID
+     *
+     * @return Equipment
+     */
+    public function setEquipmentID($equipmentID)
+    {
+        $this->equipmentID = $equipmentID;
+
+        return $this;
+    }
+
+    /**
+     * Get equipmentID
+     *
+     * @return string
+     */
+    public function getEquipmentID()
+    {
+        return $this->equipmentID;
+    }
 }
