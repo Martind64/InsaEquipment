@@ -28,6 +28,7 @@ class CalibrationType extends AbstractType
             ])
             ->add('calibrationDate', 'date', ['attr' => ['class' => 'form-control']])
             ->add('calibrationInstitute', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('calibrationCertificate', 'text', array('attr' => array('class' => 'form-control')))
             ->add('approvedBy', 'text', array('attr' => array('class' => 'form-control')))
             ->add('status', 'choice', [
                 'choices' => ['inactive', 'active'],

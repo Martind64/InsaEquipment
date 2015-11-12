@@ -17,7 +17,7 @@ class EquipmentType extends AbstractType
     {
         $builder
             ->add('isoStandard', 'choice', [
-                    'choices' => ['17025', '9001'],
+                    'choices' => ['17025' => '17025', '9001' => '9001'],
                     'multiple' => false,
                     'expanded' => false,
                     'label' => 'Iso Standard',

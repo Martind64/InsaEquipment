@@ -39,8 +39,12 @@ class Calibration
     /**
      * @ORM\Column(type="string", length=100)
      */
-
     private $approvedBy;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $calibrationCertificate;
 
     /**
      * @ORM\OneToMany(targetEntity="Info", mappedBy="calibration")
@@ -226,5 +230,29 @@ class Calibration
     public function getInfo()
     {
         return $this->info;
+    }
+
+    /**
+     * Set calibrationCertificate
+     *
+     * @param string $calibrationCertificate
+     *
+     * @return Calibration
+     */
+    public function setCalibrationCertificate($calibrationCertificate)
+    {
+        $this->calibrationCertificate = $calibrationCertificate;
+
+        return $this;
+    }
+
+    /**
+     * Get calibrationCertificate
+     *
+     * @return string
+     */
+    public function getCalibrationCertificate()
+    {
+        return $this->calibrationCertificate;
     }
 }
