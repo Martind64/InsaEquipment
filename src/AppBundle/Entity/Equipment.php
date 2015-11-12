@@ -95,6 +95,11 @@ class Equipment
     /**
      * @ORM\Column(type="boolean")
      */
+    protected $isCalibrated;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
     protected $boxStorage;
 
     /**
@@ -650,5 +655,29 @@ class Equipment
     public function getEquipmentID()
     {
         return $this->equipmentID;
+    }
+
+    /**
+     * Set isCalibrated
+     *
+     * @param boolean $isCalibrated
+     *
+     * @return Equipment
+     */
+    public function setIsCalibrated($isCalibrated)
+    {
+        $this->isCalibrated = $isCalibrated;
+
+        return $this;
+    }
+
+    /**
+     * Get isCalibrated
+     *
+     * @return boolean
+     */
+    public function getIsCalibrated()
+    {
+        return $this->isCalibrated;
     }
 }

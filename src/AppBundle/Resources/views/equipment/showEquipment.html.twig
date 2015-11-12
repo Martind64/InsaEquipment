@@ -30,6 +30,7 @@
             <p><b>calibration interval:</b> {{ equipment.calibrationInterval }}</p>
             <p><b>calibration institute</b> {{ equipment.calibrationInstitute }}</p>
             <p><b>next calibration:</b> {{ equipment.nextCalibration|date('d-m-y') }}</p>
+            <p><b>calibrated:</b> {{ equipment.isCalibrated?'yes':'no' }}</p>
             <p><b>owner:</b> {{ equipment.owner }}</p>
             <p><b>comment:</b> {{  equipment.comment }}</p>
         </div>

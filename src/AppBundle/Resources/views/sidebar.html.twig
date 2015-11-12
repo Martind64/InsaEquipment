@@ -13,6 +13,7 @@
                         <li class="active"><a href="">Menu</a> </li>
                         <li><a href="{{ path('overview') }}">Equipment</a> </li>
                         <li><a href="{{ path('showUpcomingCalibrations') }}">Upcoming Calibrations</a></li>
+                        <li><a href="{{ path('showExceededCalibrations') }}">Exceeded Calibrations</a></li>
                         {% if is_granted("ROLE_ADMIN") == false %}
                         <hr>
                         <br>

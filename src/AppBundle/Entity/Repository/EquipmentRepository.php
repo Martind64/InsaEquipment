@@ -56,6 +56,50 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
             return $query->getResult();
         }
 
+        public function getExceededCalibrations()
+        {
+//            $date_from = new \DateTime();
+//            $date_to = new \DateTime();
+//            $date_to->modify('-60 day');
+//            $no = 'no';
+//
+//            $qb = $this->getEntityManager()
+//                ->createQueryBuilder();
+//
+//            $query = $qb->select('e')
+//                ->from('AppBundle:Equipment', 'e')
+//                ->where('e.nextCalibration >= :date_from')
+//                ->andWhere('e.isCalibrated = :no')
+//                ->andWhere($qb->expr()->between('e.nextCalibration', ':date_from', ':date_to'))
+//                ->setParameter('date_from', $date_from, \Doctrine\DBAL\Types\Type::DATETIME)
+//                ->setParameter('date_to', $date_to,\Doctrine\DBAL\Types\Type::DATETIME)
+//                ->setParameter('no', $no)
+//                ->orderBy('e.nextCalibration', 'ASC')
+//                ->getQuery();
+//
+//            return $query->getResult();
+            $date_from = new \DateTime();
+            $date_to = new \DateTime();
+            $date_to->modify('+60 day');
+
+            $qb = $this->getEntityManager()
+                ->createQueryBuilder();
+
+            $query = $qb->select('e')
+                ->from('AppBundle:Equipment', 'e')
+                ->where('e.nextCalibration >= :date_from')
+                ->andWhere($qb->expr()->between('e.nextCalibration', ':date_from', ':date_to'))
+                ->setParameter('date_from', $date_from, \Doctrine\DBAL\Types\Type::DATETIME)
+                ->setParameter('date_to', $date_to,\Doctrine\DBAL\Types\Type::DATETIME)
+                ->orderBy('e.nextCalibration', 'ASC')
+                ->getQuery();
+
+            return $query->getResult();
+
+
+//
+        }
+
 
 
 }

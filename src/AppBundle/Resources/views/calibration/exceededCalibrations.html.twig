@@ -1,0 +1,46 @@
+{% extends 'AppBundle::sidebar.html.twig'%}
+
+{% block body %}
+
+    <!-- Wrapper begin -->
+    <div class="container-fluid" id="main-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                {% block sidebar %}{{ parent() }}{% endblock %}
+
+
+                <div class="col-lg-10">
+                    <table class="table table-hover" id="myTables">
+                        <tc>
+                            <h1>Upcoming calibrations</h1>
+                            <i>Calibrations for the next 60 days</i>
+
+                        </tc>
+                        <th>
+                            <tr>
+                                <th>Equipment ID</th>
+                                <th>Serial Nr.</th>
+                                <th>Model</th>
+                                <th>Iso Standard</th>
+                                <th>Next Calibration</th>
+                            </tr>
+                        </th>
+                        {% for e in equipment %}
+                            <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
+                                <td>{{ e.equipmentID}}</td>
+                                <td>{{ e.serialNr}}</td>
+                                <td>{{ e.Model}}</td>
+                                <td>{{ e.IsoStandard }}</td>
+                                <td>{{ e.nextCalibration|date('d-m-y') }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div><!-- Wrapper End -->
+
+
+{% endblock %}

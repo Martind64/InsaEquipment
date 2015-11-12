@@ -35,6 +35,12 @@ class EquipmentType extends AbstractType
             ->add('calibrationInterval', 'text', array('attr' => array('class' => 'form-control')))
             ->add('calibrationInstitute', 'text', array('attr' => array('class' => 'form-control')))
             ->add('owner', 'text', array('attr' => array('class' => 'form-control')))
+            ->add('isCalibrated', 'choice', [
+                'choices' => ['no', 'yes'],
+                'multiple' => false,
+                'expanded' => true,
+                'label' => 'is it calibrated?'
+            ])
             ->add('boxStorage', 'choice', [
                 'choices' => ['no', 'yes'],
                 'multiple' => false,

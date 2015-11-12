@@ -466,6 +466,27 @@ class CalibrationController extends ControllerBase
     //------------------------------------------------------------------------------------------
 
 
+    //Shows exceeded calibrations
+    //------------------------------------------------------------------------------------------
+
+    /**
+     * @Route("/exceededCalibrations", name="showExceededCalibrations")
+     * Template()
+     */
+    public function exceededCalibrationsAction()
+    {
+        //Gets the Equipment Entity to access the EquipmentRepository where
+        // getUpcomingCalibrations method resides
+        $em = $this->getEM()->getRepository('AppBundle:Equipment');
+
+        //Gets all equipment where the calibration has exceeded it's duedate
+        $calibrations = $em->getExceededCalibrations();
+
+        //Returns the variable to the view so it can be shown in the browser
+        return [
+            'equipment' => $calibrations
+        ];
+    }
 
     // Methods used in my route actions
     //------------------------------------------------------------------------------------------
