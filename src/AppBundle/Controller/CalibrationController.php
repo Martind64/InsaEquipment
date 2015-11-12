@@ -20,78 +20,112 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CalibrationController extends ControllerBase
 {
+    //Action for saving a calibration to the database
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/createCalibration", name="createCalibration")
      * @Template()
      */
-
     public function createCalibrationAction(Request $request)
     {
-        //Checks if the user has admin rights
+        //Checks if the user has admin rights (Check bottom code)
         $this->checkForAdminAction();
 
+        //Makes an instance of the Calibration entity
         $calibration = new Calibration();
 
+        //Creates the form and passes the empty $calibration variable
         $Form = $this->createForm(new CalibrationType(), $calibration);
+
+        //Handles the form request
         $Form->handleRequest($request);
 
+        // Checks to see if the form is valid if it is, saves the data to the database
         if($Form->isValid())
         {
+            // Calls the flushAction which (Look in the bottom of the code)
             $this->flushAction($calibration);
+            //Redirects to the Action addInfo to be able to add calibration info to the Calibration
             return $this->redirectToRoute('addInfo', ['id' => $calibration->getId()]);
         }
 
+        //Creates the view and sends the form variable to the template
         return[
             'Form' => $Form->createView()
         ];
     }
+    //------------------------------------------------------------------------------------------
 
 
+
+    //Action for saving the calibration info to the database
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/createInfo/{id}", name="addInfo")
      * @Template()
      */
-
     public function addInfoAction(Request $request, $id)
     {
-        //Checks if the user has admin rights
+        //Checks if the user has admin rights (Check bottom code)
         $this->checkForAdminAction();
 
+        //Gets the Info Entity and queries the database for all calibrations where id=$id
+        //getEM() is a method in ControllerBase.php which calls getDoctrine->getEntityManager()
         $em = $this->getEM();
         $calibration = $em->getRepository('AppBundle:Calibration')->find($id);
 
+        //Makes an instance of the Calibration entity
         $info = new Info();
+
+        //Creates the form and passes the empty $calibration variable
         $form = $this->createForm(new InfoType(), $info);
+
+        //Handles the form request
         $form->handleRequest($request);
 
+        // Checks to see if the calibration exist, if not it throws and exception
         if(!$id)
         {
             throw $this->createNotFoundException('No calibration with that id exists');
         }
 
+        //Checks to see if the form is valid if it is, saves the data to the database and prepares
+        //for the user to save more info on the same calibration
         if($form->isValid())
         {
+            //Sets the calibration field in Info to $calibration so the Info is saved on the foreign key
             $info->setCalibration($calibration);
+            // Calls the flushAction which (Look in the bottom of the code)
             $this->flushAction($info);
+            //empties the $info and form variable
             unset($info);
             unset($infoForm);
+            //Creates a new instance of equipment and a new form
             $info = new Info();
             $form = $this->createForm(new InfoType(), $info);
         }
 
+        //Creates the view and sends the form variable to the template
+        //Also passes the calibration variable so a button can be made in the view directing the user back to the
+        //Show calibration view
         return [
             'Form' => $form->createView(),
             'calibration' => $calibration
         ];
     }
+    //------------------------------------------------------------------------------------------
 
+
+
+    //Action for updating calibration info
+    //------------------------------------------------------------------------------------------
     /**
      * @Route("/updateInfo/{id}", name="updateInfo")
      * @Template()
      */
     public function updateInfoAction(Request $request, $id)
     {
-        //Checks if the user has admin rights
+        //Checks if the user has admin rights (Check bottom code)
         $this->checkForAdminAction();
 
         $em = $this->getEM();
@@ -109,8 +143,10 @@ class CalibrationController extends ControllerBase
         return [
             'Form' => $form->createView()
         ];
-
     }
+    //------------------------------------------------------------------------------------------
+
+
 
     /**
      * @Route("/updateCalibration/{id}", name="updateCalibration")
@@ -118,7 +154,7 @@ class CalibrationController extends ControllerBase
      */
     public function updateCalibrationAction(Request $request, $id)
     {
-        //Checks if the user has admin rights
+        //Checks if the user has admin rights (Check bottom code)
         $this->checkForAdminAction();
 
         $em = $this->getEM();
@@ -168,7 +204,7 @@ class CalibrationController extends ControllerBase
      */
     public function createUnitAction(Request $request)
     {
-        //Checks if the user has admin rights
+        //Checks if the user has admin rights (Check bottom code)
         $this->checkForAdminAction();
 
         $unit = new Unit();
@@ -198,7 +234,7 @@ class CalibrationController extends ControllerBase
 
     public function createPrefixAction(Request $request)
     {
-        //Checks if the user has admin rights
+        //Checks if the user has admin rights (Check bottom code)
         $this->checkForAdminAction();
 
         $prefix = new Prefix();
@@ -226,7 +262,7 @@ class CalibrationController extends ControllerBase
      */
     public function updatePrefixAction(Request $request, $id)
     {
-        //Checks if the user has admin rights
+        //Checks if the user has admin rights (Check bottom code)
         $this->checkForAdminAction();
 
         $em = $this->getEM()->getRepository('AppBundle:Prefix');
@@ -272,7 +308,7 @@ class CalibrationController extends ControllerBase
 
     public function updateUnitAction(Request $request, $id)
     {
-        //Checks if the user has admin rights
+        //Checks if the user has admin rights (Check bottom code)
         $this->checkForAdminAction();
 
         $em = $this->getEM()->getRepository('AppBundle:Unit');
@@ -325,12 +361,26 @@ class CalibrationController extends ControllerBase
 
     }
 
+    // Methods used in my route actions
+    //------------------------------------------------------------------------------------------
+    public function flushAction($data)
+    {
+        //Calls getEM which is a method in ControllerBase.php which calls getDoctrine->getEntityManager()
+        $em = $this->getEM();
+
+        //Persists the data and flush it to the database
+        $em->persist($data);
+        $em->flush();
+
+    }
+
     // Checks if the user has admin rights
     public function checkForAdminAction()
     {
+        //Get's the current user from the database
         $user = $this->getUser();
 
-        //Queries the database to check if the user has the role: ROLE_ADMIN
+        //Queries the database to check if the user has the role: ROLE_ADMIN if not then throws and exception
         if(!$user->hasRole('ROLE_ADMIN'))
         {
             throw new NotFoundHttpException('You have to be an admin to access this page');
@@ -338,14 +388,6 @@ class CalibrationController extends ControllerBase
 
         return $user;
     }
-
-    public function flushAction($data)
-    {
-        $em = $this->getEM();
-
-        $em->persist($data);
-        $em->flush();
-
-    }
+    //------------------------------------------------------------------------------------------
 
 }

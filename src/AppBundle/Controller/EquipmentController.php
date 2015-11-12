@@ -24,7 +24,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class EquipmentController extends ControllerBase
 {
-    //Action for adding equipment to the database
+
+    //Action for saving equipment to the database
     //------------------------------------------------------------------------------------------
     /**
      * @Route("/createEquipment", name="createEquipment")
@@ -44,7 +45,7 @@ class EquipmentController extends ControllerBase
         //Handles the form request
         $form->handleRequest($request);
 
-        // Checks to see if the form is valid
+        //Checks to see if the form is valid if it is, saves the data to the database
         if($form->isValid())
         {
             // Calls the flushAction which (Look in the bottom of the code)
@@ -64,6 +65,7 @@ class EquipmentController extends ControllerBase
 
     }
     //------------------------------------------------------------------------------------------
+
 
 
     //Action for updating equipment in the database
@@ -110,6 +112,8 @@ class EquipmentController extends ControllerBase
             'equipment' => $equipment
         ];
     }
+    //------------------------------------------------------------------------------------------
+
 
 
     //Action for adding a Classification to the database
