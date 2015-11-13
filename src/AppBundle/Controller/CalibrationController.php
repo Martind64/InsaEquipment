@@ -458,6 +458,8 @@ class CalibrationController extends ControllerBase
      */
     public function upcomingCalibrationsAction()
     {
+        $this->checkIfCalibratedAction();
+
         //Gets the Equipment Entity to access the EquipmentRepository where
         // getUpcomingCalibrations method resides
         $em = $this->getEM()->getRepository('AppBundle:Equipment');
@@ -472,6 +474,30 @@ class CalibrationController extends ControllerBase
             'equipment' => $calibrations,
             'exceededEquipment' => $exceededCalibrations
         ];
+    }
+    //------------------------------------------------------------------------------------------
+
+
+    //Action for checking whether or not an equipment has been calibrated
+    //------------------------------------------------------------------------------------------
+
+    public function checkIfCalibratedAction()
+    {
+        // sets the $date to the current date
+        $date = new \DateTime();
+        //Gets the Equipment Entity and queries for all equipment
+        $em = $this->getEM()->getRepository('AppBundle:Equipment');
+        $equipment = $em->findAll();
+
+        //Sets all equipment that is active and has a next calibration date less than the current date
+        foreach($equipment as $e)
+        {
+            if($e->getStatus() == 1 || $e->getNextCalibration() <= $date)
+            {
+                $e->setIsCalibrated(0);
+                $this->flushAction($e);
+            }
+        }
     }
     //------------------------------------------------------------------------------------------
 

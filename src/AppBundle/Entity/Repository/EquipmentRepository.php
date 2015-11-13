@@ -69,7 +69,7 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
 
             $query = $qb->select('e')
                 ->from('AppBundle:Equipment', 'e')
-                ->where('e.nextCalibration >= :date_from', 'e.isCalibrated = 0')
+                ->where('e.nextCalibration >= :date_from', 'e.isCalibrated = 0', 'e.status = 1')
                 ->andWhere($qb->expr()->between('e.nextCalibration', ':date_from', ':date_to'))
                 ->setParameter('date_from', $date_from, \Doctrine\DBAL\Types\Type::DATETIME)
                 ->setParameter('date_to', $date_to,\Doctrine\DBAL\Types\Type::DATETIME)
@@ -80,16 +80,6 @@ class EquipmentRepository extends \Doctrine\ORM\EntityRepository
 
         }
 
-    public function testFunction()
-    {
-        $qb = $this->getEntityManager()->createQueryBuilder();
-        $query = $qb->select('e')
-            ->from('AppBundle:Equipment', 'e')
-            ->where('e.isCalibrated = 0')
-            ->getQuery();
-
-        return $query->getResult();
-    }
 
 
 

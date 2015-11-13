@@ -25,18 +25,23 @@
                         {#{% endfor %}#}
                     </ul>
                 </div>
-
-                <table class="table">
-                    <tr>
-                        <th>types</th>
-                    </tr>
-
-                </table>
                 {#{{ form_start(Form) }}#}
                 {#{{ form_widget(Form) }}#}
                 {#{{ form_end(Form) }}#}
 
-                <a href="file:///C:/Users/Martin/Desktop/PraktikPlan.doc">Link</a>
+                <table class="table">
+                    <tr><th>id</th></tr>
+                    {% for e in equipment %}
+                        <tr>
+                            <td>{{ e.equipmentID }}</td>
+                            <td>{{ e.isCalibrated?'yes':'no' }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+
+
+
 
 
 

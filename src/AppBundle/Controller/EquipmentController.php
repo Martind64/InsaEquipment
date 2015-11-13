@@ -368,21 +368,23 @@ class EquipmentController extends ControllerBase
      */
     public function testViewsAction()
     {
-        $finder = new Finder();
-        $finder->files()->in('C:/Users/Martin/Documents/Dbz');
+        $date = new \DateTime();
+        $em = $this->getEM()->getRepository('AppBundle:Equipment');
 
-        foreach($finder as $file)
+        $equipment = $em->findAll();
+
+        foreach($equipment as $e)
         {
-            // Dump the absolute path
-            var_dump($file->getRealpath());
-
-            // Dump the relative path to the file, omitting the filename
-            var_dump($file->getRelativePath());
-
-            // Dump the relative path to the file
-            var_dump($file->getRelativePathname());
+            if($e->getNextCalibration() <= $date)
+            {
+                $e->setIsCalibrated(0);
+                $this->flushAction($e);
+            }
         }
-        return new Response($file);
+
+
+        return $this->render('AppBundle::testView.html.twig', ['equipment' => $equipment]);
+
 
     }
     //------------------------------------------------------------------------------------------
