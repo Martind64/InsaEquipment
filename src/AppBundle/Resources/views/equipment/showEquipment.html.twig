@@ -30,7 +30,7 @@
             <p><b>calibration interval:</b> {{ equipment.calibrationInterval }}</p>
             <p><b>calibration institute</b> {{ equipment.calibrationInstitute }}</p>
             {% if equipment.nextCalibration <= currentDate %}
-                <p><b>next calibration:</b> <em style="background-color: #FF6666">{{ equipment.nextCalibration|date('d-m-y') }}</em></p>
+                <p><b>next calibration:</b> <em style="background-color: #FF6666">{{ equipment.nextCalibration|date('d-m-y') }} </em></p>
             {% else %}
                 <p><b>next calibration:</b>{{ equipment.nextCalibration|date('d-m-y') }}</p>
             {% endif %}

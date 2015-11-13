@@ -6,7 +6,6 @@
     <div class="container-fluid" id="main-content-wrapper">
             <!-- Shows the sidebar -->
             {% block sidebar %}{{ parent() }}{% endblock %}
-    <div class="row"><!-- Row Begin -->
 
             <p><i>calibrated at: {{ calibration.calibrationDate|date('d-m-y') }} - status: {{ calibration.status?'active':'inactive' }}</i></p>
                 <hr>
@@ -83,7 +82,6 @@
                 {% endfor %}
             </table><!-- Table End -->
             </div><!-- Column End -->
-    </div><!-- Row End -->
     </div> <!-- Wrapper End-->
 
 
