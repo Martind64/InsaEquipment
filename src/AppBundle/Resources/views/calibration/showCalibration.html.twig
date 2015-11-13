@@ -20,6 +20,7 @@
                         {% if is_granted("ROLE_ADMIN") %}
                             <a href="{{ path('addInfo', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">add calibration</button></a>
                             <a href="{{ path('updateCalibration', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">update</button></a>
+                            <a href="{{ path('showEquipment', {'id': calibration.equipment.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">show equipment</button></a>
                         {% endif %}
                     </h2>
                 </tc>

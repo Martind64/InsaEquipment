@@ -161,6 +161,7 @@ class EquipmentController extends ControllerBase
     //------------------------------------------------------------------------------------------
 
 
+
     //Action for showing all the equipment in the database
     //------------------------------------------------------------------------------------------
     /**
@@ -203,6 +204,7 @@ class EquipmentController extends ControllerBase
      */
     public function showEquipmentAction($id)
     {
+        $currentDate = new \DateTime();
         //gets the Equipment and AppBundle Entity
         //getEM() is a method in ControllerBase.php which calls getDoctrine->getEntityManager()
         $em = $this->getEM()->getRepository('AppBundle:Equipment');
@@ -229,6 +231,7 @@ class EquipmentController extends ControllerBase
             'equipment' => $equipment,
             'calibration' => $calibration,
             'types' => $type,
+            'currentDate' => $currentDate,
         ];
     }
     //------------------------------------------------------------------------------------------
