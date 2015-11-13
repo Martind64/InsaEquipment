@@ -21,7 +21,7 @@ class CalibrationRepository extends \Doctrine\ORM\EntityRepository
                             JOIN i.prefix p
                             JOIN i.unit u
                             WHERE c.id = :id
-                            ORDER BY i.measuredAt ASC')->setParameter('id', $id);
+                            ORDER BY i.unit, i.measuredAt ASC')->setParameter('id', $id);
 
         return $query->getResult();
 
