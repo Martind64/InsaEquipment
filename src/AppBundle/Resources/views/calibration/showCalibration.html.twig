@@ -4,7 +4,7 @@
 {% block body %}
     <!-- Wrapper begin -->
     <div class="container-fluid" id="main-content-wrapper">
-
+            <!-- Shows the sidebar -->
             {% block sidebar %}{{ parent() }}{% endblock %}
 
             <p><i>calibrated at: {{ calibration.calibrationDate|date('d-m-y') }} - status: {{ calibration.status?'active':'inactive' }}</i></p>

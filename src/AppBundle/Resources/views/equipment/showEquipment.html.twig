@@ -6,7 +6,7 @@
 
     <!-- Wrapper -->
 <div class="container-fluid" id="main-content-wrapper">
-
+    <!-- Shows the sidebar -->
     {% block sidebar %}{{ parent() }}{% endblock %}
 
     <p><i>created: {{ equipment.createdDatetime|date("d-m-y  H:i:s") }} - status: {{ equipment.status?'active':'inactive' }}</i></p>
