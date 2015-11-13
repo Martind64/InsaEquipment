@@ -47,6 +47,7 @@
             <tr>
                 <th>Date</th>
                 <th>Institute</th>
+                <th>Calibration Certificate</th>
                 <th>Status</th>
             </tr>
         </th>
@@ -54,6 +55,7 @@
             <tr onclick="document.location = '{{ path('showCalibration', {'id': c.id}) }}'">
                 <td>{{ c.calibrationDate|date('d-m-y') }}</td>
                 <td>{{ c.calibrationInstitute }}</td>
+                <td>{{ c.calibrationCertificate }}</td>
                 <td>{{ c.status?'active':'inactive' }}</td>
             </tr>
         {% endfor %}
