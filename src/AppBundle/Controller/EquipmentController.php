@@ -228,7 +228,7 @@ class EquipmentController extends ControllerBase
         return[
             'equipment' => $equipment,
             'calibration' => $calibration,
-            'types' => $type
+            'types' => $type,
         ];
     }
     //------------------------------------------------------------------------------------------

@@ -52,12 +52,21 @@
             </tr>
         </th>
         {% for c in calibration %}
-            <tr onclick="document.location = '{{ path('showCalibration', {'id': c.id}) }}'">
-                <td>{{ c.calibrationDate|date('d-m-y') }}</td>
-                <td>{{ c.calibrationInstitute }}</td>
-                <td>{{ c.calibrationCertificate }}</td>
-                <td>{{ c.status?'active':'inactive' }}</td>
-            </tr>
+            {% if c.status == 0 %}
+                <tr class="warning" onclick="document.location = '{{ path('showCalibration', {'id': c.id}) }}'">
+                    <td>{{ c.calibrationDate|date('d-m-y') }}</td>
+                    <td>{{ c.calibrationInstitute }}</td>
+                    <td>{{ c.calibrationCertificate }}</td>
+                    <td>{{ c.status?'active':'inactive' }}</td>
+                </tr>
+                {% else %}
+                <tr class="success" onclick="document.location = '{{ path('showCalibration', {'id': c.id}) }}'">
+                    <td>{{ c.calibrationDate|date('d-m-y') }}</td>
+                    <td>{{ c.calibrationInstitute }}</td>
+                    <td>{{ c.calibrationCertificate }}</td>
+                    <td>{{ c.status?'active':'inactive' }}</td>
+                </tr>
+            {% endif %}
         {% endfor %}
     </table>
 </div>
