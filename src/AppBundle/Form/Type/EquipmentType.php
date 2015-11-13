@@ -55,7 +55,7 @@ class EquipmentType extends AbstractType
             ])
             ->add('types', 'entity', [
                 'class' => Classification::class,
-                'property' => 'type',
+                'choice_label' => 'type',
                 'multiple' => true,
                 'expanded' => false
 
