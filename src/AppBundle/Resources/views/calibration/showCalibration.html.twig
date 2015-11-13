@@ -6,25 +6,36 @@
     <div class="container-fluid" id="main-content-wrapper">
             <!-- Shows the sidebar -->
             {% block sidebar %}{{ parent() }}{% endblock %}
+    <div class="row"><!-- Row Begin -->
 
             <p><i>calibrated at: {{ calibration.calibrationDate|date('d-m-y') }} - status: {{ calibration.status?'active':'inactive' }}</i></p>
                 <hr>
-            <div class="col-lg-10">
-                <p><b>equipment: </b>{{ calibration.equipment.equipmentId }}</p>
+
+        <!-- Begin showing the calibration information -->
+        <div class="col-lg-10"><!-- Column Begin -->
+
+            <!--Paragraphs getting getting the information on the calibration -->
+            <p><b>equipment: </b>{{ calibration.equipment.equipmentId }}</p>
                 <p><b>calibration institute: </b> {{ calibration.calibrationInstitute }}</p>
                 <p><b>calibration Certificate: </b> {{ calibration.calibrationCertificate }}</p>
                 <p><b>approved by: </b>{{ calibration.approvedBy }}</p>
+            <!--End Paragraphs -->
 
-            <table class="table table-hover" id="myTables">
-                <tc><h2>Calibration
+            <!-- A table showing all the information on a calibration -->
+            <table class="table table-hover" id="myTables"> <!-- Table Begin -->
+
+                <tc><h2>Calibration  <!-- Start Table header -->
+                        <!-- If the user isn't an admin the CRUD function buttons won't be available -->
                         {% if is_granted("ROLE_ADMIN") %}
                             <a href="{{ path('addInfo', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">add calibration</button></a>
                             <a href="{{ path('updateCalibration', {'id': calibration.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">update</button></a>
                             <a href="{{ path('showEquipment', {'id': calibration.equipment.id}) }}"><button class="btn btn-primary btn-lg pull-right" type="button">show equipment</button></a>
                         {% endif %}
-                    </h2>
+                    </h2><!-- End Table header -->
                 </tc>
-                <th>
+
+                <th><!-- Table headers for the calibration info -->
+
                     <tr>
                         <th>Unit</th>
                         <th>Prefix</th>
@@ -37,7 +48,10 @@
                         <th>Adjustment Limit</th>
                         <th>comment</th>
                     </tr>
-                </th>
+                </th><!-- End Table headers -->
+
+                <!-- Shows all of the information on a calibration-->
+                <!-- if the user isn't an admin they won't be able to click and update the calibrations -->
                 {% for i in info %}
                     {% if is_granted("ROLE_ADMIN")  %}
                         <tr onclick="document.location = '{{ path('updateInfo', {'id': i.id}) }}'">
@@ -67,13 +81,12 @@
                         </tr>
                 {% endif %}
                 {% endfor %}
-
-
-            </table>
-
-            </div>
-
+            </table><!-- Table End -->
+            </div><!-- Column End -->
+    </div><!-- Row End -->
     </div> <!-- Wrapper End-->
+
+
 
 
 {% endblock %}
