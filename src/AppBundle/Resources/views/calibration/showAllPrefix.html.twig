@@ -5,28 +5,28 @@
 
     <!-- Wrapper begin -->
     <div class="container-fluid" id="main-content-wrapper">
-                <!-- Shows the sidebar -->
-                {% block sidebar %}{{ parent() }}{% endblock %}
+        <!-- Shows the sidebar -->
+        {% block sidebar %}{{ parent() }}{% endblock %}
 
+        <!-- Column Begin -->
+        <div class="col-lg-1">
 
-                <div class="col-lg-1">
-                    <table class="table table-hover" id="myTables">
-                        <tc><h1>Prefix</h1></tc>
-                        <th>
-                            <tr>
-                                <th>Prefix</th>
-                            </tr>
-                        </th>
-                        {% for p in prefix %}
-                            <tr onclick="document.location = '{{ path('updatePrefix', {'id': p.id}) }}'">
-                                <td>{{ p.prefix }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-            </div>
-        </div>
+            <!-- Table Begin -->
+            <table class="table table-hover" id="myTables">
+                <tc><h1>Prefix</h1></tc>
+                <th>
+                    <tr>
+                        <th>Prefix</th>
+                    </tr>
+                </th>
+                {% for p in prefix %}
+                    <tr onclick="document.location = '{{ path('updatePrefix', {'id': p.id}) }}'">
+                        <td>{{ p.prefix }}</td>
+                    </tr>
+                {% endfor %}
+
+            </table><!-- Table End -->
+        </div><!-- Column End -->
     </div> <!-- Wrapper End-->
-
 
 {% endblock %}

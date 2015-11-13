@@ -5,28 +5,28 @@
 
     <!-- Wrapper begin -->
     <div class="container-fluid" id="main-content-wrapper">
-                <!-- Shows the sidebar -->
-                {% block sidebar %}{{ parent() }}{% endblock %}
+        <!-- Shows the sidebar -->
+        {% block sidebar %}{{ parent() }}{% endblock %}
 
+        <!-- Column Begin -->
+        <div class="col-lg-1">
 
-                <div class="col-lg-1">
-                    <table class="table table-hover" id="myTables">
-                        <tc><h1>Units</h1></tc>
-                        <th>
-                            <tr>
-                                <th>Units</th>
-                            </tr>
-                        </th>
-                        {% for u in units %}
-                            <tr onclick="document.location = '{{ path('updateUnit', {'id': u.id}) }}'">
-                                <td>{{ u.unit }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-            </div>
-        </div>
+            <!-- Table Begin -->
+            <table class="table table-hover" id="myTables">
+                <tc><h1>Units</h1></tc>
+                <th>
+                    <tr>
+                        <th>Units</th>
+                    </tr>
+                </th>
+                {% for u in units %}
+                    <tr onclick="document.location = '{{ path('updateUnit', {'id': u.id}) }}'">
+                        <td>{{ u.unit }}</td>
+                    </tr>
+                {% endfor %}
+
+            </table><!-- Table End -->
+        </div><!-- Column End -->
     </div> <!-- Wrapper End-->
-
 
 {% endblock %}
