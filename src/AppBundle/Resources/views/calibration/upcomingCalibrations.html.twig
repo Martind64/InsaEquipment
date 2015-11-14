@@ -20,14 +20,16 @@
 
                         </tc>
                         <th>
+                            <!-- Table row with the headers -->
                             <tr>
                                 <th>Equipment ID</th>
                                 <th>Serial Nr.</th>
                                 <th>Model</th>
                                 <th>Iso Standard</th>
                                 <th>Next Calibration</th>
-                            </tr>
+                            </tr><!-- End row -->
                         </th>
+                        <!-- Prints a list of all equipment that needs to be calibrated and has gone past the due date-->
                         {% for e in exceededEquipment %}
                             <tr class="danger" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
                                 <td>{{ e.equipmentID}}</td>
@@ -37,6 +39,7 @@
                                 <td>{{ e.nextCalibration|date('d-m-y') }}</td>
                             </tr>
                         {% endfor %}
+                        <!-- Prints a list of all equipment that needs to be calibrated -->
                         {% for e in equipment %}
                             <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
                             <td>{{ e.equipmentID}}</td>
@@ -45,8 +48,7 @@
                                 <td>{{ e.IsoStandard }}</td>
                                 <td>{{ e.nextCalibration|date('d-m-y') }}</td>
                             </tr>
-                        {% endfor %}
-
+                        {% endfor %}<!-- End the printing of equipment -->
                     </table><!-- Table End -->
                 </div><!-- Column End -->
             </div><!-- Row End -->

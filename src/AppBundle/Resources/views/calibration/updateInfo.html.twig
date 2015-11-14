@@ -6,27 +6,28 @@
 
     <!-- Wrapper begin -->
     <div class="container-fluid" id="main-content-wrapper">
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-fluid"><!-- Container Begin -->
+            <div class="row"><!-- Row Begin -->
                 <!-- Shows the sidebar -->
                 {% block sidebar %}{{ parent() }}{% endblock %}
 
+                <!-- Column Begin -->
                 <div class="col-lg-8">
-
                     <h1>Update info</h1>
-                </div>
+                </div><!-- Column End -->
 
+                <!-- Column Begin -->
                 <div class="col-lg-4">
                     <hr>
                     {{ form_start(Form) }}
                     {{ form_widget(Form) }}
                     {{ form_end(Form) }}
-                </div>
-            </div>
-        </div>
+                </div><!-- Column End -->
 
-
+            </div><!-- Row End -->
+        </div><!-- Container End -->
     </div><!-- Wrapper End -->
+
 
 
 {% endblock %}
