@@ -35,7 +35,6 @@ class DocumentType extends AbstractType
                     return $er->createQueryBuilder('l')
                         ->orderBy('l.type', 'ASC');
                 }
-
             ])
             ->add('path', 'file', [
                 'attr' => ['class' => 'form-control'],

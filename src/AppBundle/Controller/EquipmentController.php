@@ -371,19 +371,6 @@ class EquipmentController extends ControllerBase
      */
     public function testViewsAction()
     {
-        $date = new \DateTime();
-        $em = $this->getEM()->getRepository('AppBundle:Equipment');
-
-        $equipment = $em->findAll();
-
-        foreach($equipment as $e)
-        {
-            if($e->getNextCalibration() <= $date)
-            {
-                $e->setIsCalibrated(0);
-                $this->flushAction($e);
-            }
-        }
 
 
         return $this->render('AppBundle::testView.html.twig', ['equipment' => $equipment]);
