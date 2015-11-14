@@ -7,41 +7,45 @@
         <!-- Shows the sidebar -->
         {% block sidebar %}{{ parent() }}{% endblock %}
 
-
+                <!-- Column Begin -->
                 <div class="col-lg-10">
-                    <table class="table table-hover" id="myTables">
+                    <table class="table table-hover" id="myTables"><!-- Table Begin -->
                         <tc><h1>Equipment</h1></tc>
                         <th>
+                            <!-- Table row showing the headers -->
                             <tr>
                                 <th>Equipment ID</th>
                                 <th>Serial Nr.</th>
                                 <th>Model</th>
                                 <th>Iso Standard</th>
-                            </tr>
+                            </tr><!-- End table row -->
                         </th>
+                        <!-- Shows a list of all the equipment in the database and adds a link to the equipment -->
+                        <!-- If the equipment is inactive the row will display as yellow -->
                         {% for e in equipment %}
                             {% if e.status == 0 %}
+                            <!-- Row Begin -->
                             <tr class="danger" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
                                 <td>{{ e.equipmentID }}</td>
                                 <td>{{ e.serialNr }}</td>
                                 <td>{{ e.model }}</td>
                                 <td>{{ e.isoStandard }}</td>
-                            </tr>
+                            </tr><!-- Row End -->
+
+                            <!-- If the equipment is active the row will just be made without any coloring -->
                             {% else %}
-                            <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
+                                <!-- Row Begin -->
+                                <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
                                     <td>{{ e.equipmentID }}</td>
                                     <td>{{ e.serialNr }}</td>
                                     <td>{{ e.model }}</td>
                                     <td>{{ e.isoStandard }}</td>
-                                </tr>
+                                </tr><!-- Row End -->
                             {% endif %}
                         {% endfor %}
-                    </table>
-                </div>
-
+                    </table><!-- Table End -->
+                </div><!-- Column End -->
     </div> <!-- Wrapper End-->
-
-
 
 
 {% endblock %}

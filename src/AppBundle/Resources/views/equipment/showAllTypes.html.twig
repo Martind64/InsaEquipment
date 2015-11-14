@@ -8,24 +8,23 @@
             <!-- Shows the sidebar -->
             {% block sidebar %}{{ parent() }}{% endblock %}
 
-
-                <div class="col-lg-1">
-                    <table class="table table-hover" id="myTables">
-                        <tc><h1>Types</h1></tc>
-                        <th>
-                            <tr>
-                                <th>Types</th>
-                            </tr>
-                        </th>
-                        {% for t in types %}
-                            <tr onclick="document.location = '{{ path('updateType', {'id': t.id}) }}'">
-                                <td>{{ t.type }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-            </div>
-        </div>
+        <!-- Column Begin -->
+        <div class="col-lg-1">
+            <!-- Table begin -->
+            <table class="table table-hover" id="myTables">
+                <tc><h1>Types</h1></tc>
+                <th>
+                    <tr>
+                        <th>Types</th>
+                    </tr>
+                </th>
+                {% for t in types %}
+                    <tr onclick="document.location = '{{ path('updateType', {'id': t.id}) }}'">
+                        <td>{{ t.type }}</td>
+                    </tr>
+                {% endfor %}
+            </table><!-- Table End -->
+        </div><!-- Column End -->
     </div> <!-- Wrapper End-->
 
 

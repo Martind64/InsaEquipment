@@ -9,12 +9,16 @@
     <!-- Shows the sidebar -->
     {% block sidebar %}{{ parent() }}{% endblock %}
 
+    <!-- Shows the staus of the equipment and what date it was saved to the database -->
     <p><i>created: {{ equipment.createdDatetime|date("d-m-y  H:i:s") }} - status: {{ equipment.status?'active':'inactive' }}</i></p>
     <hr>
-        <div class="col-lg-3">
+
+    <!-- Displays the equipment information -->
+    <div class="col-lg-3"><!-- Column Begin -->
             <p><b>Id:</b> {{ equipment.equipmentID }}</p>
             <p><b>iso standard:</b> {{ equipment.isoStandard }}</p>
             <p><b>serial nr.:</b> {{ equipment.serialNr }}</p>
+            <!-- Loops through the type variable to display all types associated with the equipment -->
             <p><b>type:</b> {% for t in types %}
                                 {{ t.type }}
                                 {% if not loop.last %},{% endif %}
@@ -23,12 +27,16 @@
             <p><b>description:</b> {{ equipment.description }}</p>
             <p><b>level:</b> {{ equipment.level }}</p>
             <p><b>box storage: </b> {{ equipment.boxStorage?'yes':'no' }} </p>
-        </div>
-        <div class="col-lg-2">
+        </div><!-- Column End -->
+
+    <!-- Displays the equipment information -->
+    <div class="col-lg-2"><!-- Column Begin -->
             <p><b>partner:</b> {{ equipment.partner }}</p>
             <p><b>placement:</b> {{ equipment.placement }}</p>
             <p><b>calibration interval:</b> {{ equipment.calibrationInterval }}</p>
             <p><b>calibration institute</b> {{ equipment.calibrationInstitute }}</p>
+
+            <!-- If the equipment has exceeded it's calibration date the date will display with a red background -->
             {% if equipment.nextCalibration <= currentDate %}
                 <p><b>next calibration:</b> <em style="background-color: #FF6666">{{ equipment.nextCalibration|date('d-m-y') }} </em></p>
             {% else %}
@@ -37,51 +45,51 @@
             <p><b>calibrated:</b> {{ equipment.isCalibrated?'yes':'no' }}</p>
             <p><b>owner:</b> {{ equipment.owner }}</p>
             <p><b>comment:</b> {{  equipment.comment }}</p>
-        </div>
+        </div><!-- Column End-->
+
+    <!-- If the user is and admin the update action will be available as a button -->
     {% if is_granted("ROLE_ADMIN") %}
         <div class="col-md-1">
             <a href="{{ path('updateEquipment', {'id': equipment.id}) }}"><button class="btn btn-primary btn-lg" type="button">edit</button></a>
         </div>
     {% endif %}
 
-<div class="col-lg-10">
-    <table class="table table-hover" id="myTables">
-        <tc><h3>Calibrations</h3></tc>
-        <th>
-            <tr>
-                <th>Date</th>
-                <th>Institute</th>
-                <th>Calibration Certificate</th>
-                <th>Status</th>
-            </tr>
-        </th>
-        {% for c in calibration %}
-            {% if c.status == 0 %}
-                <tr class="warning" onclick="document.location = '{{ path('showCalibration', {'id': c.id}) }}'">
-                    <td>{{ c.calibrationDate|date('d-m-y') }}</td>
-                    <td>{{ c.calibrationInstitute }}</td>
-                    <td>{{ c.calibrationCertificate }}</td>
-                    <td>{{ c.status?'active':'inactive' }}</td>
-                </tr>
-                {% else %}
-                <tr class="success" onclick="document.location = '{{ path('showCalibration', {'id': c.id}) }}'">
-                    <td>{{ c.calibrationDate|date('d-m-y') }}</td>
-                    <td>{{ c.calibrationInstitute }}</td>
-                    <td>{{ c.calibrationCertificate }}</td>
-                    <td>{{ c.status?'active':'inactive' }}</td>
-                </tr>
-            {% endif %}
-        {% endfor %}
-    </table>
-</div>
+    <!-- Column Begin -->
+    <div class="col-lg-10">
 
+        <!-- Table Begin -->
+        <table class="table table-hover" id="myTables">
+            <tc><h3>Calibrations</h3></tc>
+            <th>
+                <tr><!-- Table rowing displaying the headers -->
+                    <th>Date</th>
+                    <th>Institute</th>
+                    <th>Calibration Certificate</th>
+                    <th>Status</th>
+                </tr><!-- End table row -->
+            </th>
+            <!-- Loops through the calibration variable and checks if the calibration is active -->
+            <!-- If it isn't the row will display with a yellow background -->
+            {% for c in calibration %}
+                {% if c.status == 0 %}
+                    <tr class="warning" onclick="document.location = '{{ path('showCalibration', {'id': c.id}) }}'">
+                        <td>{{ c.calibrationDate|date('d-m-y') }}</td>
+                        <td>{{ c.calibrationInstitute }}</td>
+                        <td>{{ c.calibrationCertificate }}</td>
+                        <td>{{ c.status?'active':'inactive' }}</td>
+                    </tr>
+                    {% else %}
+                    <tr class="success" onclick="document.location = '{{ path('showCalibration', {'id': c.id}) }}'">
+                        <td>{{ c.calibrationDate|date('d-m-y') }}</td>
+                        <td>{{ c.calibrationInstitute }}</td>
+                        <td>{{ c.calibrationCertificate }}</td>
+                        <td>{{ c.status?'active':'inactive' }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table><!-- Table End -->
+    </div><!-- Column End -->
 </div><!-- Wrapper End -->
-
-
-
-
-
-
 
 
 {% endblock %}
