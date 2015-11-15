@@ -373,7 +373,7 @@ class EquipmentController extends ControllerBase
     {
 
 
-        return $this->render('AppBundle::testView.html.twig', ['equipment' => $equipment]);
+        return $this->render('AppBundle::testView.html.twig');
 
 
     }
