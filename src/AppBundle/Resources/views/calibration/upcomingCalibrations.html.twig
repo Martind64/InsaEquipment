@@ -14,22 +14,35 @@
                 <div class="col-lg-10">
                     <!-- Table Begin -->
                     <table class="table table-hover" id="myTables">
-                        <tc>
+
+                        <tc><!-- Table name-->
                             <h1>Upcoming calibrations</h1>
                             <i>Calibrations for the next 2 months</i>
+                        </tc><!-- End Table name-->
 
+<<<<<<< HEAD
                         </tc>
                         <th>
                             <!-- Table row with the headers -->
                             <tr>
+=======
+                        <th><!-- Table headers -->
+                            <tr><!-- Table row -->
+>>>>>>> Commened some views
                                 <th>Equipment ID</th>
                                 <th>Serial Nr.</th>
                                 <th>Model</th>
                                 <th>Iso Standard</th>
                                 <th>Next Calibration</th>
                             </tr><!-- End row -->
+<<<<<<< HEAD
                         </th>
                         <!-- Prints a list of all equipment that needs to be calibrated and has gone past the due date-->
+=======
+                        </th><!-- End headers -->
+
+                        <!-- If the equipment have exceeded it's calibration date make it red -->
+>>>>>>> Commened some views
                         {% for e in exceededEquipment %}
                             <tr class="danger" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
                                 <td>{{ e.equipmentID}}</td>
