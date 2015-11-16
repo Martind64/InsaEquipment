@@ -13,6 +13,7 @@
                         <li class="active"><a href="">Menu</a> </li>
                         <li><a href="{{ path('overview') }}">Equipment</a> </li>
                         <li><a href="{{ path('showUpcomingCalibrations') }}">Upcoming Calibrations</a></li>
+                        <!-- Quick fix to extend the sidebar when a user is logged in. Need an alternative -->
                         {% if is_granted("ROLE_ADMIN") == false %}
                         <hr>
                         <br>
@@ -32,6 +33,8 @@
                         <li><a href="{{ path('showAllPrefix') }}">Prefix</a> </li>
                         {% endif %}
                         {% if is_granted("ROLE_ADMIN") %}
+                            <!-- Displays a button on the sidebar with an unordered dropdown list where the admin -->
+                            <!-- Can use the CRUD functions -->
                         <hr>
                             <li class="active"><a href="#">Equipment</a></li>
                         <ul class="navbar nav" id="equipmentCollapse">
