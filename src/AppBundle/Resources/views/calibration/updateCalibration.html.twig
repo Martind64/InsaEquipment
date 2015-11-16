@@ -9,15 +9,12 @@
             <div class="container-fluid"><!-- Container Begin -->
                 <div class="row"><!-- Row Begin -->
                 <!-- Shows the sidebar -->
-<<<<<<< HEAD
                     {% block sidebar %}{{ parent() }}{% endblock %}
                     <!-- Column Begin -->
                     <div class="col-lg-8">
                         <h1>Update calibration</h1>
                     </div><!-- Column End -->
 
-                <!-- Column Begin -->
-=======
                 {% block sidebar %}{{ parent() }}{% endblock %}
 
                 <div class="col-lg-8">
@@ -25,13 +22,11 @@
                 </div>
 
                 <!-- Run the form -->
->>>>>>> Commened some views
-                <div class="col-lg-4">
+                <div class="col-lg-4"><!-- Column Begin -->
                     <hr>
                     {{ form_start(Form) }}
                     {{ form_widget(Form) }}
                     {{ form_end(Form) }}
-<<<<<<< HEAD
                 </div><!-- Column End -->
             </div><!-- Row End -->
         </div><!-- Container End -->
