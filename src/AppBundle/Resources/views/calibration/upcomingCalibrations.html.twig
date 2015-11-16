@@ -31,14 +31,11 @@
                                 <th>Iso Standard</th>
                                 <th>Next Calibration</th>
                             </tr><!-- End row -->
-<<<<<<< HEAD
                         </th>
                         <!-- Prints a list of all equipment that needs to be calibrated and has gone past the due date-->
-=======
                         </th><!-- End headers -->
 
                         <!-- If the equipment have exceeded it's calibration date make it red -->
->>>>>>> Commened some views
                         {% for e in exceededEquipment %}
                             <tr class="danger" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
                                 <td>{{ e.equipmentID}}</td>
