@@ -11,15 +11,14 @@
                 <div class="col-lg-10">
                     <table class="table table-hover" id="myTables"><!-- Table Begin -->
                         <tc><h1>Equipment</h1></tc>
-                        <th>
-                            <!-- Table row showing the headers -->
-                            <tr>
+
+                            <tr><!-- Table row showing the headers -->
                                 <th>Equipment ID</th>
                                 <th>Serial Nr.</th>
                                 <th>Model</th>
                                 <th>Iso Standard</th>
                             </tr><!-- End table row -->
-                        </th>
+
                         <!-- Shows a list of all the equipment in the database and adds a link to the equipment -->
                         <!-- If the equipment is inactive the row will display as yellow -->
                         {% for e in equipment %}

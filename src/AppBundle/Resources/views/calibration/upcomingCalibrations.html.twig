@@ -20,21 +20,15 @@
                             <i>Calibrations for the next 2 months</i>
                         </tc><!-- End Table name-->
 
-                        </tc>
-                        <th>
-                            <tr><!-- Table row with the headers -->
-                        <th><!-- Table headers -->
-                            <tr><!-- Table row -->
-                                <th>Equipment ID</th>
-                                <th>Serial Nr.</th>
-                                <th>Model</th>
-                                <th>Iso Standard</th>
-                                <th>Next Calibration</th>
-                            </tr><!-- End row -->
-                        </th>
-                        <!-- Prints a list of all equipment that needs to be calibrated and has gone past the due date-->
-                        </th><!-- End headers -->
+                        <tr><!-- Headers of the table -->
+                            <th>Equipment ID</th>
+                            <th>Serial Nr.</th>
+                            <th>Model</th>
+                            <th>Iso Standard</th>
+                            <th>Next Calibration</th>
+                        </tr><!-- End Headers -->
 
+                        <!-- Prints a list of all equipment that needs to be calibrated and has gone past the due date-->
                         <!-- If the equipment have exceeded it's calibration date make it red -->
                         {% for e in exceededEquipment %}
                             <tr class="danger" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
@@ -48,7 +42,7 @@
                         <!-- Prints a list of all equipment that needs to be calibrated -->
                         {% for e in equipment %}
                             <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
-                            <td>{{ e.equipmentID}}</td>
+                                <td>{{ e.equipmentID}}</td>
                                 <td>{{ e.serialNr}}</td>
                                 <td>{{ e.Model}}</td>
                                 <td>{{ e.IsoStandard }}</td>
