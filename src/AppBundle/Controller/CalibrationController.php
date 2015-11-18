@@ -497,8 +497,11 @@ class CalibrationController extends ControllerBase
         {
             if($e->getStatus() == 1 || $e->getNextCalibration() <= $date)
             {
-                $e->setIsCalibrated(0);
-                $this->flushAction($e);
+                if($e->getIsCalibrated() == 1)
+                {
+                    $e->setIsCalibrated(0);
+                    $this->flushAction($e);
+                }
             }
         }
     }
