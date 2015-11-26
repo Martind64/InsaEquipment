@@ -13,7 +13,9 @@
         <link rel="stylesheet" href="{{ asset('bundles/app/css/sidebar.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/app/css/mainContent.css') }}">
         <link rel="stylesheet" href="{{ asset('bundles/app/css/myTables.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/app/css/jquery.datetimepicker.css') }}" />
     {% endblock %}
+
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
@@ -58,8 +60,11 @@
 {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
 
+<script src="{{ asset('bundles/app/js/jquery.datetimepicker.js') }}"></script>
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </body>
 </html>
 
