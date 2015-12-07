@@ -23,47 +23,42 @@ class Info
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="text", length=200)
+     * @ORM\Column(type="decimal", precision=12, scale=8 )
      */
     private $uncertaintyRequests;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="decimal", precision=12, scale=8 )
      */
-
     private $actualUncertainty;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="decimal", precision=12, scale=8 )
      */
     private $labReference;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="decimal", precision=12, scale=8 )
      */
     private $uut;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="decimal", precision=12, scale=8 )
      */
     private $deviation;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="decimal", precision=12, scale=8 )
      */
     private $adjustmentLimit;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="decimal", precision=12, scale=8 )
      */
     private $comment;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="decimal", precision=12, scale=8 )
      */
     private $measuredAt;
 
@@ -82,13 +77,11 @@ class Info
     protected $prefix;
 
 
-
     /**
      * @ORM\ManyToOne(targetEntity="Calibration", inversedBy="info")
      * @ORM\JoinColumn(name="calibration_id", referencedColumnName="id")
      */
     protected $calibration;
-
 
 
     /**
@@ -293,32 +286,6 @@ class Info
         return $this->measuredAt;
     }
 
-
-    /**
-     * Set calibration
-     *
-     * @param \AppBundle\Entity\Calibration $calibration
-     *
-     * @return Info
-     */
-    public function setCalibration(\AppBundle\Entity\Calibration $calibration = null)
-    {
-        $this->calibration = $calibration;
-
-        return $this;
-    }
-
-    /**
-     * Get calibration
-     *
-     * @return \AppBundle\Entity\Calibration
-     */
-    public function getCalibration()
-    {
-        return $this->calibration;
-    }
-
-
     /**
      * Set unit
      *
@@ -365,5 +332,29 @@ class Info
     public function getPrefix()
     {
         return $this->prefix;
+    }
+
+    /**
+     * Set calibration
+     *
+     * @param \AppBundle\Entity\Calibration $calibration
+     *
+     * @return Info
+     */
+    public function setCalibration(\AppBundle\Entity\Calibration $calibration = null)
+    {
+        $this->calibration = $calibration;
+
+        return $this;
+    }
+
+    /**
+     * Get calibration
+     *
+     * @return \AppBundle\Entity\Calibration
+     */
+    public function getCalibration()
+    {
+        return $this->calibration;
     }
 }
