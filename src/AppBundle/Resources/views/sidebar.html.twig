@@ -1,12 +1,5 @@
-{% extends 'AppBundle::base.html.twig' %}
-
-
-
-{% block body %}
-    {% block sidebar %}
         <!-- Flexible Content -->
         <!-- Sidebar Begin -->
-        <div class="col-lg-2">
             <div id="navigation-sidebar">
                 <div class="nav navbar">
                     <ul class="nav nav-pills nav-stacked">
@@ -14,19 +7,6 @@
                         <li><a href="{{ path('overview') }}">Equipment</a> </li>
                         <li><a href="{{ path('showUpcomingCalibrations') }}">Upcoming Calibrations</a></li>
                         <!-- Quick fix to extend the sidebar when a user is logged in. Need an alternative -->
-                        {% if is_granted("ROLE_ADMIN") == false %}
-                        <hr>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        {% endif %}
                         {% if is_granted("ROLE_ADMIN") %}
                         <li><a href="{{ path('showAllTypes') }}">Types</a> </li>
                         <li><a href="{{ path('showAllUnits') }}">Units</a> </li>
@@ -50,11 +30,8 @@
                         </ul>
                         {% endif %}
                     </ul>
-                </div>
             </div>
         </div><!-- Sidebar End -->
         <!-- Flexible Content END -->
-    {% endblock %}
 
-{% endblock %}
 

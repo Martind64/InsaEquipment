@@ -1,11 +1,7 @@
-{% extends 'AppBundle::sidebar.html.twig' %}
+{% extends '@App/layoutBase.html.twig' %}
 
 
-{% block body %}
-    <!-- Wrapper begin -->
-    <div class="container-fluid" id="main-content-wrapper">
-            <!-- Shows the sidebar -->
-            {% block sidebar %}{{ parent() }}{% endblock %}
+{% block index %}
 
             <p><i>calibrated at: {{ calibration.calibrationDate|date('d-m-y') }} - status: {{ calibration.status?'active':'inactive' }}</i></p>
                 <hr>
@@ -82,7 +78,6 @@
                 {% endfor %}
             </table><!-- Table End -->
             </div><!-- Column End -->
-    </div> <!-- Wrapper End-->
 
 
 

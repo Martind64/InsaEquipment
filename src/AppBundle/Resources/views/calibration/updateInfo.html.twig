@@ -1,34 +1,21 @@
-{% extends 'AppBundle::sidebar.html.twig'%}
+{% extends '@App/layoutBase.html.twig'%}
 
 
 
-{% block body %}
+{% block index%}
 
-    <!-- Wrapper begin -->
-    <div class="container-fluid" id="main-content-wrapper">
-        <div class="container-fluid"><!-- Container Begin -->
-            <div class="row"><!-- Row Begin -->
-                <!-- Shows the sidebar -->
-                {% block sidebar %}{{ parent() }}{% endblock %}
-
-                <!-- Column Begin -->
-                <div class="col-lg-8">
-                    <h1>Update info</h1>
-                </div><!-- Column End -->
+    <!-- Column Begin -->
+    <div class="col-lg-12">
+        <h1>Update info</h1>
+        <hr>
+    </div><!-- Column End -->
 
 
-                <!-- Run the form -->
-                <div class="col-lg-4"><!-- Column Begin -->
-                    <hr>
-                    {{ form_start(Form) }}
-                    {{ form_widget(Form) }}
-                    {{ form_end(Form) }}
-                </div><!-- Column End -->
-
-            </div><!-- Row End -->
-        </div><!-- Container End -->
-    </div><!-- Wrapper End -->
-
-
+    <!-- Run the form -->
+    <div class="col-lg-4"><!-- Column Begin -->
+        {{ form_start(Form) }}
+        {{ form_widget(Form) }}
+        {{ form_end(Form) }}
+    </div><!-- Column End -->
 
 {% endblock %}

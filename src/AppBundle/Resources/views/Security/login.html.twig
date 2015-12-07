@@ -1,8 +1,10 @@
 {% extends 'FOSUserBundle::layout.html.twig' %}
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block body %}
-    {% block navbar %}{% endblock %}
+{% block header %}{% endblock %}
+
+{% block index %}
+    {% block sidebar %}{% endblock %}
 
     <div class="container" id="main-content-wrapper">
 
@@ -38,14 +40,5 @@
                 </div>
             </form>
     <br>
-
-    {# Is this needed? #}
-
-    {#<div class="container">#}
-        {#<div class="col-lg-4">#}
-            {#<a href="{{ path('fos_user_resetting_request') }}">Forgot your password?</a>#}
-        {#</div>#}
-    {#</div>#}
-
 
 {% endblock %}

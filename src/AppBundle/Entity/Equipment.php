@@ -88,7 +88,7 @@ class Equipment
     protected $calibrationInterval;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $nextCalibration;
 

@@ -26,8 +26,7 @@ class CalibrationType extends AbstractType
                         ->orderBy('c.equipmentID * 1');
                 }
             ])
-            ->add('calibrationDate', 'datetime', [
-                'date_widget' => 'single_text'])
+            ->add('calibrationDate', 'date', array('attr' => array('class' => 'form-control')))
             ->add('calibrationInstitute', 'text', array('attr' => array('class' => 'form-control')))
             ->add('calibrationCertificate', 'text', array('attr' => array('class' => 'form-control')))
             ->add('approvedBy', 'text', array('attr' => array('class' => 'form-control')))

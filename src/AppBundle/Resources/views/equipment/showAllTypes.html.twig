@@ -1,23 +1,18 @@
-{% extends 'AppBundle::sidebar.html.twig' %}
+{% extends '@App/layoutBase.html.twig' %}
 
 
-{% block body %}
+{% block index %}
 
     <!-- Wrapper begin -->
     <div class="container-fluid" id="main-content-wrapper">
-            <!-- Shows the sidebar -->
-            {% block sidebar %}{{ parent() }}{% endblock %}
-
         <!-- Column Begin -->
-        <div class="col-lg-1">
+        <div class="col-lg-2">
             <!-- Table begin -->
             <table class="table table-hover" id="myTables">
                 <tc><h1>Types</h1></tc>
-                <th>
                     <tr>
                         <th>Types</th>
                     </tr>
-                </th>
                 {% for t in types %}
                     <tr onclick="document.location = '{{ path('updateType', {'id': t.id}) }}'">
                         <td>{{ t.type }}</td>

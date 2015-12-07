@@ -1,6 +1,6 @@
-{% extends 'AppBundle::sidebar.html.twig' %}
+{% extends '@App/layoutBase.html.twig' %}
 
-{% block body %}
+{% block index %}
     {{  block('fos_user_content') }}
 {% endblock %}
 

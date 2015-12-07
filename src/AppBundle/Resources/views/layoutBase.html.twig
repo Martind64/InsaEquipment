@@ -1,0 +1,21 @@
+{% extends '@App/base.html.twig' %}
+
+{% block header %}
+    {% include '@App/top.html.twig' %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2">
+            {% block sidebar %}{% include '@App/sidebar.html.twig' %}{% endblock %}
+        </div>
+            <div class="col-lg-9">
+            {% block index %}{% endblock %}
+        </div>
+    </div><!-- end Row-->
+</div><!-- End Container -->
+
+
+{% endblock %}

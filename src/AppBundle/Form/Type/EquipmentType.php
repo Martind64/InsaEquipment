@@ -31,11 +31,7 @@ class EquipmentType extends AbstractType
             ->add('partner', 'text', array('attr' => array('class' => 'form-control')))
             ->add('category', 'text', array('attr' => array('class' => 'form-control')))
             ->add('level', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('nextCalibration', 'datetime', [
-                'date_widget' => 'single_text',
-
-
-            ])
+            ->add('nextCalibration', 'date', array('attr' => array('class' => 'form-control')))
             ->add('calibrationInterval', 'text', array('attr' => array('class' => 'form-control')))
             ->add('calibrationInstitute', 'text', array('attr' => array('class' => 'form-control')))
             ->add('owner', 'text', array('attr' => array('class' => 'form-control')))

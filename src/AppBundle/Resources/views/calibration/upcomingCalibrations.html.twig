@@ -1,59 +1,46 @@
-{% extends 'AppBundle::sidebar.html.twig'%}
+{% extends '@App/layoutBase.html.twig'%}
 
-{% block body %}
+{% block index %}
 
-    <!-- Wrapper begin -->
-    <div class="container-fluid" id="main-content-wrapper">
-        <div class="container-fluid"><!-- Container Begin -->
-            <div class="row"><!-- Row Begin -->
 
-                <!-- Shows the sidebar -->
-                {% block sidebar %}{{ parent() }}{% endblock %}
+        <!-- Table Begin -->
+        <table class="table table-hover" id="myTables">
 
-                <!-- Column Begin -->
-                <div class="col-lg-10">
-                    <!-- Table Begin -->
-                    <table class="table table-hover" id="myTables">
+            <tc><!-- Table name-->
+                <h1>Upcoming calibrations</h1>
+                <i>Calibrations for the next 2 months</i>
+            </tc><!-- End Table name-->
 
-                        <tc><!-- Table name-->
-                            <h1>Upcoming calibrations</h1>
-                            <i>Calibrations for the next 2 months</i>
-                        </tc><!-- End Table name-->
+            <tr><!-- Headers of the table -->
+                <th>Equipment ID</th>
+                <th>Serial Nr.</th>
+                <th>Model</th>
+                <th>Iso Standard</th>
+                <th>Next Calibration</th>
+            </tr><!-- End Headers -->
 
-                        <tr><!-- Headers of the table -->
-                            <th>Equipment ID</th>
-                            <th>Serial Nr.</th>
-                            <th>Model</th>
-                            <th>Iso Standard</th>
-                            <th>Next Calibration</th>
-                        </tr><!-- End Headers -->
-
-                        <!-- Prints a list of all equipment that needs to be calibrated and has gone past the due date-->
-                        <!-- If the equipment have exceeded it's calibration date make it red -->
-                        {% for e in exceededEquipment %}
-                            <tr class="danger" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
-                                <td>{{ e.equipmentID}}</td>
-                                <td>{{ e.serialNr}}</td>
-                                <td>{{ e.Model}}</td>
-                                <td>{{ e.IsoStandard }}</td>
-                                <td>{{ e.nextCalibration|date('d-m-y') }}</td>
-                            </tr>
-                        {% endfor %}
-                        <!-- Prints a list of all equipment that needs to be calibrated -->
-                        {% for e in equipment %}
-                            <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
-                                <td>{{ e.equipmentID}}</td>
-                                <td>{{ e.serialNr}}</td>
-                                <td>{{ e.Model}}</td>
-                                <td>{{ e.IsoStandard }}</td>
-                                <td>{{ e.nextCalibration|date('d-m-y') }}</td>
-                            </tr>
-                        {% endfor %}<!-- End the printing of equipment -->
-                    </table><!-- Table End -->
-                </div><!-- Column End -->
-            </div><!-- Row End -->
-        </div><!-- Container End -->
-    </div><!-- Wrapper End -->
+            <!-- Prints a list of all equipment that needs to be calibrated and has gone past the due date-->
+            <!-- If the equipment have exceeded it's calibration date make it red -->
+            {% for e in exceededEquipment %}
+                <tr class="danger" onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
+                    <td>{{ e.equipmentID}}</td>
+                    <td>{{ e.serialNr}}</td>
+                    <td>{{ e.Model}}</td>
+                    <td>{{ e.IsoStandard }}</td>
+                    <td>{{ e.nextCalibration|date('d-m-y') }}</td>
+                </tr>
+            {% endfor %}
+            <!-- Prints a list of all equipment that needs to be calibrated -->
+            {% for e in equipment %}
+                <tr onclick="document.location = '{{ path('showEquipment', {'id': e.id}) }}'">
+                    <td>{{ e.equipmentID}}</td>
+                    <td>{{ e.serialNr}}</td>
+                    <td>{{ e.Model}}</td>
+                    <td>{{ e.IsoStandard }}</td>
+                    <td>{{ e.nextCalibration|date('d-m-y') }}</td>
+                </tr>
+            {% endfor %}<!-- End the printing of equipment -->
+        </table><!-- Table End -->
 
 
 {% endblock %}
