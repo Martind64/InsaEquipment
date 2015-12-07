@@ -1,0 +1,12 @@
+#myTables{
+    cursor: pointer;
+}
+
+#main-content-wrapper{
+    position: relative;
+    padding: 0;
+}
+#bot-addEquipmentForm{
+    position: relative;
+    top: 24px;
+}

@@ -5,10 +5,56 @@
 {% block index %}
 
 <!-- Run the form -->
-<div class="col-lg-4">
-    {{ form_start(Form)}}
-    {{ form_widget(Form)}}
-    {{ form_end(Form)}}
-</div>
+    <div class="col-lg-4">
+        {{ form_start(Form)}}
 
+        {{ form_label(Form.isoStandard) }}
+        <br>
+        {{ form_errors(Form.isoStandard) }}
+        {{ form_widget(Form.isoStandard) }}
+        <br>
+        {{ form_label(Form.equipmentId) }}
+        {{ form_errors(Form.equipmentId) }}
+        {{ form_widget(Form.equipmentId) }}
+
+        {{ form_label(Form.description) }}
+        {{ form_errors(Form.description) }}
+        {{ form_widget(Form.description) }}
+
+        {{ form_label(Form.model) }}
+        {{ form_errors(Form.model) }}
+        {{ form_widget(Form.model) }}
+
+        {{ form_label(Form.serialNr) }}
+        {{ form_errors(Form.serialNr) }}
+        {{ form_widget(Form.serialNr) }}
+
+        {{ form_label(Form.placement) }}
+        {{ form_errors(Form.placement) }}
+        {{ form_widget(Form.placement) }}
+
+        {{ form_label(Form.model) }}
+        {{ form_errors(Form.model) }}
+        {{ form_widget(Form.model) }}
+
+        {{ form_label(Form.partner) }}
+        {{ form_errors(Form.partner) }}
+        {{ form_widget(Form.partner) }}
+
+        {{ form_label(Form.category) }}
+        {{ form_errors(Form.category) }}
+        {{ form_widget(Form.category) }}
+
+        {{ form_label(Form.level) }}
+        {{ form_errors(Form.level) }}
+        {{ form_widget(Form.level) }}
+
+        {{ form_label(Form.nextCalibration) }}
+        {{ form_errors(Form.nextCalibration) }}
+        {{ form_widget(Form.nextCalibration) }}
+    </div>
+        <div class="col-lg-4" id="bot-addEquipmentForm">
+            <br>
+            {{ form_end(Form)}}
+        </div>
 {% endblock %}
