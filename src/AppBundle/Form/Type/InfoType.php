@@ -44,7 +44,7 @@ class InfoType extends AbstractType
             ->add('deviation', 'text', array('attr' => array('class' => 'form-control')))
             ->add('adjustmentLimit', 'text', array('attr' => array('class' => 'form-control')))
             ->add('comment', 'text', array('attr' => array('class' => 'form-control')))
-            ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg inline')));
+            ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-md inline')));
 
     }
 

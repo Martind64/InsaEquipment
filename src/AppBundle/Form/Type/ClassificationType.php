@@ -14,7 +14,7 @@ class ClassificationType extends AbstractType
     {
         $builder
             ->add('type', 'text', ['attr' => ['class' => 'form-control']])
-            ->add('save', 'submit', ['attr' => ['class' => 'btn btn-lg btn-primary']]);
+            ->add('save', 'submit', ['attr' => ['class' => 'btn btn-md btn-primary']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

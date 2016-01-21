@@ -62,7 +62,7 @@ class EquipmentType extends AbstractType
             ])
 //            ])
             ->add('comment', 'textarea', array('attr' => array('class' => 'form-control')))
-            ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
+            ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-md')));
     }
 
     public function configureOptions(OptionsResolver $resolver)

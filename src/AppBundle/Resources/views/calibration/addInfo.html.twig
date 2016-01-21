@@ -5,11 +5,33 @@
 
     <!-- Column Begin -->
     <div class="col-lg-4">
-        {{ form_start(Form) }}
+        <div class="row">
+            <div class="pull-right">
+                <a href="{{ path('showCalibration', {'id': calibration.id}) }}">Show calibration</a>
+            </div>
+        </div>
+
+        {{ form_start(Form)}}
+
+        <div class="col-lg-4">
+            {{ form_label(Form.unit) }}
+            <br>
+            {{ form_errors(Form.unit) }}
+            {{ form_widget(Form.unit) }}
+        </div>
+        <div class="col-lg-6">
+            {{ form_label(Form.prefix) }}
+            <br>
+            {{ form_errors(Form.prefix) }}
+            {{ form_widget(Form.prefix) }}
+            <br>
+            <br>
+        </div>
         {{ form_widget(Form) }}
         {{ form_end(Form) }}
-        <a href="{{ path('showCalibration', {'id': calibration.id}) }}"><button type="button" class="btn btn-lg btn-primary">Show calibration</button></a>
     </div><!-- Column End -->
 
 {% endblock %}
+
+
 

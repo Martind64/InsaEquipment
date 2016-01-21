@@ -43,7 +43,7 @@
     <!-- If the user is an admin the update action will be available as a button -->
     {% if is_granted("ROLE_ADMIN") %}
         <div class="col-md-1">
-            <a href="{{ path('updateEquipment', {'id': equipment.id}) }}"><button class="btn btn-primary btn-lg" type="button">edit</button></a>
+            <a href="{{ path('updateEquipment', {'id': equipment.id}) }}"><button class="btn btn-primary btn-md" type="button">edit</button></a>
         </div>
     {% endif %}
 

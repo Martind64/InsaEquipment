@@ -14,7 +14,7 @@ class UnitType extends AbstractType
     {
         $builder
             ->add('unit', 'text', ['attr' => ['class' => 'form-control']])
-            ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
+            ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-md')));
 
     }
 

@@ -40,7 +40,7 @@ class DocumentType extends AbstractType
                 'attr' => ['class' => 'form-control'],
 
             ])
-            ->add('save', 'submit', ['attr' => ['class' => 'btn btn-lg btn-primary']]);
+            ->add('save', 'submit', ['attr' => ['class' => 'btn btn-md btn-primary']]);
 
     }
 

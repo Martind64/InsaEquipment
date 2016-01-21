@@ -14,7 +14,7 @@ class PrefixType extends AbstractType
     {
         $builder
             ->add('prefix', 'text', ['attr' => ['class' => 'form-control']])
-            ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-lg')));
+            ->add('save', 'submit', array('attr' => array('class' => 'btn btn-primary btn-md')));
 
     }
 
